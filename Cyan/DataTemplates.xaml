@@ -1,0 +1,332 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:cust="clr-namespace:Saina.WPF.Customers"
+                    xmlns:groupaccess="clr-namespace:Saina.WPF.BasicInformation.Admin.GroupAccess"
+                    xmlns:useraccess="clr-namespace:Saina.WPF.BasicInformation.Admin.UserAccess"
+                    xmlns:login="clr-namespace:Saina.WPF.Login"
+                    xmlns:financial="clr-namespace:Saina.WPF.BasicInformation.Financial"
+                    xmlns:companysystem="clr-namespace:Saina.WPF.BasicInformation.Settings.CompanyInformation"
+                    xmlns:order="clr-namespace:Saina.WPF.Orders"
+                    xmlns:prep="clr-namespace:Saina.WPF.OrderPrep"
+                    xmlns:accountGL="clr-namespace:Saina.WPF.BasicInformation.Accounts.GLAccount"
+                    xmlns:accountTL="clr-namespace:Saina.WPF.BasicInformation.Accounts.TLAccount"
+                    xmlns:accountSL="clr-namespace:Saina.WPF.BasicInformation.Accounts.SLAccount"
+                    xmlns:accountDL="clr-namespace:Saina.WPF.BasicInformation.Accounts.DLAccount"
+                    xmlns:bank="clr-namespace:Saina.WPF.BasicInformation.Information.BankInfo"
+                    xmlns:bankAccount="clr-namespace:Saina.WPF.BasicInformation.Information.BankAccounts"
+                    xmlns:currency="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.CurrencyDocument"
+                    xmlns:exchange="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ExchangeRateDocument"
+                    xmlns:person="clr-namespace:Saina.WPF.BasicInformation.Information.PersonInfo"
+                    xmlns:companyinfo="clr-namespace:Saina.WPF.BasicInformation.Information.CompanyInfo"
+                    xmlns:accountdocument="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentInfo"
+                    xmlns:documentnumbering="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentNumberinginfo"
+                    xmlns:accountingsetting="clr-namespace:Saina.WPF.BasicInformation.Settings.AccountingSetting"
+                    xmlns:generalsetting="clr-namespace:Saina.WPF.BasicInformation.Settings.GeneralSetting"
+                    xmlns:shoppingsetting="clr-namespace:Saina.WPF.BasicInformation.Settings.ShoppingSetting"
+                    xmlns:settingsale="clr-namespace:Saina.WPF.BasicInformation.Settings.SaleSetting"
+                    xmlns:salarysetting="clr-namespace:Saina.WPF.BasicInformation.Settings.SalarySetting"
+                    xmlns:retailsetting="clr-namespace:Saina.WPF.BasicInformation.Settings.RetailSetting"
+                    xmlns:receivepaymentsetting="clr-namespace:Saina.WPF.BasicInformation.Settings.ReceiveSetting"
+                    xmlns:stock="clr-namespace:Saina.WPF.Commerce.CommStock"
+                    xmlns:product="clr-namespace:Saina.WPF.Commerce.CommProduct"
+                    xmlns:typedocument="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.AccTypeDocument"
+                    xmlns:sLStandard="clr-namespace:Saina.WPF.BasicInformation.Accounts.SLStandard"
+                    xmlns:related="clr-namespace:Saina.WPF.BasicInformation.Information.Related"
+                   xmlns:documentheader="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentHeader"
+                   xmlns:itemaccDocument="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ItemDocument"
+                   xmlns:reviewaccount="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ReviewAcc"
+                   xmlns:convertdocument="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ConvertDoc"
+                   xmlns:closeaccount="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.CloseProfitLossAcc"
+                   xmlns:openingclosing="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.OpenClose"
+                   xmlns:selectfinancial="clr-namespace:Saina.WPF.BasicInformation.SelectFinancial"
+                   xmlns:currencyexchange="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.CurrencyExchangeinfo"
+                   xmlns:tLheaderdocument="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.TLDocumentInfo"
+                   xmlns:treeaccount="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.TreeACC"
+                   xmlns:currencyexchangeratedocheader="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CurrencyExchangeRateDoc"
+                   xmlns:loseprofitlossdoc="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CloseProfitLossDoc"
+                   xmlns:openingclosingdoc="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.OpenCloseDoc"
+                   xmlns:productmodel="clr-namespace:Saina.WPF.Commerce.ProductModels"
+                   xmlns:producttype="clr-namespace:Saina.WPF.Commerce.ProductTypes"
+                   xmlns:productbrand="clr-namespace:Saina.WPF.Commerce.ProductBrands"
+                   xmlns:otherproduct="clr-namespace:Saina.WPF.Commerce.OtherProducts"
+                   xmlns:measurementUnit="clr-namespace:Saina.WPF.Commerce.MeasurementUnits"
+                   xmlns:incomingdocuments="clr-namespace:Saina.WPF.Commerce.WarehouseDocuments.IncomingDocuments"
+                   xmlns:outputdocuments="clr-namespace:Saina.WPF.Commerce.WarehouseDocuments.OutputDocuments"
+                   xmlns:returninput="clr-namespace:Saina.WPF.Commerce.WarehouseDocuments.ReturnInput"
+                   xmlns:returnoutput="clr-namespace:Saina.WPF.Commerce.WarehouseDocuments.ReturnOutput"
+                   xmlns:transferwarehouse="clr-namespace:Saina.WPF.Commerce.WarehouseDocuments.TransferWarehouse"
+                   xmlns:productrack="clr-namespace:Saina.WPF.Commerce.ProductRacks"
+                   xmlns:documntsFlow="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ReviewAcc"
+                   xmlns:test="clr-namespace:Saina.WPF.Commerce.test"
+                  
+                    
+                    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+
+                   >
+        <BooleanToVisibilityConverter x:Key="boolToVisibility"/>
+        <DataTemplate DataType="{x:Type  login:LoginPageViewModel}">
+            <login:LoginPage />
+        </DataTemplate>
+    <DataTemplate DataType="{x:Type  groupaccess:GroupListViewModel}">
+        <groupaccess:GroupListView />
+        </DataTemplate>
+    <DataTemplate DataType="{x:Type groupaccess:AddEditGroupViewModel}">
+        <groupaccess:AddEditGroupView />
+        </DataTemplate>
+    <DataTemplate DataType="{x:Type useraccess:AddEditUserViewModel}">
+        <useraccess:AddEditUserView />
+        </DataTemplate>
+    <DataTemplate DataType="{x:Type useraccess:UserListViewModel}">
+        <useraccess:UserListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type financial:FinancialYearListViewModel}">
+            <financial:FinancialYearListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type financial:AddEditFinancialYearViewModel}">
+            <financial:AddEditFinancialYearView />
+        </DataTemplate>
+        <!--<DataTemplate DataType="{x:Type cust:CustomerListViewModel}">
+            <cust:CustomerListView />
+        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type order:OrderViewModel}">
+            <order:OrderView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type prep:OrderPrepViewModel}">
+            <prep:OrderPrepView />
+        </DataTemplate>
+    <DataTemplate DataType="{x:Type companysystem:CompanyInformationViewModel}">
+        <companysystem:CompanyInformationView />
+        </DataTemplate>
+        <!--<DataTemplate DataType="{x:Type cust:AddEditCustomerViewModel}">
+            <cust:AddEditCustomerView />
+        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type accountGL:GLListViewModel}">
+            <accountGL:GLListView />
+        </DataTemplate>
+        <!--<DataTemplate DataType="{x:Type accountGL:AddEditGLViewModel}">
+            <accountGL:AddEditGLView />
+        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type accountTL:TLListViewModel}">
+            <accountTL:TLListView />
+        </DataTemplate>
+        <!--<DataTemplate DataType="{x:Type accountTL:AddEditTLViewModel}">
+            <accountTL:AddEditTLView />
+        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type accountSL:SLListViewModel}">
+            <accountSL:SLListView />
+        </DataTemplate>
+        <!--<DataTemplate DataType="{x:Type accountSL:AddEditSLViewModel}">
+            <accountSL:AddEditSLView />
+        </DataTemplate>-->
+        <DataTemplate DataType="{x:Type accountDL:DLListViewModel}">
+            <accountDL:DLListView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type accountDL:AddEditDLViewModel}">
+            <accountDL:AddEditDLView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type bank:BankListViewModel}">
+        <bank:BankListView />
+        </DataTemplate>
+    <DataTemplate DataType="{x:Type bank:AddEditBankViewModel}">
+        <bank:AddEditBankView />
+        </DataTemplate>
+    <DataTemplate DataType="{x:Type bankAccount:BankAccountListViewModel}">
+        <bankAccount:BankAccountListView />
+    </DataTemplate>
+    <!--<DataTemplate DataType="{x:Type bankAccount:AddEditBankAccountViewModel}">
+        <bankAccount:AddEditBankAccountView />
+    </DataTemplate>-->
+
+    <DataTemplate DataType="{x:Type currency:AddEditCurrencyViewModel}">
+        <currency:AddEditCurrencyView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type currency:CurrencyListViewModel}">
+        <currency:CurrencyListView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type exchange:AddEditExchangeRateViewModel}">
+        <exchange:AddEditExchangeRateView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type exchange:ExchangeRateListViewModel}">
+        <exchange:ExchangeRateListView />
+    </DataTemplate>
+    <!--<DataTemplate DataType="{x:Type person:AddEditPersonViewModel}">
+        <person:AddEditPersonView />
+    </DataTemplate>-->
+    <DataTemplate DataType="{x:Type person:PersonListViewModel}">
+        <person:PersonListView />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type companyinfo:CompanyListViewModel}">
+        <companyinfo:CompanyListView />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type accountdocument:AddEditAccountDocumentViewModel}">
+        <accountdocument:AddEditAccountDocumentView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type accountdocument:AccountDocumentListViewModel}">
+        <accountdocument:AccountDocumentListView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type documentnumbering:AddEditDocumentNumberingViewModel}">
+        <documentnumbering:AddEditDocumentNumberingView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type documentnumbering:DocumentNumberingListViewModel}">
+        <documentnumbering:DocumentNumberingListView />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type accountingsetting:SystemAccountingSettingViewModel}">
+        <accountingsetting:SystemAccountingSettingView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type generalsetting:GeneralSystemSettingViewModel}">
+        <generalsetting:GeneralSystemSettingView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type shoppingsetting:ShoppingSystemSettingViewModel}">
+        <shoppingsetting:ShoppingSystemSettingView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type settingsale:SystemSettingSaleViewModel}">
+        <settingsale:SystemSettingSaleView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type receivepaymentsetting:SystemReceivePaymentSettingViewModel}">
+        <receivepaymentsetting:SystemReceivePaymentSettingView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type retailsetting:SystemSettingRetailViewModel}">
+        <retailsetting:SystemSettingRetailView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type salarysetting:SalarySystemSettingViewModel}">
+        <salarysetting:SalarySystemSettingView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type stock:AddEditStockViewModel}">
+        <stock:AddEditStockView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type stock:StockListViewModel}">
+        <stock:StockListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type product:AddEditProductViewModel}">
+        <product:AddEditProductView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type product:ProductListViewModel}">
+        <product:ProductListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type typedocument:AddEditTypeDocumentViewModel}">
+        <typedocument:AddEditTypeDocumentView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type typedocument:TypeDocumentListViewModel}">
+        <typedocument:TypeDocumentListView/>
+    </DataTemplate>
+    <!--<DataTemplate DataType="{x:Type sLStandard:SLStandardDescriptionListViewModel}">
+        <sLStandard:SLStandardDescriptionListView/>
+    </DataTemplate>-->
+    <!--<DataTemplate DataType="{x:Type sLStandard:AddEditSLStandardDescriptionViewModel}">
+        <sLStandard:AddEditSLStandardDescriptionView/>
+    </DataTemplate>-->
+    <!--<DataTemplate DataType="{x:Type related:AddEditRelatedPersonViewModel}">
+        <related:AddEditRelatedPersonView/>
+    </DataTemplate>-->
+    <DataTemplate DataType="{x:Type related:RelatedPersonListViewModel}">
+        <related:RelatedPersonListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type documentheader:AccDocumentHeaderListViewModel}">
+        <documentheader:AccDocumentHeaderListView Focusable="True" IsTabStop="True"/>
+    </DataTemplate>
+    <!--<DataTemplate DataType="{x:Type documentheader:AddEditAccDocumentHeaderViewModel}">
+        <documentheader:AddEditAccDocumentHeaderView/>
+    </DataTemplate>-->
+    <DataTemplate DataType="{x:Type itemaccDocument:AccDocumentItemListViewModel}">
+        <itemaccDocument:AccDocumentItemListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type reviewaccount:ReviewAccountListViewModel}">
+        <reviewaccount:ReviewAccountListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type convertdocument:ConvertDocumentListViewModel}">
+        <convertdocument:ConvertDocumentListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type closeaccount:CloseProfitLossAccountListViewModel}">
+        <closeaccount:CloseProfitLossAccountListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type openingclosing:OpeningClosingListViewModel}">
+        <openingclosing:OpeningClosingListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type selectfinancial:SelectFinancialYearListViewModel}">
+        <selectfinancial:SelectFinancialYearListView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type currencyexchange:CurrencyExchangeListViewModel}">
+        <currencyexchange:CurrencyExchangeListView/>
+    </DataTemplate>
+   
+    <DataTemplate DataType="{x:Type currencyexchangeratedocheader:CurrencyExchangeRateDocHeaderListViewModel}">
+        <currencyexchangeratedocheader:CurrencyExchangeRateDocHeaderListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type currencyexchangeratedocheader:CurrencyDocumentItemListViewModel}">
+        <currencyexchangeratedocheader:CurrencyDocumentItemListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type currencyexchangeratedocheader:EditCurrencyExchangeRateDocHeaderViewModel}">
+        <currencyexchangeratedocheader:EditCurrencyExchangeRateDocHeaderView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type loseprofitlossdoc:CloseProfitLossDocListViewModel}">
+        <loseprofitlossdoc:CloseProfitLossDocListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type loseprofitlossdoc:CloseProfitDocumentItemListViewModel}">
+        <loseprofitlossdoc:CloseProfitDocumentItemListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type loseprofitlossdoc:EditCloseProfitLossDocViewModel}">
+        <loseprofitlossdoc:EditCloseProfitLossDocView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type openingclosingdoc:OpeningClosingDocHeaderListViewModel}">
+        <openingclosingdoc:OpeningClosingDocHeaderListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type openingclosingdoc:EditOpeningClosingDocHeaderViewModel}">
+        <openingclosingdoc:EditOpeningClosingDocHeaderView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type openingclosingdoc:OpeningClosingDocItemListViewModel}">
+        <openingclosingdoc:OpeningClosingDocItemListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tLheaderdocument:TLDocumentHeaderListViewModel}">
+        <tLheaderdocument:TLDocumentHeaderListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type tLheaderdocument:TLDocumentItemListViewModel}">
+        <tLheaderdocument:TLDocumentItemListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type treeaccount:TreeAccountListViewModel}">
+        <treeaccount:TreeAccountListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type productmodel:ProductModelListViewModel}">
+        <productmodel:ProductModelListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type producttype:ProductTypeListViewModel}">
+        <producttype:ProductTypeListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type productbrand:ProductBrandListViewModel}">
+        <productbrand:ProductBrandListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type otherproduct:OtherProductListViewModel}">
+        <otherproduct:OtherProductListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type measurementUnit:MeasurementUnitListViewModel}">
+        <measurementUnit:MeasurementUnitListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type incomingdocuments:IncomingDocumentListViewModel}">
+        <incomingdocuments:IncomingDocumentListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type outputdocuments:OutputDocumentListViewModel}">
+        <outputdocuments:OutputDocumentListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type returninput:ReturnInputListViewModel}">
+        <returninput:ReturnInputListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type returnoutput:ReturnOutputListViewModel}">
+        <returnoutput:ReturnOutputListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type transferwarehouse:TransferWarehouseListViewModel}">
+        <transferwarehouse:TransferWarehouseListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type productrack:ProductRackListViewModel}">
+        <productrack:ProductRackListView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type documntsFlow:DocumntsFlowViewModel}">
+        <documntsFlow:DocumntsFlowView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type test:TestViewModel}">
+        <test:TestView/>
+    </DataTemplate>  
+    
+</ResourceDictionary>

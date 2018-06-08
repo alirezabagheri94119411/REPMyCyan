@@ -1,0 +1,183 @@
+﻿<telerik:RadWindow x:Class="Saina.WPF.Accounting.DocumentAccounting.DocumentHeader.AttachmentListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentHeader"
+        mc:Ignorable="d"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:converter="clr-namespace:Saina.WPF.Converters"
+        Height="768" Width="1024"
+            WindowStartupLocation="CenterScreen" Header="مکاتبات" >
+    <telerik:RadWindow.Style>
+        <Style BasedOn="{StaticResource RadWindowStyle}" TargetType="local:AttachmentListWindow" />
+    </telerik:RadWindow.Style>
+    <Grid FlowDirection="RightToLeft">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions> 
+            <StackPanel Grid.Row="0" >
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="0 4 0 0">
+                <StackPanel.Resources>
+                    <converter:EnumToBoolConverter x:Key="EnumToBoolConverter"  />
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal"  Margin="0 0 30 0" >
+
+                    <Button Name="addButton"   Content="&#xe907;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="افزودن" Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="addButton_Click" />
+                    <Button Name="saveButton" Content="&#xe109;"  FontFamily="{StaticResource TelerikWebUI}" FontSize="16" ToolTip="ذخیره" Margin="4 0 4 0" TabIndex="9" VerticalAlignment="Bottom" Click="saveButton_Click"/>
+                    <Button Name="cancelButton"  Content="&#xe115;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="انصراف"   Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="cancelButton_Click" />
+                    <Button  Name="deleteButton" Content="&#xe10c;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="حذف"  Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="deleteButton_Click" />
+                </StackPanel>
+             
+            </StackPanel>
+            <telerik:RadDataForm Name="attachmentDataForm"  ItemsSource="{Binding ElementName=attachmentDataGrid,Path=ItemsSource}" FlowDirection="RightToLeft"
+                                      CancelButtonContent="انصراف" AddedNewItem="attachmentDataForm_AddedNewItem" 
+                                     CommitButtonContent="تأیید"  AutoGenerateFields="False" 
+                                     DeletingItem="attachmentDataForm_DeletingItem" CommandButtonsVisibility="None" LabelPosition="Beside"
+                                     >
+
+                <telerik:RadDataForm.ReadOnlyTemplate>
+                    <DataTemplate>
+                        <StackPanel >
+                            <telerik:DataFormDataField DataMemberBinding="{Binding AttachmentTitle,Mode=TwoWay}"  Label="عنوان پیام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding AttachmentTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding AttachmentText,Mode=TwoWay}"  Label="متن پیام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding AttachmentText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadDataForm.ReadOnlyTemplate>
+                <telerik:RadDataForm.EditTemplate>
+                    <DataTemplate>
+                        <StackPanel >
+                            <telerik:DataFormDataField DataMemberBinding="{Binding AttachmentTitle,Mode=TwoWay}"  Label="عنوان پیام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding AttachmentTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding AttachmentText,Mode=TwoWay}"  Label="متن پیام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding AttachmentText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadDataForm.EditTemplate>
+                <telerik:RadDataForm.NewItemTemplate>
+                    <DataTemplate>
+                        <StackPanel >
+                            <telerik:DataFormDataField DataMemberBinding="{Binding AttachmentTitle,Mode=TwoWay}"  Label="عنوان پیام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding AttachmentTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding AttachmentText,Mode=TwoWay}"  Label="متن پیام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding AttachmentText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadDataForm.NewItemTemplate>
+            </telerik:RadDataForm>
+    </StackPanel>
+
+        
+        <telerik:RadGridView  x:Name="attachmentDataGrid"
+                                    DataContext="{Binding AccDocumentHeaders}"  
+                                    ItemsSource="{Binding Attachments}"
+                               FilteringMode="FilterRow"
+                                  FlowDirection="RightToLeft"
+                                    GroupRenderMode="Flat"
+                                    CanUserFreezeColumns="False"
+                                    ShowGroupPanel="True"
+                                    RowIndicatorVisibility="Collapsed"
+                                    IsReadOnly="True"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    AutoGenerateColumns="False" 
+                                    Grid.Row="1"
+                                    SelectionMode="Extended"
+                                  >
+          
+            <telerik:RadGridView.Columns >
+                <telerik:GridViewDataColumn Header="نام کاربر" DataMemberBinding="{Binding UserName}"  TextAlignment="Center"/>
+                <telerik:GridViewDataColumn Header="عنوان پیام" DataMemberBinding="{Binding AttachmentTitle}" Width="*"   />
+                <telerik:GridViewDataColumn Header="متن پیام" DataMemberBinding="{Binding AttachmentText}" Width="2*"   />
+
+                <telerik:GridViewDataColumn Header="تاریخ پیام" DataMemberBinding="{Binding SystemDateString,StringFormat='{}{0:yyyy/MM/dd}'}"  TextAlignment="Center" >
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding SystemDateString,StringFormat='{}{0:yyyy/MM/dd}'}"
+                                          VerticalAlignment="Center" />
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewDataColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        </Grid>
+   
+</telerik:RadWindow>

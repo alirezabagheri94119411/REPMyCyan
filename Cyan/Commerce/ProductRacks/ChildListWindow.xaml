@@ -1,0 +1,14 @@
+﻿<Window x:Class="Saina.WPF.Commerce.ProductRacks.ChildListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF.Commerce.ProductRacks"
+        mc:Ignorable="d"
+        Title="ChildListWindow" Height="300" Width="300">
+    <Grid>
+        <Label Content="عنوان" VerticalAlignment="Center" Grid.Row="0" Margin="5 5 0 0"  HorizontalAlignment="Left" Grid.Column="0" />
+        <TextBox Name="titleTextbox" Text="{Binding DataItem.ProductRackTitle,Mode=OneWayToSource}"></TextBox>
+
+    </Grid>
+</Window>

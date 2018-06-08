@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Settings.SaleSetting.SystemSettingSaleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Settings.SaleSetting"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"   
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             mc:Ignorable="d" 
+             Tag="تنظیمات سیستم فروش"
+              FlowDirection="RightToLeft">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadSLs"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <ScrollViewer Margin="0,0,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="5" x:Name="panelContent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="تنظیمات سیستم فروش" Margin="5" FontFamily="/Resources/irsans.ttf#Iranian Sans"
+                           FontSize="23" FontWeight="Bold"/>
+                    <TextBlock Margin="5"
+                           Text="لطفا تنظیمات سیستم فروش  را وارد نمائید."
+                           TextWrapping="Wrap" />
+                </StackPanel>
+                <GroupBox Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="5,20,5,0">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="پنل تنظیمات سیستم فروش" FontWeight="Bold" />
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid Margin="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal"   Grid.Row="0">
+                            <telerik:RadPathButton Content="ذخیره اطلاعات"
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="5"
+                                     
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <telerik:RadPathButton Content="بروز رسانی"
+                                           Command="{Binding  SLsDropDownOpenedCommand}"
+                                           TabIndex="6"
+                                       Grid.Row="0"
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Grid x:Name="grid1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="معین حساب دریافت"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLReceiveAccount , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                               SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین تخفیفات"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.Discount , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="1"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین حساب فروش"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLSalesAccount , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                              SelectedValuePath="SLId" FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="2"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین تخفیف خدمات"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLDiscountService , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedValuePath="SLId" FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                            Grid.Column="1"
+                                            Grid.Row="3"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین خدمات"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                             SelectedValuePath="SLId"  SelectedValue="{Binding SystemSettingSaleModel.SLService , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="4"
+                                            Grid.Column="1"
+                                            Grid.Row="4"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین برگشت از فروش"  Grid.Column="0" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLReturnSale , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            SelectedValuePath="SLId"  FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="5"
+                                            Grid.Column="1"
+                                            Grid.Row="5"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین تخفیف "  Grid.Column="0" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLDiscount , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            SelectedValuePath="SLId"  FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="6"
+                                            Grid.Column="1"
+                                            Grid.Row="6"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین اضافات"  Grid.Column="0" Grid.Row="7"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLAddition , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            SelectedValuePath="SLId"  FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="7"
+                                            Grid.Column="1"
+                                            Grid.Row="7"
+                                            Margin="7 7 0 0" />
+                            <Label Content=" معین حساب پورسانت(پرداختی)"  Grid.Column="0" Grid.Row="8"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLCommissionPaid , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"   FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="8"
+                                            Grid.Column="1"
+                                            Grid.Row="8"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین حساب پورسانت هزینه"  Grid.Column="0" Grid.Row="9"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemSettingSaleModel.SLCommissionCost , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedValuePath="SLId"   FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="9"
+                                            Grid.Column="1"
+                                            Grid.Row="9"
+                                            Margin="7 7 0 0" />
+                            <!--<Label Content="تنظیمات فاکتور"  Grid.Column="0" Grid.Row="10"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />-->
+                            <CheckBox x:Name="isActiveCheckBox" Content="تنظیمات فاکتور و برگشت از فاکتور برای حواله خروج وورود از انبار
+"
+                                             IsChecked="{Binding SystemSettingSaleModel.InvoiceSetting, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="10"
+                                             Grid.Column="1"
+                                             Grid.Row="10"
+                                             Margin="7 7 0 0"/>
+                         
+                           
+
+                          
+
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

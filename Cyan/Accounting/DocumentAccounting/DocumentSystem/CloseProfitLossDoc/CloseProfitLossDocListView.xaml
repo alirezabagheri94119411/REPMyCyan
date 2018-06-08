@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CloseProfitLossDoc.CloseProfitLossDocListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CloseProfitLossDoc"
+              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+             xmlns:Converters="clr-namespace:Saina.WPF.Converters"
+             mc:Ignorable="d" 
+             FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <Converters:EnumToDescription x:Key="EnumToDescription"/>
+    </UserControl.Resources>
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadAccDocumentHeaders"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid  x:Name="panelContent" Margin="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+
+            <GroupBox Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="5,20,5,0">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text=" سند حسابداری" FontWeight="Bold" />
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <Grid Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <telerik:RadPathButton Content="بازگشت"
+                                               Command="{Binding ReturnCommand}" CommandParameter="{Binding TypeDocumentId}"
+                                               
+                                               TabIndex="0"
+                                               Margin="8 8 8 0"/>
+                    </StackPanel>
+                 
+                    <telerik:RadGridView  x:Name="radGridView"
+							 ItemsSource="{Binding AccDocumentHeaders}"
+                                           FilteringMode="FilterRow"
+                             GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 IsReadOnly="True"
+                             IsBusy="{Binding IsBusyGrid}"
+							 AutoGenerateColumns="False"
+                             ShowGroupPanel="True"
+                             Grid.Row="1" 
+                             Margin="5 5 5 0"  ValidatesOnDataErrors="None">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Header="شماره سند"
+											DataMemberBinding="{Binding DocumentNumber}" />
+                            <telerik:GridViewDataColumn Header="شماره ثابت"
+											DataMemberBinding="{Binding SystemFixNumber}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="شماره روزانه"
+											DataMemberBinding="{Binding DailyNumber}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="شماره دستی"
+											DataMemberBinding="{Binding ManualDocumentNumber}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="تاریخ سند"
+											DataMemberBinding="{Binding DocumentDate,StringFormat='{}{0:yyyy/MM/dd}'}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="نام سیستم "
+											DataMemberBinding="{Binding SystemName ,Mode=TwoWay}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="صادر کننده "
+											DataMemberBinding="{Binding Exporter,Mode=TwoWay}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="تایید کننده"
+											DataMemberBinding="{Binding Seconder}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="شرح هدر"
+											DataMemberBinding="{Binding HeaderDescription}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="جمع مبلغ سند"
+											DataMemberBinding="{Binding SumDebit }"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="نوع سند"
+                                            DataMemberBinding="{Binding TypeDocument.TypeDocumentTitle,Mode=TwoWay}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="وضعیت"
+                                            DataMemberBinding="{Binding Status, Converter={StaticResource EnumToDescription}}"
+											Width="*" />
+                            <telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton Content="نمایش" 
+								              Command="{Binding DataContext.EditAccDocumentHeaderCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                              CommandParameter="{Binding}"
+								              TabIndex="2"
+                                               Width="110"
+                                               Margin="5"/>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+
+                            <telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadPathButton Content="حذف" 
+								               Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                               CommandParameter="{Binding}"                               
+								              TabIndex="3"
+                                               Width="110"
+                                               Margin="5">
+
+                                        </telerik:RadPathButton>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <telerik:RadDataPager PageSize="17" FlowDirection="LeftToRight"
+								  Grid.Row="2" FontSize="12" Margin="5 0 5 0" 
+								  Source="{Binding Items, ElementName=radGridView}"
+								  IsTotalItemCountFixed="True"
+								  DisplayMode="FirstLastPreviousNextNumeric, Text" />
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,169 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Settings.GeneralSetting.GeneralSystemSettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Settings.GeneralSetting"
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"   
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             mc:Ignorable="d" 
+             Tag="تنظیمات سیستم عمومی"
+              FlowDirection="RightToLeft">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadSLs"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <ScrollViewer Margin="0,0,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="5" x:Name="panelContent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="تنظیمات سیستم عمومی" Margin="5" FontFamily="/Resources/irsans.ttf#Iranian Sans"
+                           FontSize="23" FontWeight="Bold"/>
+                    <TextBlock Margin="5"
+                           Text="لطفا تنظیمات سیستم عمومی  را وارد نمائید."
+                           TextWrapping="Wrap" />
+                </StackPanel>
+                <GroupBox Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="5,20,5,0">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="پنل تنظیمات سیستم عمومی" FontWeight="Bold" />
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid Margin="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal"   Grid.Row="0">
+                            <telerik:RadPathButton Content="ذخیره اطلاعات"
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="5"
+                                     
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <telerik:RadPathButton Content="بروز رسانی"
+                                           Command="{Binding  SLsDropDownOpenedCommand}"
+                                           TabIndex="6"
+                                       Grid.Row="0"
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Grid x:Name="grid1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="معین پیش پرداخت عوارض"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding GeneralSystemSettingModel.SLPrepaymentComplication , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین پیش پرداخت مالیات"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding GeneralSystemSettingModel.SLPrepaymentTax , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                              SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="1"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین عوارض پرداختی"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding GeneralSystemSettingModel.SLPayment , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="2"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="7 7 0 0" />
+                            <!--<telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding GeneralSystemSettingModel.SLPayment , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="2"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="7 7 0 0" />-->
+                            <Label Content="معین مالیات پرداختی"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding GeneralSystemSettingModel.SLGeneralTaxPaid , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                            Grid.Column="1"
+                                            Grid.Row="3"
+                                            Margin="7 7 0 0" />
+                            <Label Content="نرخ مالیات"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadAutoCompleteBox 
+                              SearchText="{Binding GeneralSystemSettingModel.TaxRate ,Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                 AutoCompleteMode="Suggest"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="4"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="4"
+                                             Margin="7 7 0 0"/>
+                            <Label Content="نرخ عوارض"  Grid.Column="0" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadAutoCompleteBox 
+                              SearchText="{Binding GeneralSystemSettingModel.ComplicationRate,Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                 AutoCompleteMode="Suggest"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="5"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="5"
+                                             Margin="7 7 0 0"/>
+                   
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

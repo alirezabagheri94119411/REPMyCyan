@@ -1,0 +1,798 @@
+﻿<UserControl x:Class="Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CurrencyExchangeRateDoc.CurrencyExchangeRateDocHeaderListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CurrencyExchangeRateDoc"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+           
+              xmlns:converter="clr-namespace:Saina.WPF.Converters"
+             xmlns:common="clr-namespace:Saina.WPF"
+             mc:Ignorable="d" 
+             FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <converter:EnumToDescription x:Key="EnumToDescription"/>
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadAccDocumentHeaders"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid  x:Name="panelContent" Margin="5" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+
+            </Grid.RowDefinitions>
+
+            <GroupBox Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="5,20,5,0">
+                <GroupBox.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text=" سند حسابداری" FontWeight="Bold" />
+                    </DataTemplate>
+                </GroupBox.HeaderTemplate>
+                <Grid Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <telerik:RadPathButton Content="بازگشت"
+                                               Command="{Binding ReturnCommand}" CommandParameter="{Binding TypeDocumentId}"
+                                               
+                                               TabIndex="0"
+                                               Margin="8 8 8 0"/>
+                    </StackPanel>
+
+                    <telerik:RadGridView  x:Name="radGridView"
+							 ItemsSource="{Binding AccDocumentHeaders}"
+                                           FilteringMode="FilterRow"
+                             GroupRenderMode="Flat"
+							 CanUserFreezeColumns="False"
+							 RowIndicatorVisibility="Collapsed"
+							 IsReadOnly="True"
+                             IsBusy="{Binding IsBusyGrid}"
+							 AutoGenerateColumns="False"
+                             ShowGroupPanel="True"
+                             Grid.Row="1" 
+                             Margin="5 5 5 0"  ValidatesOnDataErrors="None">
+                        <telerik:RadGridView.Columns>
+                            <telerik:GridViewDataColumn Header="شماره سند"
+											DataMemberBinding="{Binding DocumentNumber}" />
+                            <telerik:GridViewDataColumn Header="شماره ثابت"
+											DataMemberBinding="{Binding SystemFixNumber}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="شماره روزانه"
+											DataMemberBinding="{Binding DailyNumber}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="شماره دستی"
+											DataMemberBinding="{Binding ManualDocumentNumber}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="تاریخ سند"
+											DataMemberBinding="{Binding DocumentDate,StringFormat='{}{0:yyyy/MM/dd}'}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="نام سیستم "
+											DataMemberBinding="{Binding SystemName ,Mode=TwoWay}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="صادر کننده "
+											DataMemberBinding="{Binding Exporter,Mode=TwoWay}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="تایید کننده"
+											DataMemberBinding="{Binding Seconder}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="شرح هدر"
+											DataMemberBinding="{Binding HeaderDescription}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="جمع مبلغ سند"
+											DataMemberBinding="{Binding SumDebit }"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="نوع سند"
+                                            DataMemberBinding="{Binding TypeDocument.TypeDocumentTitle,Mode=TwoWay}"
+											Width="*" />
+                            <telerik:GridViewDataColumn Header="وضعیت"
+                                            DataMemberBinding="{Binding Status, Converter={StaticResource EnumToDescription}}"
+											Width="*" />
+                            <telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadButton Content="نمایش" 
+								              Command="{Binding DataContext.EditAccDocumentHeaderCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                              CommandParameter="{Binding}"
+								              TabIndex="2"
+                                               Width="110"
+                                               Margin="5"/>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+
+                            <telerik:GridViewDataColumn>
+                                <telerik:GridViewDataColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <telerik:RadPathButton Content="حذف" 
+								               Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}"
+                                               CommandParameter="{Binding}"                               
+								              TabIndex="3"
+                                               Width="110"
+                                               Margin="5">
+
+                                        </telerik:RadPathButton>
+                                    </DataTemplate>
+                                </telerik:GridViewDataColumn.CellTemplate>
+                            </telerik:GridViewDataColumn>
+                        </telerik:RadGridView.Columns>
+                    </telerik:RadGridView>
+                    <telerik:RadDataPager PageSize="17" FlowDirection="LeftToRight"
+								  Grid.Row="2" FontSize="12" Margin="5 0 5 0" 
+								  Source="{Binding Items, ElementName=radGridView}"
+								  IsTotalItemCountFixed="True"
+								  DisplayMode="FirstLastPreviousNextNumeric, Text" />
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
+<!--<UserControl.Resources>
+        <converter:EnumToDescription x:Key="EnumToDescription"/>
+    </UserControl.Resources>-->
+
+    <!--<telerik:RadTabControl SelectionChanged="RadTabControl_SelectionChanged">
+        <telerik:RadTabItem Name="listRadTabItem" Header="فهرست">
+            <telerik:RadGridView  x:Name="accDocumentHeaderDataGrid"
+                                    ItemsSource="{Binding AccDocumentHeaders}"
+                                    MouseDoubleClick="accDocumentHeaderDataGrid_MouseDoubleClick"
+                                    GroupRenderMode="Flat"
+                                    CanUserFreezeColumns="False"
+                                    ShowGroupPanel="False"
+                                    RowIndicatorVisibility="Collapsed"
+                                    IsReadOnly="True"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    AutoGenerateColumns="False" 
+                                    Grid.Column="1"
+                                    AddingNewDataItem="accDocumentHeaderDataGrid_AddingNewDataItem"
+                                  >
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="شماره سند" DataMemberBinding="{Binding DocumentNumber}" MinWidth="50"/>
+                    <telerik:GridViewDataColumn Header="شماره ثابت" DataMemberBinding="{Binding SystemFixNumber}" MinWidth="50" />
+                    <telerik:GridViewDataColumn Header="شماره روزانه" DataMemberBinding="{Binding DailyNumber}" MinWidth="50" />
+                    <telerik:GridViewDataColumn Header="شماره دستی" DataMemberBinding="{Binding ManualDocumentNumber}"	MinWidth="50" />
+                    <telerik:GridViewDataColumn Header="تاریخ سند"	DataMemberBinding="{Binding DocumentDate,StringFormat='{}{0:yyyy/MM/dd}'}" Width="78"	MinWidth="78" />
+                    <telerik:GridViewDataColumn Header="نام سیستم " DataMemberBinding="{Binding SystemName ,Mode=TwoWay}" Width="*" MinWidth="100" />
+                    <telerik:GridViewDataColumn Header="صادر کننده " DataMemberBinding="{Binding Exporter,Mode=TwoWay}" Width="*" MinWidth="100" />
+                    <telerik:GridViewDataColumn Header="تایید کننده" DataMemberBinding="{Binding Seconder}" Width="*" MinWidth="100" />
+                    <telerik:GridViewDataColumn Header="شرح هدر" DataMemberBinding="{Binding HeaderDescription}" Width="*" MinWidth="200"/>
+                    <telerik:GridViewDataColumn Header="جمع مبلغ سند"	DataMemberBinding="{Binding SumDebit }"	Width="*" MinWidth="100"/>
+                    <telerik:GridViewDataColumn Header="نوع سند" DataMemberBinding="{Binding TypeDocument.TypeDocumentTitle}" Width="100" MinWidth="100" />
+                    <telerik:GridViewDataColumn Header="وضعیت" DataMemberBinding="{Binding Status, Converter={StaticResource EnumToDescription}}" Width="80"	MinWidth="80" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
+        </telerik:RadTabItem>
+        <telerik:RadTabItem Name="detailRadTabItem" Header="جزئیات">
+            <StackPanel>
+                <telerik:RadDataForm Name="headerDataForm"  ItemsSource="{Binding ElementName=accDocumentHeaderDataGrid,Path=ItemsSource}" 
+                                     EditEnded="RadDataForm_EditEnded" AddedNewItem="RadDataForm_AddedNewItem" CancelButtonContent="انصراف" 
+                                     CommitButtonContent="تأیید" DeletedItem="RadDataForm_DeletedItem" AutoGenerateFields="False"
+                                     DeletingItem="headerDataForm_DeletingItem" CommandButtonsVisibility="Navigation" LabelPosition="Beside"
+                                     >
+                    <telerik:RadDataForm.EditTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding DocumentNumber,Mode=TwoWay}"
+												   Label="شماره سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <TextBox  
+                                                        Text="{Binding DocumentNumber, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                        VerticalAlignment="Center" 
+                                                        VerticalContentAlignment="Bottom"
+                                                        HorizontalAlignment="Left"
+                                                        FlowDirection="LeftToRight"
+                                                        IsReadOnly="{Binding AccDocumentHeader.IsReadOnly}"
+                                                        TabIndex="0"
+                                                        
+                                                        MinWidth="90"
+                                                        MaxWidth="100" 
+                                                        Margin="7 7 0 0"  >
+                                            </TextBox>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding ManualDocumentNumber,Mode=TwoWay}" Label="شماره دستی:">
+                                        <telerik:DataFormDataField.Content>
+                                            <TextBox 
+                                                        Text="{Binding ManualDocumentNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                        VerticalAlignment="Center" 
+                                                        VerticalContentAlignment="Bottom"
+                                                        HorizontalAlignment="Left"
+                                                        FlowDirection="LeftToRight"
+                                                        TabIndex="1"
+                                                        MinWidth="90"
+                                                        MaxWidth="100"
+                                                        Margin="7 7 0 0"  >
+                                            </TextBox>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding SystemFixNumber,Mode=TwoWay}" Label="شماره ثابت:">
+                                        <telerik:DataFormDataField.Content>
+                                            <TextBox 
+                                                        Text="{Binding SystemFixNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                        VerticalAlignment="Center" 
+                                                        VerticalContentAlignment="Bottom"
+                                                        HorizontalAlignment="Left"
+                                                        FlowDirection="LeftToRight"
+                                                        IsReadOnly="{Binding IsReadOnly}"
+                                                        TabIndex="2"
+                                                        MinWidth="90"
+                                                        MaxWidth="100" 
+                                                        Margin="7 7 0 0"  />
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <GroupBox Header="تاریخچه اسناد/مکاتبات/سند مبنا" Grid.Column="1" Grid.Row="4" >
+                                        <StackPanel Orientation="Horizontal"   HorizontalAlignment="Center" Margin="0 4 0 0">
+                                            <Button
+                                                   VerticalAlignment="Bottom" 
+                                                   Width="85" 
+                                                   
+                                                   TabIndex="6"
+                                                   Margin="0 0 4 0">سند مبنا</Button>
+                                            <Button
+                                                   VerticalAlignment="Bottom" 
+                                                   
+                                                   Width="85" 
+                                                   TabIndex="7"
+                                                   Margin="0 0 4 0"
+                                                 >مکاتبات</Button>
+                                            <Button
+                                                   VerticalAlignment="Top" 
+                                                   
+                                                   Width="85" 
+                                                   TabIndex="8"
+                                                   Margin="0,0,4,0" 
+                                                  
+                                                 >تاریخچه سند</Button>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding DailyNumber,Mode=TwoWay}"
+							  	                 				   Label="شماره روزانه:">
+                                        <telerik:DataFormDataField.Content>
+                                            <Label
+                                                                      Content="{Binding DailyNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                                    VerticalAlignment="Center" 
+                                                                    VerticalContentAlignment="Bottom"
+                                                                    HorizontalAlignment="Left"
+                                                                     FlowDirection="RightToLeft"
+                                                                    MinWidth="70"
+                                                                    MaxWidth="100"
+                                                                    Margin="7 7 0 0"  >
+                                            </Label>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+
+                                </StackPanel>
+                                <StackPanel  Orientation="Horizontal">
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding TypeDocuments,Mode=TwoWay}"
+												   Label="نوع سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <telerik:RadComboBox Name="typeDocumentComboBox" TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="TypeDocumentTitle"
+                                            ItemsSource="{Binding TypeDocuments}"
+                                          SelectedIndex="0" 
+                                     SelectedValue="{Binding TypeDocumentId , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedItem="{Binding TypeDocument}"
+                                         SelectedValuePath="TypeDocumentId"   
+                                             FlowDirection="RightToLeft"
+                                            Width="90" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                          
+                                            Margin="16 10 0 0"  >
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="DropDownOpened">
+                                                        <i:InvokeCommandAction Command="{Binding TypeDocumentsDropDownOpenedCommand}"/>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </telerik:RadComboBox>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding DocumentDate,Mode=TwoWay}"
+												   Label="تاریخ سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <telerik:RadDatePicker SelectedValue="{Binding  DocumentDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                                                                           DateTimeWatermarkContent="تاریخ را وارد نمائید" TabIndex="4"   Margin="16 10 0 0" DisplayFormat="Short" Width="110" HorizontalAlignment="Left"/>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding HeaderDescription,Mode=TwoWay}"
+												   Label="شرح سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <telerik:RadAutoCompleteBox 
+                                 SearchText="{Binding HeaderDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                  AutoCompleteMode="Suggest"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="5"
+                                             Width="400" 
+                                           
+                                             Margin="7 7 0 0"/>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                </StackPanel>
+
+                            </StackPanel>
+                            --><!--<Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding DocumentNumber,Mode=TwoWay}" Label="شماره سند:" Grid.Column="0" Grid.Row="0"/>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding ManualDocumentNumber,Mode=TwoWay}"  Label="شماره دستی:" Grid.Column="1" Grid.Row="0"/>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding SystemFixNumber,Mode=TwoWay}" Label="شماره ثابت:" Grid.Column="2" Grid.Row="0"/>
+                                <telerik:DataFormComboBoxField  Label="نوع سند" 
+                                                                       SelectedValuePath="TypeDocumentId"
+                                                                        DataMemberBinding="{Binding TypeDocumentId, Mode=TwoWay}"
+                                                                        DisplayMemberPath="TypeDocumentTitle"
+                                                                        ItemsSource="{Binding DataContext.TypeDocuments, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                                                        Grid.Column="3" Grid.Row="0"
+                                                                           />
+
+                                <telerik:DataFormDateField DataMemberBinding="{Binding DocumentDate,Mode=TwoWay}" Label="تاریخ سند:" Grid.Column="0" Grid.Row="1"/>
+                                <telerik:DataFormComboBoxField  Label="شرح سند" 
+                                                                       SelectedValuePath="TypeDocumentId"
+                                                                        DataMemberBinding="{Binding HeaderDescription, Mode=TwoWay}"
+                                                                        DisplayMemberPath="HeaderDescription"
+                                                                        ItemsSource="{Binding DataContext.HeaderDescriptions, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                                                        Grid.Column="1" Grid.Row="1"
+                                                                           />
+                                <telerik:DataFormDataField DataMemberBinding="{Binding DailyNumber,Mode=TwoWay}" Label="شماره روزانه:"  Grid.Column="2" Grid.Row="1"/>
+                                <GroupBox Header="تاریخچه اسناد/مکاتبات/سند مبنا" Grid.Column="3" Grid.Row="1" >
+                                    <StackPanel Orientation="Horizontal"   Grid.Column="1"  Grid.Row="3" HorizontalAlignment="Center" Margin="0 4 0 0">
+                                        <Button  VerticalAlignment="Bottom"  Width="85" TabIndex="6" Margin="0 0 4 0">سند مبنا</Button>
+                                        <Button VerticalAlignment="Bottom" Width="85"  TabIndex="7" Margin="0 0 4 0">مکاتبات</Button>
+                                        <Button VerticalAlignment="Top" Width="85" TabIndex="8" Margin="0,0,4,0">تاریخچه سند</Button>
+                                    </StackPanel>
+                                </GroupBox>
+                            </Grid>--><!--
+                        </DataTemplate>
+                    </telerik:RadDataForm.EditTemplate>
+                    <telerik:RadDataForm.NewItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding DocumentNumber,Mode=TwoWay}"
+												   Label="شماره سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <TextBox  
+                                                        Text="{Binding DocumentNumber, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                        VerticalAlignment="Center" 
+                                                        VerticalContentAlignment="Bottom"
+                                                        HorizontalAlignment="Left"
+                                                        FlowDirection="LeftToRight"
+                                                        IsReadOnly="{Binding AccDocumentHeader.IsReadOnly}"
+                                                        TabIndex="0"
+                                                        
+                                                        MinWidth="90"
+                                                        MaxWidth="100" 
+                                                        Margin="7 7 0 0"  >
+                                            </TextBox>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding ManualDocumentNumber,Mode=TwoWay}" Label="شماره دستی:">
+                                        <telerik:DataFormDataField.Content>
+                                            <TextBox 
+                                                        Text="{Binding ManualDocumentNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                        VerticalAlignment="Center" 
+                                                        VerticalContentAlignment="Bottom"
+                                                        HorizontalAlignment="Left"
+                                                        FlowDirection="LeftToRight"
+                                                        TabIndex="1"
+                                                        MinWidth="90"
+                                                        MaxWidth="100"
+                                                        Margin="7 7 0 0"  >
+                                            </TextBox>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding SystemFixNumber,Mode=TwoWay}" Label="شماره ثابت:">
+                                        <telerik:DataFormDataField.Content>
+                                            <TextBox 
+                                                        Text="{Binding SystemFixNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                        VerticalAlignment="Center" 
+                                                        VerticalContentAlignment="Bottom"
+                                                        HorizontalAlignment="Left"
+                                                        FlowDirection="LeftToRight"
+                                                        IsReadOnly="{Binding IsReadOnly}"
+                                                        TabIndex="2"
+                                                        MinWidth="90"
+                                                        MaxWidth="100" 
+                                                        Margin="7 7 0 0"  />
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <GroupBox Header="تاریخچه اسناد/مکاتبات/سند مبنا" Grid.Column="1" Grid.Row="4" >
+                                        <StackPanel Orientation="Horizontal"   HorizontalAlignment="Center" Margin="0 4 0 0">
+                                            <Button
+                                                   VerticalAlignment="Bottom" 
+                                                   Width="85" 
+                                                   
+                                                   TabIndex="6"
+                                                   Margin="0 0 4 0">سند مبنا</Button>
+                                            <Button
+                                                   VerticalAlignment="Bottom" 
+                                                   
+                                                   Width="85" 
+                                                   TabIndex="7"
+                                                   Margin="0 0 4 0"
+                                                 >مکاتبات</Button>
+                                            <Button
+                                                   VerticalAlignment="Top" 
+                                                   
+                                                   Width="85" 
+                                                   TabIndex="8"
+                                                   Margin="0,0,4,0" 
+                                                  
+                                                 >تاریخچه سند</Button>
+                                        </StackPanel>
+                                    </GroupBox>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding DailyNumber,Mode=TwoWay}"
+							  	                 				   Label="شماره روزانه:">
+                                        <telerik:DataFormDataField.Content>
+                                            <Label
+                                                                      Content="{Binding DailyNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                                                    VerticalAlignment="Center" 
+                                                                    VerticalContentAlignment="Bottom"
+                                                                    HorizontalAlignment="Left"
+                                                                     FlowDirection="RightToLeft"
+                                                                    MinWidth="70"
+                                                                    MaxWidth="100"
+                                                                    Margin="7 7 0 0"  >
+                                            </Label>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+
+                                </StackPanel>
+                                <StackPanel  Orientation="Horizontal">
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding TypeDocuments,Mode=TwoWay}"
+												   Label="نوع سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <telerik:RadComboBox Name="typeDocumentComboBox" TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="TypeDocumentTitle"
+                                            ItemsSource="{Binding TypeDocuments}"
+                                          SelectedIndex="0" 
+                                     SelectedValue="{Binding TypeDocumentId , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedItem="{Binding TypeDocument}"
+                                         SelectedValuePath="TypeDocumentId"   
+                                             FlowDirection="RightToLeft"
+                                            Width="90" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                          
+                                            Margin="16 10 0 0"  >
+                                                <i:Interaction.Triggers>
+                                                    <i:EventTrigger EventName="DropDownOpened">
+                                                        <i:InvokeCommandAction Command="{Binding TypeDocumentsDropDownOpenedCommand}"/>
+                                                    </i:EventTrigger>
+                                                </i:Interaction.Triggers>
+                                            </telerik:RadComboBox>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding DocumentDate,Mode=TwoWay}"
+												   Label="تاریخ سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <telerik:RadDatePicker SelectedValue="{Binding  DocumentDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                                                                           DateTimeWatermarkContent="تاریخ را وارد نمائید" TabIndex="4"   Margin="16 10 0 0" DisplayFormat="Short" Width="110" HorizontalAlignment="Left"/>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                    <telerik:DataFormDataField DataMemberBinding="{Binding HeaderDescription,Mode=TwoWay}"
+												   Label="شرح سند:">
+                                        <telerik:DataFormDataField.Content>
+                                            <telerik:RadAutoCompleteBox 
+                                 SearchText="{Binding HeaderDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                  AutoCompleteMode="Suggest"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="5"
+                                             Width="400" 
+                                           
+                                             Margin="7 7 0 0"/>
+                                        </telerik:DataFormDataField.Content>
+                                    </telerik:DataFormDataField>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:RadDataForm.NewItemTemplate>
+                </telerik:RadDataForm>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" >
+                    <GroupBox Header="وضعیت اسناد" Grid.Column="1" Grid.Row="4" >
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="0 4 0 0">
+                            <StackPanel.Resources>
+                                <converter:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+                            </StackPanel.Resources>
+                            <Button Content="پیش نویس" Name="draftButton"  Width="85" Margin="4 0 4 0" TabIndex="9" VerticalAlignment="Bottom" Click="draftButton_Click" Background="#FFFFF86D"/>
+                            <Button Content="موقت" Name="temporaryButton"  Width="85" Margin="4 0 4 0" TabIndex="10" VerticalAlignment="Bottom" Click="temporaryButton_Click" Background="#FFF9924B"/>
+                            <Button Content="خاتمه" Name="endButton"  Width="85"  Margin="4 0 4 0" TabIndex="11" VerticalAlignment="Bottom" Click="endButton_Click" Background="#FFCD0404"/>
+                            <Button Content="برگشت از خاتمه" Name="backFromEndButton"  Width="85" Margin="0 0 4 0" VerticalAlignment="Bottom" TabIndex="12"  Click="backFromEndButton_Click" Background="#FF467CF0"/>
+                            <Button Content="دائم" Name="permanentButton"  Width="85" Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="permanentButton_Click" Background="#FF158110"/>
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+
+                <telerik:RadGridView Name="AccDocumentItemsRadGridView" Grid.Column="1" Grid.Row="1" 
+                                     DataContext="{Binding AccDocumentHeaders}"  
+                                     ItemsSource="{Binding AccDocumentItems}" 
+                                     SelectedItem="{Binding DataContext.AccDocumentItem, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                                     AutoGenerateColumns="False" 
+                                     GroupRenderMode="Flat" 
+                                     NewRowPosition="Bottom"
+                                     EnableLostFocusSelectedState ="False"
+                                     RowIndicatorVisibility="Collapsed">
+                    <telerik:RadGridView.Columns>
+                        <common:RowNumberColumn Header="ردیف" Width="50" MinWidth="50"/>
+                        <telerik:GridViewDataColumn  Header="کد معین" Width="*" FilterMemberPath="SL.SLCode" MinWidth="100">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding SL.SLCode}"></TextBlock>
+                                        <TextBlock Text="{Binding SL.Title}"  Grid.Column="1"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <telerik:RadComboBox IsEditable="True" OpenDropDownOnFocus="True" IsFilteringEnabled="True" TextSearchMode="Contains" StaysOpenOnEdit="True" telerik:TextSearch.TextPath="Title" 
+                                      ItemsSource="{Binding DataContext.SLs, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                      SelectedValuePath="SLId"
+                                      SelectedValue="{Binding SLId}"
+                                      SelectedItem="{Binding SL}">
+                                        <telerik:RadComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="{Binding SLCode}"></TextBlock>
+                                                    <TextBlock Text="{Binding Title}"  Grid.Column="1"></TextBlock>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </telerik:RadComboBox.ItemTemplate>
+
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownOpened">
+                                                <i:InvokeCommandAction Command="{Binding DataContext.SLsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="DLType1"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+
+                                    </telerik:RadComboBox>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="کد تفصیل 1" Width="*" MinWidth="100">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding DL1.DLCode}"></TextBlock>
+                                        <TextBlock Text="{Binding DL1.Title}"  Grid.Column="1"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <telerik:RadComboBox IsEditable="True" OpenDropDownOnFocus="True" IsFilteringEnabled="True" TextSearchMode="Contains" StaysOpenOnEdit="True" telerik:TextSearch.TextPath="Title" 
+                                                 ItemsSource="{Binding DLs1}" 
+                                                 SelectedValuePath="DLId"
+                                                 SelectedValue="{Binding DL1Id}"
+                                                 SelectedItem="{Binding DL1}"
+                                      >
+                                        <telerik:RadComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="{Binding DLCode}"></TextBlock>
+                                                    <TextBlock Text="{Binding Title}"  Grid.Column="1"></TextBlock>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </telerik:RadComboBox.ItemTemplate>
+
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownOpened">
+                                                <i:InvokeCommandAction Command="{Binding DataContext.DLsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="DLType1"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+
+                                    </telerik:RadComboBox>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="کد تفصیل 2" Width="*" MinWidth="100">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding DL2.DLCode}"></TextBlock>
+                                        <TextBlock Text="{Binding DL2.Title}"  Grid.Column="1"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <telerik:RadComboBox IsEditable="True" OpenDropDownOnFocus="True" IsFilteringEnabled="True" TextSearchMode="Contains" StaysOpenOnEdit="True" telerik:TextSearch.TextPath="Title" 
+                                                 ItemsSource="{Binding DLs2}" 
+                                                 SelectedValuePath="DLId"
+                                                 SelectedValue="{Binding DL2Id}"
+                                                 SelectedItem="{Binding DL2}"
+                                      >
+                                        <telerik:RadComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="{Binding DLCode}"></TextBlock>
+                                                    <TextBlock Text="{Binding Title}"  Grid.Column="2"></TextBlock>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </telerik:RadComboBox.ItemTemplate>
+
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownOpened">
+                                                <i:InvokeCommandAction Command="{Binding DataContext.DLsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="DLType2"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+
+                                    </telerik:RadComboBox>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="شرح ارتیکل 1" Width="*" MinWidth="200">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <telerik:RadComboBox IsEditable="True" 
+                ItemsSource="{Binding SLStandardDescriptions}" 
+                Text="{Binding Description1,Mode=TwoWay}"     >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownOpened">
+                                                <i:InvokeCommandAction Command="{Binding DataContext.SLStandardDescriptionsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </telerik:RadComboBox>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="شرح ارتیکل 2" Width="*" MinWidth="200">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <telerik:RadComboBox IsEditable="True" 
+                ItemsSource="{Binding SLStandardDescriptions}" 
+                Text="{Binding Description2,Mode=TwoWay}"     >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="DropDownOpened">
+                                                <i:InvokeCommandAction Command="{Binding DataContext.SLStandardDescriptionsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </telerik:RadComboBox>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="بدهکار " DataMemberBinding="{Binding Debit,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="100">
+                            <telerik:GridViewDataColumn.CellStyleSelector>
+                                <telerik:ConditionalStyleSelector>
+                                    <telerik:StyleRule Condition="Credit > 0">
+                                        <Style TargetType="telerik:GridViewCell"
+									   BasedOn="{StaticResource GridViewCellStyle}">
+
+                                            <Setter Property="Foreground"
+											Value="{telerik:Windows8Resource ResourceKey=ValidationBrush}" />
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </telerik:StyleRule>
+                                    <telerik:StyleRule Condition="PersonId &lt;= 2">
+                                        <Style TargetType="telerik:GridViewCell"
+									   BasedOn="{StaticResource GridViewCellStyle}" />
+                                    </telerik:StyleRule>
+                                </telerik:ConditionalStyleSelector>
+                            </telerik:GridViewDataColumn.CellStyleSelector>
+                            <telerik:GridViewDataColumn.AggregateFunctions>
+                                <telerik:SumFunction Caption=" گردش بدهکار: " />
+                            </telerik:GridViewDataColumn.AggregateFunctions>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn Header="بستانکار" DataMemberBinding="{Binding Credit,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="*" MinWidth="100" >
+                            <telerik:GridViewDataColumn.CellStyleSelector>
+                                <telerik:ConditionalStyleSelector>
+                                    <telerik:StyleRule Condition="Debit > 0">
+                                        <Style TargetType="telerik:GridViewCell"  BasedOn="{StaticResource GridViewCellStyle}">
+                                            <Setter Property="Foreground" Value="{telerik:Windows8Resource ResourceKey=MainBrush}" />
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </telerik:StyleRule>
+                                    <telerik:StyleRule Condition="PersonId &lt;= 2">
+                                        <Style TargetType="telerik:GridViewCell" BasedOn="{StaticResource GridViewCellStyle}" />
+                                    </telerik:StyleRule>
+                                </telerik:ConditionalStyleSelector>
+                            </telerik:GridViewDataColumn.CellStyleSelector>
+                            <telerik:GridViewDataColumn.AggregateFunctions>
+                                <telerik:SumFunction Caption=" گردش بستانکار: " />
+                            </telerik:GridViewDataColumn.AggregateFunctions>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewDataColumn  Header="نام ارز" FilterMemberPath="Currency.CurrencyTitle" Width="*" MinWidth="50">
+                            <telerik:GridViewDataColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Currency.CurrencyTitle}"></TextBlock>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellTemplate>
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <telerik:RadComboBox IsEnabled="{Binding HasCurrency}" OpenDropDownOnFocus="True"
+                                      ItemsSource="{Binding DataContext.Currencies, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                      SelectedValuePath="CurrencyId"
+                                      SelectedValue="{Binding CurrencyId}"
+                                      SelectedItem="{Binding Currency}" DisplayMemberPath="CurrencyTitle">
+                                    </telerik:RadComboBox>
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewMaskedInputColumn DataMemberBinding="{Binding ExchangeRate}"  Header="نرخ ارز"  UniqueName="ExchangeRate" MaskType="Numeric"   DataFormatString="N0" Width="*" MinWidth="100"/>
+                        <telerik:GridViewMaskedInputColumn DataMemberBinding="{Binding CurrencyAmount}"  Header="مبلغ ارز"  UniqueName="CurrencyAmount" MaskType="Numeric"   DataFormatString="N0" Width="*" MinWidth="100"/>
+                        <telerik:GridViewDataColumn Name="TrackingNumber" Header="شماره پیگیری" DataMemberBinding="{Binding TrackingNumber}" Width="*" MinWidth="10" />
+                        <telerik:GridViewDataColumn DataMemberBinding="{Binding TrackingDate}"  Header="تاریخ پیگیری" Width="100" MinWidth="100">
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <telerik:RadDatePicker 
+                                        SelectedValue="{Binding  TrackingDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"   
+                                        DateTimeWatermarkContent="تاریخ را وارد نمائید"  DisplayFormat="Short" />
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                            <telerik:GridViewDataColumn.CellEditTemplate>
+                                <DataTemplate>
+                                    <telerik:RadDatePicker 
+                                        SelectedValue="{Binding  TrackingDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                                        DateTimeWatermarkContent="تاریخ را وارد نمائید"  DisplayFormat="Short" />
+                                </DataTemplate>
+                            </telerik:GridViewDataColumn.CellEditTemplate>
+                        </telerik:GridViewDataColumn>
+                        <telerik:GridViewColumn >
+                            <telerik:GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <telerik:RadButton Content="حذف"
+											   Command="telerik:RadGridViewCommands.Delete"
+											   CommandParameter="{Binding}" telerik:TouchManager.IsTouchHitTestVisible="False"/>
+                                </DataTemplate>
+                            </telerik:GridViewColumn.CellTemplate>
+                        </telerik:GridViewColumn>
+                    </telerik:RadGridView.Columns>
+                </telerik:RadGridView>
+            </StackPanel>
+        </telerik:RadTabItem>
+    </telerik:RadTabControl>-->
+   

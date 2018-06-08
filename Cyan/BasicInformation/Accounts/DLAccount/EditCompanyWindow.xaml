@@ -1,0 +1,358 @@
+﻿<telerik:RadWindow x:Class="Saina.WPF.BasicInformation.Accounts.DLAccount.EditCompanyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Accounts.DLAccount"
+         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+              xmlns:Converter="clr-namespace:Saina.WPF.Converters"
+              xmlns:behaviours="clr-namespace:Saina.WPF.Behaviors" 
+                    xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
+
+        mc:Ignorable="d"
+        Header="ویرایش اطلاعات شرکت" >
+    <telerik:RadWindow.Style>
+        <Style BasedOn="{StaticResource RadWindowStyle}" TargetType="local:EditCompanyWindow" />
+    </telerik:RadWindow.Style>
+    <telerik:RadWindow.Resources>
+        <Converter:StringToBoolConverter x:Key="StringToBoolConverter"/>
+    </telerik:RadWindow.Resources>
+    <GroupBox Header="ویرایش اطلاعات شرکت" FlowDirection="RightToLeft" Margin="10">
+        <Grid FlowDirection="RightToLeft" Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+           
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label  Content="نام شرکت" VerticalAlignment="Center" Grid.Row="0" Margin="5 5 0 0"  HorizontalAlignment="Left" Grid.Column="0"/>
+                <TextBox Name="companyNameTextBox"
+                                            Text="{Binding DL.Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus" />
+                <Label  Content="تاریخ ثبت" VerticalAlignment="Center" Grid.Row="1" Margin="5 5 0 0"  HorizontalAlignment="Left" Grid.Column="0"/>
+                <my:DatePicker HorizontalAlignment="Left"  Name="dateTextBox"   Width="115" 
+                       SelectedDate="{Binding  DL.DateRegistration, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"  SelectedDateFormat="Long"
+                       Grid.Column="1" Grid.Row="1"  Margin="7 7 0 0"/>
+                <!--<telerik:RadDatePicker Name="dateTextBox"     SelectedValue="{Binding DL.DateRegistration, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+
+                    DateTimeWatermarkContent="تاریخ را وارد نمائید"  Grid.Column="1" Grid.Row="1" Margin="7 7 0 0" DisplayFormat="Short" Width="115" HorizontalAlignment="Left"  TabIndex="0"/>-->
+
+                <Label Content="شماره ثبت"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                <TextBox
+                                            Text="{Binding DL.RegistrationNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus" >
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="20" EmptyValue="0" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content=" شماره اقتصادی"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                <TextBox 
+                                            Text="{Binding DL.EconomicalNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="3"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="3"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="12" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content="نام مدیر عامل"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                <TextBox
+                                             Text="{Binding DL.ManagerName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="3"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="4"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus"/>
+                <Label  Content="نام لاتین"  Grid.Column="0" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox 
+                                             Text="{Binding DL.LatinName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="4"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="5"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus"/>
+                <Label Content="مانده حساب اول"  Grid.Column="0" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                            Text="{Binding DL.FirstAccountBalance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="5"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="30" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content="تلفن مدیر عامل"  Grid.Column="0" Grid.Row="7"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                            Text="{Binding DL.PhoneManager, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="6"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="7"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="11" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content="تلفن 1"  Grid.Column="0" Grid.Row="8"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                            Text="{Binding DL.Phone1, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="7"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="8"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="11" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content="تلفن 2"  Grid.Column="3" Grid.Row="7"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox 
+                                             Text="{Binding DL.Phone2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="8"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="7"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="11" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content="تلفن 3"  Grid.Column="3" Grid.Row="8"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                            Text="{Binding DL.Phone3, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                          
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="9"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="8"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="11" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content="استان"  Grid.Column="3" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox 
+                                            Text="{Binding DL.City, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="10"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus"/>
+                <Label Content="شهر"  Grid.Column="3" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                            Text="{Binding DL.Province, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="11"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus"/>
+                <Label Content="شهرستان"  Grid.Column="3" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox 
+                                             Text="{Binding DL.Town, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="12"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus"/>
+
+
+
+                <Label Content="فکس"  Grid.Column="3" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                         Text="{Binding DL.Fax, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                          
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="13"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="3"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="11" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+
+                <Label Content="کد پستی"  Grid.Column="3" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                            Text="{Binding DL.PostalCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="14"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="4"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus">
+                    <i:Interaction.Behaviors>
+                        <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="10" EmptyValue="" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label Content="آدرس وب سایت"  Grid.Column="3" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                             Text="{Binding DL.WebSite, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="15"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="5"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus"/>
+                <Label Content="آدرس"  Grid.Column="3" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                             Text="{Binding DL.Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="16"
+                                             Width="160" 
+                                             Grid.Column="4"
+                                             Grid.Row="6"
+                                             Margin="7 7 0 0" GotFocus="companyNameTextBox_GotFocus"/>
+                <Label Content="لوگو"  Grid.Column="0" Grid.Row="10"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="10">
+
+                    <Image  Name="ImageLogo" 
+                                      
+                                         Stretch="Fill"
+                                         HorizontalAlignment="Left"
+                                         Width="50"
+                                         Height="50" 
+                                         Margin="1"
+                                        
+                                         />
+                    <telerik:RadPathButton
+                                Name="UploadImage" 
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom" 
+                                Width="110" 
+                                Height="33"
+                                TabIndex="17"
+                                Margin="8 0 0 0"
+                        Click="UploadImage_Click"
+                                >آپلود لوگو</telerik:RadPathButton>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="11">
+                    <telerik:RadPathButton Content="ذخیره"
+                                         Click="okRadButton_Click"
+                                           TabIndex="18"
+                                           Width="110" 
+                                           Margin="8"/>
+                    <telerik:RadPathButton Content="انصراف"
+                                          Click="cancelRadButton_Click"
+                                           TabIndex="19"
+                                           Width="110" 
+                                           Margin="8"/>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+    </GroupBox>
+</telerik:RadWindow>

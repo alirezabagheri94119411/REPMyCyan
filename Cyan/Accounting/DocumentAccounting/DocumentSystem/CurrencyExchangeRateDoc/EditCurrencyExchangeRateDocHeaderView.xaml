@@ -1,0 +1,236 @@
+﻿<UserControl x:Class="Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CurrencyExchangeRateDoc.EditCurrencyExchangeRateDocHeaderView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentSystem.CurrencyExchangeRateDoc"
+            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+              xmlns:Behaviors="clr-namespace:Saina.WPF.Behaviors" 
+              xmlns:accdocument="clr-namespace:Saina.ApplicationCore.Entities.Accounting.DocumentAccounting;assembly=SainaApplicationCore" 
+              xmlns:cloumn="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.DocumentHeader" 
+          xmlns:converter="clr-namespace:Saina.WPF.Converters"
+             
+         FlowDirection="RightToLeft"
+             mc:Ignorable="d" 
+             >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadAccDocumentHeaders"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <GroupBox Header="افزودن /ویرایش  هدر سند حسابداری" FlowDirection="RightToLeft" Margin="5">
+        <Grid FlowDirection="RightToLeft" Margin="10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Unloaded">
+                    <ei:CallMethodAction TargetObject="{Binding Mode=OneWay}" MethodName="onCancel"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+            <Grid Grid.Row="1" Grid.Column="0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" >
+                    <!--<GroupBox Header="وضعیت اسناد" Grid.Column="1" Grid.Row="4" >
+                        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="0 4 0 0">
+                            <StackPanel.Resources>
+                                <converter:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+                            </StackPanel.Resources>
+
+                            <Button Content="پیش نویس" Name="draftButton"  Width="85" Height="23"   Margin="0 0 4 0" TabIndex="9" VerticalAlignment="Bottom" Command="{Binding ChangeStatusCommand}" CommandParameter="{x:Static accdocument:StatusEnum.Draft}"  IsEnabled="{Binding Path=AccDocumentHeader.Status,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static accdocument:StatusEnum.Draft}}" Background="#FFFFF86D"/>
+                            <Button Content="موقت" Name="temporaryButton"  Width="85" Height="23"   Margin="0 0 4 0" TabIndex="10" VerticalAlignment="Bottom"  Command="{Binding ChangeStatusCommand}" CommandParameter="{x:Static accdocument:StatusEnum.Temporary}"  IsEnabled="{Binding Path=AccDocumentHeader.Status,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static accdocument:StatusEnum.Temporary}}" Background="#FFF9924B"/>
+
+                            <Button Content="خاتمه" Name="endButton"  Width="85" Height="23"   Margin="0 0 4 0" TabIndex="11" VerticalAlignment="Bottom"  Command="{Binding ChangeStatusCommand}" CommandParameter="{x:Static accdocument:StatusEnum.End}" IsEnabled="{Binding Path=AccDocumentHeader.Status,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static accdocument:StatusEnum.End}}" Background="#FFCD0404"/>
+                            <Button Content="برگشت از خاتمه" Name="backFromEndButton"  Width="85" Height="23"   Margin="0 0 4 0" VerticalAlignment="Bottom"  TabIndex="12"  Command="{Binding ChangeStatusCommand}" CommandParameter="{x:Static accdocument:StatusEnum.BackFromEnd}"  IsEnabled="{Binding Path=AccDocumentHeader.Status,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static accdocument:StatusEnum.BackFromEnd}}" Background="#FF467CF0"/>
+                            <Button Content="دائم" Name="permanentButton"  Width="85" Height="23"   Margin="0 0 4 0" TabIndex="13" VerticalAlignment="Bottom"  Command="{Binding ChangeStatusCommand}" CommandParameter="{x:Static accdocument:StatusEnum.Permanent}"  IsEnabled="{Binding Path=AccDocumentHeader.Status,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static accdocument:StatusEnum.Permanent}}" Background="#FF158110"/>
+                            <Button Content="انصراف"
+                                           Command="{Binding CancelCommand}" 
+                                           TabIndex="14"
+                                           Width="85" 
+                                           Height="23"
+                                           Grid.Row="3"
+                                           Margin="0 0 4 0"/>
+                        </StackPanel>
+
+
+                    </GroupBox>-->
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+                    <Label Content="شماره سند"    Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                    <TextBox  
+                                             Text="{Binding AccDocumentHeader.DocumentNumber, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="LeftToRight"
+                                              IsReadOnly="{Binding AccDocumentHeader.IsReadOnly}"
+                                             TabIndex="0"
+                                             MinWidth="90"
+                                             MaxWidth="100" 
+                                             Margin="7 7 0 0"  >
+                    </TextBox>
+                    <Label Content="شماره دستی"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBox 
+                                             Text="{Binding AccDocumentHeader.ManualDocumentNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="LeftToRight"
+                                             TabIndex="1"
+                                             MinWidth="90"
+                                             MaxWidth="100"
+                                             Margin="7 7 0 0"  >
+                    </TextBox>
+                    <Label  Content="شماره ثابت"  Grid.Column="4" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBox 
+                                             Text="{Binding AccDocumentHeader.SystemFixNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="LeftToRight"
+                                              IsReadOnly="{Binding AccDocumentHeader.IsReadOnly}"
+                                             TabIndex="2"
+                                              MinWidth="90"
+                                             MaxWidth="100" 
+                                             Margin="7 7 0 0"  >
+                    </TextBox>
+
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                    <Label Content="نوع سند"  Grid.Column="0" Grid.Row="0"  Margin="5 7 3 0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+
+                    <telerik:RadComboBox Name="typeDocumentComboBox" TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="TypeDocumentTitle"
+                                            ItemsSource="{Binding TypeDocuments}"
+                                          SelectedIndex="0" 
+                                     SelectedValue="{Binding AccDocumentHeader.TypeDocumentId , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedItem="{Binding TypeDocument}"
+                                         SelectedValuePath="TypeDocumentId"   
+                                             FlowDirection="RightToLeft"
+                                            Width="90" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="16 10 0 0"  >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="DropDownOpened">
+                                <i:InvokeCommandAction Command="{Binding TypeDocumentsDropDownOpenedCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </telerik:RadComboBox>
+                    <Label Content="تاریخ سند"  Grid.Column="0" Grid.Row="1"  Margin="10 7 5 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <telerik:RadDatePicker SelectedValue="{Binding  AccDocumentHeader.DocumentDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                    DateTimeWatermarkContent="تاریخ را وارد نمائید" TabIndex="4"  Grid.Column="3" Grid.Row="1" Margin="16 10 0 0" DisplayFormat="Short" Width="115" HorizontalAlignment="Left"/>
+                </StackPanel>
+
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="auto"/>
+                    <ColumnDefinition  Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4 0 0 0">
+                    <GroupBox Header="تاریخچه اسناد/مکاتبات/سند مبنا" Grid.Column="1" Grid.Row="4" >
+                        <StackPanel Orientation="Horizontal"   Grid.Column="1"  Grid.Row="3" HorizontalAlignment="Center" Margin="0 4 0 0">
+                            <Button
+                                VerticalAlignment="Bottom" 
+                                Width="85" 
+                                Height="23"
+                                TabIndex="6"
+                                Margin="0 0 4 0"
+                              >سند مبنا</Button>
+                            <Button
+                                VerticalAlignment="Bottom" 
+                                Height="23"
+                                Width="85" 
+                                TabIndex="7"
+                                Margin="0 0 4 0"
+                              >مکاتبات</Button>
+                            <Button
+                                VerticalAlignment="Top" 
+                                Height="23"
+                                Width="85" 
+                                TabIndex="8"
+                                Margin="0,0,4,0" 
+                               
+                              >تاریخچه سند</Button>
+                        </StackPanel>
+                    </GroupBox>
+                    <Label Content="شماره روزانه"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <Label
+                        Content="{Binding AccDocumentHeader.DailyNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             MinWidth="70"
+                                             MaxWidth="100"
+                                             Margin="7 7 0 0"  ></Label>
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+
+                    <Label  Content="شرح سند  " VerticalAlignment="Center" Grid.Row="2"  Grid.Column="0" Margin="7 7 0 0"  
+                       />
+                    <telerik:RadAutoCompleteBox 
+                                 SearchText="{Binding AccDocumentHeader.HeaderDescription,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                  AutoCompleteMode="Suggest"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="5"
+                                             Width="380" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0"/>
+                </StackPanel>
+
+
+
+            </Grid>
+
+            <ContentControl Content="{Binding AccDocumentItemListViewModel}"  Grid.Row="3" Grid.ColumnSpan="4"/>
+
+
+        </Grid>
+    </GroupBox>
+</UserControl>

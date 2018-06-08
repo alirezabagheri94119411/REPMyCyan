@@ -1,0 +1,164 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Accounts.DLAccount"
+        xmlns:Accounts="clr-namespace:Saina.ApplicationCore.Entities.BasicInformation.Accounts;assembly=SainaApplicationCore" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Saina.WPF.BasicInformation.Accounts.DLAccount.Window1"
+        mc:Ignorable="d"
+        Title="Window1" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="dLViewSource" d:DesignSource="{d:DesignInstance {x:Type Accounts:DL}, CreateList=True}"/>
+        <CollectionViewSource x:Key="dLBankAccountsViewSource" Source="{Binding BankAccounts, Source={StaticResource dLViewSource}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource dLViewSource}">
+        <telerik:RadDataForm Name="headerDataForm" ItemsSource="{Binding}" AutoGenerateFields="False">
+            <telerik:RadDataForm.ReadOnlyTemplate>
+                <DataTemplate>
+                    <Grid x:Name="grid1" DataContext="{StaticResource dLViewSource}" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="DLAccounts Nature:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLAccountsNatureTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding DLAccountsNature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLCode:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLCodeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding DLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLId:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding DLId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLType:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLTypeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding DLType, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="statusCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <Label Content="Title:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="titleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Title 2:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="title2TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    </Grid>
+
+                </DataTemplate>
+            </telerik:RadDataForm.ReadOnlyTemplate>
+            <telerik:RadDataForm.EditTemplate>
+                <DataTemplate>
+                    <Grid x:Name="grid1" DataContext="{StaticResource dLViewSource}" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="DLAccounts Nature:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLAccountsNatureTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding DLAccountsNature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLCode:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLCodeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding DLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLId:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding DLId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLType:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLTypeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding DLType, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="statusCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <Label Content="Title:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="titleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Title 2:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="title2TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    </Grid>
+
+                </DataTemplate>
+            </telerik:RadDataForm.EditTemplate>
+            <telerik:RadDataForm.NewItemTemplate>
+                <DataTemplate>
+                    <Grid x:Name="grid1" DataContext="{StaticResource dLViewSource}" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="DLAccounts Nature:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLAccountsNatureTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding DLAccountsNature, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLCode:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLCodeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding DLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLId:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding DLId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="DLType:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="dLTypeTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="3" Text="{Binding DLType, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Status:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <CheckBox x:Name="statusCheckBox" Content="" Grid.Column="1" HorizontalAlignment="Left" IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="3" Grid.Row="4" VerticalAlignment="Center"/>
+                        <Label Content="Title:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="titleTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="5" Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                        <Label Content="Title 2:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="title2TextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="6" Text="{Binding Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+                    </Grid>
+                </DataTemplate>
+            </telerik:RadDataForm.NewItemTemplate>
+           
+            
+        </telerik:RadDataForm>
+        <!--<Button Name="addButton"    Content="&#xe907;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="افزودن" Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="addButton_Click" />-->
+
+        <DataGrid x:Name="dLDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="350,45,10,259" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="dLAccountsNatureColumn" Binding="{Binding DLAccountsNature}" Header="DLAccounts Nature" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="dLCodeColumn" Binding="{Binding DLCode}" Header="DLCode" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="dLIdColumn" Binding="{Binding DLId}" Header="DLId" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="dLTypeColumn" Binding="{Binding DLType}" Header="DLType" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="statusColumn" Binding="{Binding Status}" Header="Status" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="titleColumn" Binding="{Binding Title}" Header="Title" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="title2Column" Binding="{Binding Title2}" Header="Title 2" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="bankAccountsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource dLBankAccountsViewSource}}" Margin="326,276,34,28" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="accountNumberColumn" Binding="{Binding AccountNumber}" Header="Account Number" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="accountTypeIdColumn" Binding="{Binding AccountTypeId}" Header="Account Type Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="addrressColumn" Binding="{Binding Addrress}" Header="Addrress" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="bankAccountIdColumn" Binding="{Binding BankAccountId}" Header="Bank Account Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="bankIdColumn" Binding="{Binding BankId}" Header="Bank Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="branchColumn" Binding="{Binding Branch}" Header="Branch" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="cardNumberColumn" Binding="{Binding CardNumber}" Header="Card Number" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="currencyIdColumn" Binding="{Binding CurrencyId}" Header="Currency Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="dcodeColumn" Binding="{Binding Dcode}" Header="Dcode" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="exchangeRateColumn" Binding="{Binding ExchangeRate}" Header="Exchange Rate" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="firstReservePeriodColumn" Binding="{Binding FirstReservePeriod}" Header="First Reserve Period" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="inventoryReservationColumn" Binding="{Binding InventoryReservation}" Header="Inventory Reservation" Width="SizeToHeader"/>
+                <DataGridTemplateColumn x:Name="openingDateColumn" Header="Opening Date" Width="SizeToHeader">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding OpeningDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn x:Name="poseIdColumn" Binding="{Binding PoseId}" Header="Pose Id" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="postalCodeColumn" Binding="{Binding PostalCode}" Header="Postal Code" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="shabaNumberColumn" Binding="{Binding ShabaNumber}" Header="Shaba Number" Width="SizeToHeader"/>
+                <DataGridCheckBoxColumn x:Name="statusColumn1" Binding="{Binding Status}" Header="Status" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="webSiteColumn" Binding="{Binding WebSite}" Header="Web Site" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Settings.RetailSetting.SystemSettingRetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Settings.RetailSetting"
+           xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"   
+              xmlns:behaviours="clr-namespace:Saina.WPF.Behaviors"
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             mc:Ignorable="d" 
+             Tag="تنظیمات سیستم خرده فروشی"
+              FlowDirection="RightToLeft">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadBankAccounts"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <ScrollViewer Margin="0,0,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="5" x:Name="panelContent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="تنظیمات سیستم خرده فروشی" Margin="5" FontFamily="/Resources/irsans.ttf#Iranian Sans"
+                           FontSize="23" FontWeight="Bold"/>
+                    <TextBlock Margin="5"
+                           Text="لطفا تنظیمات سیستم خرده فروشی  را وارد نمائید."
+                           TextWrapping="Wrap" />
+                </StackPanel>
+                <GroupBox Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="5,20,5,0">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="پنل تنظیمات سیستم خرده فروشی" FontWeight="Bold" />
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid Margin="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <telerik:RadPathButton Content="ذخیره اطلاعات"
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="5"
+                                           Width="110" 
+                                           Margin="15 0 0 0"/>
+
+
+                        </StackPanel>
+                        <Grid x:Name="grid1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="انتخاب انبار "  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="StockTitle1"
+                                            ItemsSource="{Binding Stocks}"
+                                            SelectedValue="{Binding SystemSettingRetailModel.SelectWarehouse , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="StockId"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0" />
+                            <Label Content="تعداد ارقام روند در فاکتور خرده فروشی"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox
+                             Text="{Binding SystemSettingRetailModel.NumberDigit , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0">
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="4" EmptyValue="" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="گزارش پیش فرض  فاکتور و برگشت از فاکتور"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="InvoiceTitle"
+                                           ItemsSource="{Binding Invoice}"
+                                            SelectedValue="{Binding SystemSettingRetailModel.Invoice , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  
+                                             SelectedValuePath="InvoiceId"
+                                                 FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="2"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="7 7 0 0" />
+                          
+                            <Label Content="ثبت فاکتور و برگشت و تسویه به روز"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <CheckBox
+                                             IsChecked="{Binding SystemSettingRetailModel.FactorRegistration, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="3"
+                                            Grid.Column="1"
+                                            Grid.Row="3"
+                                             Margin="8"/>
+                            <Label Content="تعداد نسخه چاپ"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadAutoCompleteBox 
+                             SearchText="{Binding SystemSettingRetailModel.NumberPrint , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                 AutoCompleteMode="Suggest"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="4"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="4"
+                                             Margin="7 7 0 0"/>
+
+                            <Label Content="ترمینال کارت خوان "  Grid.Column="0" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="PoseId"
+                                            ItemsSource="{Binding BankAccounts}"
+                                            SelectedValue="{Binding SystemSettingRetailModel.TerminalCardReader , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="PoseId"
+                                            FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="5"
+                                            Grid.Column="1"
+                                            Grid.Row="5"
+                                            Margin="7 7 0 0" />
+                            <Label Content="محل پیش فرض موس در فاکتور "  Grid.Column="0" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="DefaultMouseLocationTitle"
+                                              ItemsSource="{Binding DefaultMouseLocation}"
+                                                SelectedValue="{Binding SystemSettingSaleModel.DefaultMouseLocation , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                          SelectedValuePath="DefaultMouseLocation"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="6"
+                                            Grid.Column="1"
+                                            Grid.Row="6"
+                                            Margin="7 7 0 0" >
+                               <!--<telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True"Item Content="کد کالا"/>
+                               <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True"Item Content="بارکد کالا"/>-->
+
+                            </telerik:RadComboBox>
+                            
+
+
+
+
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Common.About"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Common"
+             mc:Ignorable="d" 
+             Tag="درباره ما"
+           FlowDirection="RightToLeft"
+      d:DesignHeight="300" d:DesignWidth="600"  Language="fa-IR">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="88*"/>
+            <RowDefinition Height="127*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="#FF03A882"  >
+            <!--<Image Source="\Resources\Cyan.png" Width="50" />-->
+            <Label Content="نرم افزار حسابداری سیان" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" ></Label>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Grid.Row="1" >
+            <StackPanel HorizontalAlignment="Left" Margin="50,0,0,0" Width="200">
+                <TextBlock  FontSize="12" Margin="0 25 0 5" >
+                         نام شرکت: فراپردازش ساینا</TextBlock>
+                <TextBlock  FontSize="12" Margin="0 2 0 5" >
+                         نسخه برنامه: 1.0.0.0</TextBlock>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Margin="0,0,0,0" Width="400">
+                <TextBlock  FontSize="12" Margin="0 25 0 5" >
+                          IP سرور:192.168.1.1</TextBlock>
+                <TextBlock  FontSize="12" Margin="0 2 0 5" >
+                         نام بانک: سیان</TextBlock>
+            </StackPanel>
+
+
+
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="20 2 0 0">
+            <TextBlock  FontSize="12" Margin="0 0 0 5" >
+                          جزییات محصول</TextBlock>
+            <TextBlock  FontSize="12" Margin="0 0 0 5" >
+                          توضیحات:..............</TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0E8167" Offset="0.004"/>
+                    <GradientStop Color="#FF0CD3A5" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock  FontSize="10" Margin="8 2 5 5" >
+               
+                         تهران-خیابان توحید-ابتدای فرصت شیرازی-پلاک 184-واحد 5</TextBlock>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

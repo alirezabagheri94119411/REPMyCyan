@@ -1,0 +1,51 @@
+﻿<telerik:RadWindow x:Class="Saina.WPF.Accounting.DocumentAccounting.ReviewAcc.DocumntsFlowWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ReviewAcc"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" Header="گردش اسناد">
+    <telerik:RadWindow.Style>
+        <Style BasedOn="{StaticResource RadWindowStyle}" TargetType="local:DocumntsFlowWindow" />
+    </telerik:RadWindow.Style>
+    <Grid FlowDirection="RightToLeft">
+        <telerik:RadGridView  x:Name="accDocumentItemsGridView"
+GroupRenderMode="Flat" ScrollMode="Deferred"
+        		CanUserFreezeColumns="False" ItemsSource="{Binding}"
+        		RowIndicatorVisibility="Collapsed" 
+        		IsFilteringAllowed="False"
+        		FilteringMode="FilterRow"
+        		HorizontalAlignment="Stretch"
+        		VerticalAlignment="Stretch"
+        		IsReadOnly="True"
+        		AutoGenerateColumns="False"
+                     MouseDoubleClick="accDocumentItemsGridView_MouseDoubleClick"         
+                              >
+            <telerik:RadGridView.Columns>
+
+               
+                <telerik:GridViewDataColumn Header="کد معین"	DataMemberBinding="{Binding SL.SLCode}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="عنوان معین"	DataMemberBinding="{Binding SL.Title}" Width="*"/>
+                <telerik:GridViewDataColumn Header="کد تفضیل1"	DataMemberBinding="{Binding DL1.DLCode}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="عنوان تفضیل1"	DataMemberBinding="{Binding DL1.Title}" Width="*"/>
+                <telerik:GridViewDataColumn Header="کد تفضیل2"	DataMemberBinding="{Binding DL2.DLCode}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="عنوان تفضیل2"	DataMemberBinding="{Binding DL2.Title}" Width="*"/>
+                <telerik:GridViewDataColumn Header="شرح آرتیکل 1"	DataMemberBinding="{Binding Description1}" Width="2*"/>
+                <telerik:GridViewDataColumn Header="شرح آرتیکل 2"	DataMemberBinding="{Binding Description12}" Width="2*" />
+                <telerik:GridViewDataColumn Header="بدهکار"	DataMemberBinding="{Binding Debit}" Width="*"/>
+                <telerik:GridViewDataColumn Header="بستانکار"	DataMemberBinding="{Binding Credit}" Width="*"/>
+                <telerik:GridViewDataColumn Header="نام ارز"	DataMemberBinding="{Binding CurrencyTitle}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="نرخ ارز"	DataMemberBinding="{Binding ExchangeRate}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="تعداد ارز"	DataMemberBinding="{Binding CurrencyAmount}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="شماره پیگیری"	DataMemberBinding="{Binding TrackingNumber}" Width="auto"/>
+                <telerik:GridViewDataColumn Header="تایخ پیگیری"	DataMemberBinding="{Binding TrackingDate ,StringFormat='{}{0:yyyy/MM/dd}'}" Width="auto"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+    </Grid>
+</telerik:RadWindow>

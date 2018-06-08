@@ -1,0 +1,236 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Accounts.DLAccount.AddEditDLView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Accounts.DLAccount"
+              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+                       xmlns:Behaviors="clr-namespace:Saina.WPF.Behaviors" 
+          xmlns:converter="clr-namespace:Saina.WPF.Converters"
+             xmlns:dlAccount="clr-namespace:Saina.ApplicationCore.Entities.BasicInformation.Accounts;assembly=SainaApplicationCore"
+             FlowDirection="RightToLeft"
+  
+             mc:Ignorable="d" Loaded="UserControl_Loaded" 
+             >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadDLs"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <GroupBox Header="افزودن /ویرایش  حساب تفصیل" FlowDirection="RightToLeft" Margin="10" FocusManager.FocusedElement="{Binding ElementName=dLCodeTextbox}">
+        <Grid FlowDirection="RightToLeft" Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Unloaded">
+                    <ei:CallMethodAction TargetObject="{Binding Mode=OneWay}" MethodName="onCancel"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+              
+
+                <Label Content="کد حساب"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                <TextBox x:Name="dLCodeTextbox" 
+                                            Text="{Binding DL.DLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                          
+                                             FlowDirection="LeftToRight"
+                                             TabIndex="0"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" GotFocus="dLCodeTextbox_GotFocus"   >
+                    <i:Interaction.Behaviors>
+                        <Behaviors:TextBoxInputRegExBehavior  x:Name="textBoxInputRegExBehavior" RegularExpression="{Binding DL.Regex}" MinLength="0"  MaxLength="0"   EmptyValue="{Binding DL.DLCodeEmpyValue}"/>
+                    </i:Interaction.Behaviors>
+                  
+                </TextBox>
+                <Label  Content="عنوان اول"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                             Text="{Binding DL.Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="274" 
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0" GotFocus="dLCodeTextbox_GotFocus"/>
+                <Label Content="عنوان دوم"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                            Text="{Binding DL.Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="2"
+                                             Width="274" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="dLCodeTextbox_GotFocus"/>
+                <Label Content="نوع تفصیل"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                <GroupBox Grid.Row="3" Grid.Column="1" Margin="7,7,43,0" Width="300" >
+                    
+                    <WrapPanel  Grid.Row="3" Grid.Column="1">
+                        <WrapPanel.Resources>
+                            <converter:EnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                        </WrapPanel.Resources>
+                        <RadioButton Content="سایر"   TabIndex="3"  Margin="7 7 0 0" IsChecked="{Binding Path=DL.DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Others}}" VerticalAlignment="Center" ></RadioButton>
+                        <RadioButton Name="personCheckBox" Content="اشخاص"   TabIndex="4" Margin="38 7 0 0" IsChecked="{Binding Path=DL.DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.People}}"  VerticalAlignment="Center"  ></RadioButton>
+                        <RadioButton Name="companyCheckBox" Content="شرکت"   TabIndex="5" Margin="7 7 0 0"  IsChecked="{Binding Path=DL.DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Company}}"  VerticalAlignment="Center"  ></RadioButton>
+
+                        <RadioButton  Name="otherCheckBox" Content="مرکز هزینه"   TabIndex="6"  Margin="7 7 0 0" IsChecked="{Binding Path=DL.DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Cost}}" VerticalAlignment="Center" ></RadioButton>
+                        <RadioButton Content="پروژه"   TabIndex="7"  Margin="7 7 0 0" IsChecked="{Binding Path=DL.DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Project}}" VerticalAlignment="Center" ></RadioButton>
+                        <RadioButton Name="bankAccontCheckBox" Content="حساب بانکی"   TabIndex="8" Margin="23 7 0 0" IsChecked="{Binding Path=DL.DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.BankAccount}}"  VerticalAlignment="Center"  ></RadioButton>
+
+                    </WrapPanel>
+                </GroupBox>
+          
+                <Label VerticalAlignment="Center" Grid.Row="5" Margin="5 5 0 0"  HorizontalAlignment="Left" Grid.Column="0" Content="ماهیت حساب"/>
+                <GroupBox Grid.Row="5" Grid.Column="1" Margin="7,7,43,0">
+                <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="5 5 0 0"  >
+                    <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="0 7 7 7 ">
+
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <converter:EnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                                </StackPanel.Resources>
+                                    <CheckBox  Name="buyerCheckBox"  Content="خریدار"  TabIndex="9"  Margin="0 0 29 0"  VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DL.DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Buyer}}">
+
+                                        <CheckBox.Style>
+                                            <Style TargetType="CheckBox">
+                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=companyCheckBox, Path=IsChecked}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=personCheckBox, Path=IsChecked}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </DataTrigger>
+
+                                                </Style.Triggers>
+                                            </Style>
+                                        </CheckBox.Style>
+                                    </CheckBox>
+                                    <CheckBox Name="personelCheckBox" Content="پرسنل"  TabIndex="9"   Margin="0 0 23 0"   VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DL.DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Personel}}">
+
+                                        <CheckBox.Style>
+                                            <Style TargetType="CheckBox">
+                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=companyCheckBox, Path=IsChecked}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=personCheckBox, Path=IsChecked}" Value="True">
+                                                        <Setter Property="IsEnabled" Value="True" />
+                                                    </DataTrigger>
+                                                   
+                                                </Style.Triggers>
+                                            </Style>
+                                        </CheckBox.Style>
+                                    </CheckBox>
+                                    <CheckBox Name="sellerCheckBox" Content="فروشنده"  TabIndex="9"    VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DL.DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Seller}}">
+                                       
+                                            <CheckBox.Style>
+                                                <Style TargetType="CheckBox">
+                                                    <Setter Property="IsEnabled" Value="False"></Setter>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ElementName=companyCheckBox, Path=IsChecked}" Value="True">
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                        </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ElementName=personCheckBox, Path=IsChecked}" Value="True">
+                                                            <Setter Property="IsEnabled" Value="True" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </CheckBox.Style>
+                                        </CheckBox>
+                                                           </StackPanel>
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+                 
+                </StackPanel>
+                            </GroupBox >
+                <Label Content="وضعیت فعال/غیرفعال"  Grid.Column="0" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+
+                <CheckBox x:Name="isActive"
+                                             IsChecked="{Binding DL.Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="12"
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="7 7 0 0"/>
+
+                <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="8">
+                    <telerik:RadPathButton Content="ذخیره"
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="13"
+                                           Width="110" 
+                                           Margin="8"/>
+                    <telerik:RadPathButton Content="انصراف"
+                                           Command="{Binding CancelCommand}" 
+                                           TabIndex="14"
+                                           Width="110" 
+                                           Margin="8"/>
+                </StackPanel>
+            </Grid>
+            <TabControl Name="tab" Grid.Row="3" Grid.ColumnSpan="4">
+                <TabControl.Resources>
+                    <converter:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+                </TabControl.Resources>
+
+                <!--<TabItem Name="PersonTab" Header="اشخاص">
+                    <ContentControl Content="{Binding PersonListViewModel}"  Grid.Row="3" Grid.ColumnSpan="4"/>
+                </TabItem>
+                <TabItem  Name="Company" Header="شرکت"  >
+                    <ContentControl Content="{Binding CompanyListViewModel}"  Grid.Row="3" Grid.ColumnSpan="4" />
+                </TabItem>
+                <TabItem  Name="Account" Header="حساب بانکی" >
+                    <ContentControl Content="{Binding BankAccountListViewModel}"  Grid.Row="3" Grid.ColumnSpan="4" />
+                </TabItem>-->
+                <TabItem Name="Persontab" Header="اشخاص" Visibility="{Binding ElementName=personCheckBox,Path=IsChecked,Converter={StaticResource boolToVisibility  }}">
+                    <ContentControl Content="{Binding PersonListViewModel}" Visibility="{Binding ElementName=personCheckBox,Path=IsChecked,Converter={StaticResource boolToVisibility  }}"  Grid.Row="3" Grid.ColumnSpan="4"/>
+                </TabItem>
+                <TabItem  Name="Companytab" Header="شرکت"  Visibility="{Binding ElementName=companyCheckBox,Path=IsChecked,Converter={StaticResource boolToVisibility }}">
+                        <ContentControl Content="{Binding CompanyListViewModel}" Visibility="{Binding ElementName=companyCheckBox,Path=IsChecked,Converter={StaticResource boolToVisibility }}"  Grid.Row="3" Grid.ColumnSpan="4" />
+                </TabItem>
+                <TabItem  Name="Accounttab" Header="حساب بانکی"  Visibility="{Binding ElementName=bankAccontCheckBox,Path=IsChecked,Converter={StaticResource boolToVisibility }}">
+                            <ContentControl Content="{Binding BankAccountListViewModel}"  Visibility="{Binding ElementName=bankAccontCheckBox,Path=IsChecked,Converter={StaticResource boolToVisibility }}" Grid.Row="3" Grid.ColumnSpan="4" />
+                </TabItem>
+
+
+
+            </TabControl>
+        </Grid>
+    </GroupBox>
+</UserControl>

@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{873A076E-3F13-4349-84FF-CAE4DA8297BA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Saina.ApplicationCore</RootNamespace>
+    <AssemblyName>SainaApplicationCore</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Cyan\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=2.8.21218.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.8.0\lib\net40\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.AutoRegistration, Version=1.5.0.0, Culture=neutral, PublicKeyToken=35372f2f493f82ea, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnityAutoRegistration.1.5.0\lib\net45\Unity.AutoRegistration.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.7.14.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Cyan\bin\Debug\Z.EntityFramework.Plus.EF6.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTOs\Accounting\DocumentAccounting\AccDocumentHeaderDTO.cs" />
+    <Compile Include="DTOs\Accounting\DocumentAccounting\AccDocumentItemDTO.cs" />
+    <Compile Include="DTOs\Accounting\DocumentAccounting\AccDocumentItemDTO1.cs" />
+    <Compile Include="DTOs\Accounting\DocumentAccounting\AccDocumentItemGroupedDTO.cs" />
+    <Compile Include="DTOs\Accounting\DocumentAccounting\AccDocumentItemOpenCloseDTO.cs" />
+    <Compile Include="DTOs\Accounting\DocumentAccounting\CurrencyExchangesDTO.cs" />
+    <Compile Include="DTOs\Accounting\DocumentAccounting\TLDocumentGroupedDTO.cs" />
+    <Compile Include="DTOs\Accounting\ReviewAcc\AccDocumentHeaderFilter.cs" />
+    <Compile Include="DTOs\CompanyInformationModel.cs" />
+    <Compile Include="DTOs\GeneralSystemSettingModel.cs" />
+    <Compile Include="DTOs\LoginPageModel.cs" />
+    <Compile Include="DTOs\SalarySystemSettingModel.cs" />
+    <Compile Include="DTOs\ShoppingSystemSettingModel.cs" />
+    <Compile Include="DTOs\SystemAccountingSettingModel.cs" />
+    <Compile Include="DTOs\SystemReceivePaymentSettingModel.cs" />
+    <Compile Include="DTOs\SystemSettingRetailModel.cs" />
+    <Compile Include="DTOs\SystemSettingSaleModel.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\AccDocumentHeader.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\AccountDocument.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\Attachment.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\CountingWay.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\DocumentNumbering.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\ExchangeRate.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\AccDocumentItem.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\Style.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\TLDocumentHeader.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\TLDocumentItem.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\TreeAccount.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\TypeDocument.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\AccountsNature.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\DataItem.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\Property.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\DL.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\DLAccountsNature.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\DLType.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\GL.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\SelectAgent.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\SL.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\SLStandardDescription.cs" />
+    <Compile Include="Entities\BasicInformation\Accounts\TL.cs" />
+    <Compile Include="Entities\BasicInformation\CompanyInformation.cs" />
+    <Compile Include="Entities\BasicInformation\DynamicPage.cs" />
+    <Compile Include="Entities\BasicInformation\FinancialYear.cs" />
+    <Compile Include="Entities\BasicInformation\Information\AccountType.cs" />
+    <Compile Include="Entities\BasicInformation\Information\Bank.cs" />
+    <Compile Include="Entities\BasicInformation\Information\BankAccount.cs" />
+    <Compile Include="Entities\BasicInformation\Information\BankType.cs" />
+    <Compile Include="Entities\BasicInformation\Information\City.cs" />
+    <Compile Include="Entities\BasicInformation\Information\Company.cs" />
+    <Compile Include="Entities\BasicInformation\Information\Person.cs" />
+    <Compile Include="Entities\BasicInformation\Information\Province.cs" />
+    <Compile Include="Entities\BasicInformation\Information\RelatedPerson.cs" />
+    <Compile Include="Entities\BasicInformation\Information\Town.cs" />
+    <Compile Include="Entities\BasicInformation\KeyValue.cs" />
+    <Compile Include="Entities\BasicInformation\Settings\GeneralSystemSetting.cs" />
+    <Compile Include="Entities\BasicInformation\Settings\SalarySystemSetting.cs" />
+    <Compile Include="Entities\BasicInformation\Settings\ShoppingSystemSetting.cs" />
+    <Compile Include="Entities\BasicInformation\Settings\SystemAccountingSetting.cs" />
+    <Compile Include="Entities\BasicInformation\Settings\SystemReceivePaymentSetting.cs" />
+    <Compile Include="Entities\BasicInformation\Settings\SystemSettingRetail.cs" />
+    <Compile Include="Entities\BasicInformation\Settings\SystemSettingSale.cs" />
+    <Compile Include="Entities\BasicInformation\UGDP.cs" />
+    <Compile Include="Entities\BasicInformation\UserAndGroup\Access.cs" />
+    <Compile Include="Entities\BasicInformation\UserAndGroup\Group.cs" />
+    <Compile Include="Entities\BasicInformation\UserAndGroup\Operation.cs" />
+    <Compile Include="Entities\BasicInformation\UserAndGroup\Owner.cs" />
+    <Compile Include="Entities\BasicInformation\UserAndGroup\User.cs" />
+    <Compile Include="Entities\BasicInformation\UserAndGroup\View.cs" />
+    <Compile Include="Entities\BasicInformation\UserGroupPage.cs" />
+    <Compile Include="Entities\Accounting\DocumentAccounting\Currency.cs" />
+    <Compile Include="Entities\BindableBase.cs" />
+    <Compile Include="Entities\Commerce\ImageProduct.cs" />
+    <Compile Include="Entities\Commerce\InventoryControl.cs" />
+    <Compile Include="Entities\Commerce\MeasurementUnit.cs" />
+    <Compile Include="Entities\Commerce\OtherProduct.cs" />
+    <Compile Include="Entities\Commerce\Product.cs" />
+    <Compile Include="Entities\Commerce\ProductBrand.cs" />
+    <Compile Include="Entities\Commerce\ProductModel.cs" />
+    <Compile Include="Entities\Commerce\ProductRack.cs" />
+    <Compile Include="Entities\Commerce\ProductRackCollection.cs" />
+    <Compile Include="Entities\Commerce\ProductStock.cs" />
+    <Compile Include="Entities\Commerce\ProductType.cs" />
+    <Compile Include="Entities\Commerce\SimilarProduct.cs" />
+    <Compile Include="Entities\Commerce\StcDocumentHeader.cs" />
+    <Compile Include="Entities\Commerce\StcDocumentItem.cs" />
+    <Compile Include="Entities\Commerce\StcTypeDocument.cs" />
+    <Compile Include="Entities\Commerce\Stock.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IAccDocumentHeadersService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IAccDocumentItemsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\ICloseProfitLossAccountsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IConvertDocumentsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\ICountingWaysService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\ICurrenciesService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\ICurrencyExchangesService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IDocumentNumberingsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IAccountDocumentsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IExchangeRatesService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IOpeningClosingsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IReviewAccountsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\IStylesService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\ITLDocumentsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\ITreeAccountsService.cs" />
+    <Compile Include="IServices\Accounting\DocumentAccounting\ITypeDocumentsService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\IAccountsNaturesService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\IDLAccountsNaturesService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\IDLsService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\IDLTypesService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\IGLsService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\IPropertiesService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\ISelectAgentsService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\ISLsService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\ISLStandardDescriptionsService.cs" />
+    <Compile Include="IServices\BasicInformation\Accounts\ITLsService.cs" />
+    <Compile Include="IServices\BasicInformation\IAppContextService.cs" />
+    <Compile Include="IServices\BasicInformation\ICompanyInformationsService.cs" />
+    <Compile Include="IServices\BasicInformation\IDynamicPagesService.cs" />
+    <Compile Include="IServices\BasicInformation\IFinancialYearsService.cs" />
+    <Compile Include="IServices\BasicInformation\IGroupsService.cs" />
+    <Compile Include="IServices\BasicInformation\Information\IBankAccountsService.cs" />
+    <Compile Include="IServices\BasicInformation\Information\IBanksService.cs" />
+    <Compile Include="IServices\BasicInformation\Information\IBankTypesService.cs" />
+    <Compile Include="IServices\BasicInformation\Information\ICompanysService.cs" />
+    <Compile Include="IServices\BasicInformation\Information\IAccountTypesService.cs" />
+    <Compile Include="IServices\BasicInformation\Information\IPersonsService.cs" />
+    <Compile Include="IServices\BasicInformation\Information\IRelatedPeopleService.cs" />
+    <Compile Include="IServices\BasicInformation\ISelectFinancialYearsService.cs" />
+    <Compile Include="IServices\BasicInformation\IUsersService.cs" />
+    <Compile Include="IServices\BasicInformation\Setting\IGeneralSystemSettingsService.cs" />
+    <Compile Include="IServices\BasicInformation\Setting\ISalarySystemSettingsService.cs" />
+    <Compile Include="IServices\BasicInformation\Setting\IShoppingSystemSettingsService.cs" />
+    <Compile Include="IServices\BasicInformation\Setting\ISystemAccountingSettingsService.cs" />
+    <Compile Include="IServices\BasicInformation\Setting\ISystemReceivePaymentSettingsService.cs" />
+    <Compile Include="IServices\BasicInformation\Setting\ISystemSettingRetailsService.cs" />
+    <Compile Include="IServices\BasicInformation\Setting\ISystemSettingSalesService.cs" />
+    <Compile Include="IServices\Commerce\IProductsService.cs" />
+    <Compile Include="IServices\Commerce\IStocksService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IServices\ICustomersRepository.cs" />
+    <Compile Include="IServices\IOrdersRepository.cs" />
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderItem.cs" />
+    <Compile Include="Entities\OrderItemOption.cs" />
+    <Compile Include="Entities\OrderStatus.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\ProductOption.cs" />
+    <Compile Include="Entities\ProductSize.cs" />
+    <Compile Include="PropertyObservable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

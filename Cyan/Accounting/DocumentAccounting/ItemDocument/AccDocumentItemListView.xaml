@@ -1,0 +1,424 @@
+﻿<UserControl x:Class="Saina.WPF.Accounting.DocumentAccounting.ItemDocument.AccDocumentItemListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ItemDocument"
+             xmlns:customControls="clr-namespace:Saina.WPF.CustomControls"
+            xmlns:my="http://schemas.microsoft.com/wpf/2008/toolkit"
+ xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:accdocument="clr-namespace:Saina.ApplicationCore.Entities.Accounting.DocumentAccounting;assembly=SainaApplicationCore" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:local1="clr-namespace:Saina.WPF.Accounting.DocumentAccounting.ReviewAcc"
+          xmlns:converter="clr-namespace:Saina.WPF.Converters"
+             mc:Ignorable="d" 
+          
+             FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <converter:EnumToBoolConverter x:Key="EnumToBoolConverter" />
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadAccDocumentItems"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0"
+					HorizontalAlignment="Left"
+					Margin="0,5,0,0">
+                <telerik:RadButton Width="150"
+							   Content="حذف سطرهای انتخابی"
+							   Margin="0,0,5,0"
+							   Command="telerik:RadGridViewCommands.Delete"
+							   CommandTarget="{Binding ElementName=RadGridView1}" />
+                <telerik:RadButton Width="150"
+							   Content="افزودن سطر جدید"
+							   Margin="0,0,5,0"
+							   Command="telerik:RadGridViewCommands.BeginInsert"
+							   CommandTarget="{Binding ElementName=RadGridView1}"
+                               IsEnabled="{Binding CanAdd}"/>
+                <telerik:RadButton Width="150"
+							   Content="ذخیره افزودن/ویرایش"
+							   Margin="0,0,5,0"
+							   Command="telerik:RadGridViewCommands.CommitEdit"
+							   CommandTarget="{Binding ElementName=RadGridView1}" />
+                <telerik:RadButton Width="150"
+							   Content="انصراف افزودن/ویرایش"
+							   Command="telerik:RadGridViewCommands.CancelRowEdit"
+							   CommandTarget="{Binding ElementName=RadGridView1}" />
+                <telerik:RadButton Width="150"
+							   Content="ذخیره"
+							   Command="{Binding SaveCommand}"
+							   />
+
+
+
+            </StackPanel>
+                
+            </Grid>
+            <Grid  Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="1">
+                <telerik:RadExpander x:Name="radExpander" IsExpanded="False" VerticalContentAlignment="Top" Grid.Row="3" Margin="10,3,13,0"   FlowDirection="RightToLeft"
+								 telerik:AnimationManager.IsAnimationEnabled="{Binding IsChecked, ElementName=AnimationEnableCheckBox}">
+                    <telerik:RadExpander.Header>
+                        <TextBlock x:Name="expanderCaption" Text="مدیریت ستون ها" />
+                    </telerik:RadExpander.Header>
+                    <StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="5">
+
+                            <CheckBox Content="کد تفصیل 2"  Name="DL2CheckBox"  TabIndex="7" />
+                            <CheckBox Content="شرح آرتیکل 2" Name="DiscriptionCheckBox"  TabIndex="7" />
+                            <CheckBox Content="نام ارز" Name="CurreencyTitleCheckBox"  TabIndex="7" />
+                            <CheckBox Content="نرخ ارز" Name="ExchangeRateCheckBox"  TabIndex="7" />
+                                <CheckBox Content="شماره پیگیری" Name="TrackingNumberCheckBox"  TabIndex="7" />
+                                <CheckBox Content="تاریخ پیگیری" Name="TrackingDateCheckBox"  TabIndex="7" />
+                                <CheckBox Content="مبلغ ارز" Name="AmountCheckBox"  TabIndex="7" />
+                                </StackPanel>
+                      
+                    </StackPanel>
+
+                </telerik:RadExpander>
+
+            </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+      
+        <telerik:RadGridView x:Name="RadGridView1" GroupRenderMode="Flat" CellEditEnded="RadGridView1_CellEditEnded"
+                             ItemsSource="{Binding AccDocumentItems}"
+                              FilteringMode="FilterRow"
+                             ShowColumnFooters="True"
+                             SelectionMode="Extended"
+							 AutoGenerateColumns="False"
+                             IsReadOnly="{Binding Path=AccDocumentHeader.IsReadOnly,UpdateSourceTrigger=PropertyChanged}"
+							 Margin="0,5,0,0"
+							 Grid.Row="1" 
+							 ActionOnLostFocus="None"
+							 CanUserDeleteRows="{Binding IsChecked, Mode=TwoWay, ElementName=CanUserDeleteRowsCheckBox}"
+                             SelectedItem="{Binding AccDocumentItem}"
+							 CanUserFreezeColumns="True"
+							 RowIndicatorVisibility="Collapsed" CurrentCellChanged="RadGridView1_CurrentCellChanged"
+                            AddingNewDataItem="RadGridView1_AddingNewDataItem"
+                             Deleting="RadGridView1_Deleting"
+>
+            <telerik:RadGridView.Columns>
+               
+                <telerik:GridViewDataColumn Header="ردیف"
+											DataMemberBinding="{Binding AccRow}" />
+
+                <telerik:GridViewDataColumn Header="کد معین" Width="130" >
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding SL.SLCode}"></TextBlock>
+                                <TextBlock Text="{Binding SL.Title}"  Grid.Column="1"></TextBlock>
+                            </Grid>
+                            
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                    <telerik:GridViewDataColumn.CellEditTemplate>
+                        <DataTemplate>
+                            <telerik:RadComboBox IsEditable="True" OpenDropDownOnFocus="True" IsFilteringEnabled="True" TextSearchMode="Contains" StaysOpenOnEdit="True" telerik:TextSearch.TextPath="Title" 
+                                      ItemsSource="{Binding DataContext.SLs, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" 
+                                           SelectedValue="{Binding SLId , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            SelectedValuePath="SLId" 
+
+                                                 >
+                                <telerik:RadComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding SLCode}"></TextBlock>
+                                            <TextBlock Text="{Binding Title}"  Grid.Column="1"></TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </telerik:RadComboBox.ItemTemplate>
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="DropDownOpened">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.SLsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" CommandParameter="DLType1"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                            </telerik:RadComboBox>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellEditTemplate>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="کد تفصیل 1" Width="110">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding DL1.DLCode}"></TextBlock>
+                                <TextBlock Text="{Binding DL1.Title}"  Grid.Column="1"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                    <telerik:GridViewDataColumn.CellEditTemplate>
+                        <DataTemplate>
+                            <telerik:RadComboBox IsEditable="True" OpenDropDownOnFocus="True" IsFilteringEnabled="True" TextSearchMode="Contains" StaysOpenOnEdit="True" telerik:TextSearch.TextPath="Title" 
+                                      ItemsSource="{Binding DataContext.AccDocumentItem.DLs1, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" 
+                                       SelectedValue="{Binding DL1Id , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                       SelectedValuePath="DL1Id" 
+           
+                                                 >
+                                <telerik:RadComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="{Binding DLCode}"></TextBlock>
+                                            <TextBlock Text="{Binding Title}"  Grid.Column="1"></TextBlock>
+                                        </Grid>
+                                    </DataTemplate>
+                                </telerik:RadComboBox.ItemTemplate>
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="DropDownOpened">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.DLsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" CommandParameter="DLType1"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                            </telerik:RadComboBox>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellEditTemplate>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="کد تفصیل 2" Width="220">
+                        <telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding DL2.DLCode}"></TextBlock>
+                                    <TextBlock Text="{Binding DL2.Title}"  Grid.Column="2"></TextBlock>
+                                </Grid>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>
+                        <telerik:GridViewDataColumn.CellEditTemplate>
+                            <DataTemplate>
+                                <telerik:RadComboBox IsEditable="True" OpenDropDownOnFocus="True" IsFilteringEnabled="True" TextSearchMode="Contains" StaysOpenOnEdit="True" telerik:TextSearch.TextPath="Title" 
+                                      ItemsSource="{Binding DataContext.AccDocumentItem.DLs2, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" 
+                                       SelectedValue="{Binding DL2Id , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                       SelectedValuePath="DL2Id" 
+           
+                                                 >
+                                    <telerik:RadComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text="{Binding DLCode}"></TextBlock>
+                                                <TextBlock Text="{Binding Title}"  Grid.Column="1"></TextBlock>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </telerik:RadComboBox.ItemTemplate>
+
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="DropDownOpened">
+                                            <i:InvokeCommandAction Command="{Binding DataContext.DLsDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" CommandParameter="DLType2"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </telerik:RadComboBox>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellEditTemplate>
+                    </telerik:GridViewDataColumn>
+
+
+
+                    <telerik:GridViewDataColumn Header="شرح آرتیکل 1" Width="180">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Description1}"/>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                    <telerik:GridViewDataColumn.CellEditTemplate>
+                        <DataTemplate>
+                            <telerik:RadComboBox IsEditable="True" DisplayMemberPath="SLStandardDescriptionTitle"
+                                      ItemsSource="{Binding DataContext.AccDocumentItem.SelectedSL.SLStandardDescriptions, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" 
+                                      Text="{Binding Description1,Mode=TwoWay}">
+                            </telerik:RadComboBox>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellEditTemplate>
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn Header="شرح آرتیکل 2" Width="180" IsVisible="{Binding ElementName=DiscriptionCheckBox,Path=IsChecked}">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Description2}"/>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                    <telerik:GridViewDataColumn.CellEditTemplate>
+                        <DataTemplate>
+                            <telerik:RadComboBox IsEditable="True" DisplayMemberPath="SLStandardDescriptionTitle"
+                                      ItemsSource="{Binding DataContext.AccDocumentItem.SelectedSL.SLStandardDescriptions, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" 
+                                      Text="{Binding Description2,Mode=TwoWay}">
+                            </telerik:RadComboBox>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellEditTemplate>
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn Header="بدهکار "
+											DataMemberBinding="{Binding Debit,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+											Width="150" >
+                    <telerik:GridViewDataColumn.AggregateFunctions>
+                        <telerik:SumFunction Caption=" گردش بدهکار: " />
+                    </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="بستانکار"
+											DataMemberBinding="{Binding Credit,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+											Width="150" >
+                        <telerik:GridViewDataColumn.AggregateFunctions>
+                            <telerik:SumFunction Caption=" گردش بستانکار: " />
+                            <!--<StackPanel Orientation="Horizontal">
+                                <Label Content="اختلاف" />
+                                <TextBlock Text="{Binding AccDocumentHeader.Difference}" VerticalAlignment="Center" Grid.Row="4" />
+                            </StackPanel>-->
+                        </telerik:GridViewDataColumn.AggregateFunctions>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="نام ارز" Width="90" IsVisible="{Binding ElementName=CurreencyTitleCheckBox,Path=IsChecked}">
+                    <telerik:GridViewDataColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding SelectedCurrency.CurrencyTitle}"  Grid.Column="1" IsEnabled="{Binding ResultColumn}"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellTemplate>
+                    <telerik:GridViewDataColumn.CellEditTemplate>
+                        <DataTemplate>
+                            <telerik:RadComboBox DisplayMemberPath="CurrencyTitle" IsEnabled="{Binding ResultColumn}"
+                                      ItemsSource="{Binding DataContext.Currencies, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" 
+                                      SelectedItem="{Binding DataContext.AccDocumentItem.SelectedCurrency, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}},UpdateSourceTrigger=PropertyChanged}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="DropDownOpened">
+                                        <i:InvokeCommandAction Command="{Binding DataContext.CurrenciesDropDownOpenedCommand, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadGridView}}}" CommandParameter="DLType2"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                            </telerik:RadComboBox>
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellEditTemplate>
+                </telerik:GridViewDataColumn>
+                <telerik:GridViewDataColumn Header="نرخ ارز"
+											DataMemberBinding="{Binding ExchangeRate}"  IsVisible="{Binding ElementName=ExchangeRateCheckBox,Path=IsChecked}"/>
+
+                <telerik:GridViewDataColumn Name="CurrencyAmount" Header="مبلغ ارز" DataMemberBinding="{Binding CurrencyAmount}"
+                    UniqueName="CurrencyAmount"
+                    Width="100" IsVisible="{Binding ElementName=AmountCheckBox,Path=IsChecked}">
+
+              
+                </telerik:GridViewDataColumn>
+
+                <telerik:GridViewDataColumn Name="TrackingNumber" Header="شماره پیگیری"
+											DataMemberBinding="{Binding TrackingNumber}"
+											Width="*" IsVisible="{Binding ElementName=TrackingNumberCheckBox,Path=IsChecked}"/>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TrackingDate}"  Header="تاریخ پیگیری" IsVisible="{Binding ElementName=TrackingDateCheckBox,Path=IsChecked}">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                                <my:DatePicker HorizontalAlignment="Left"  SelectedDateFormat="Long"
+                       SelectedDate="{Binding TrackingDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                <!--<telerik:RadDatePicker SelectedValue="{Binding  TrackingDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                    DateTimeWatermarkContent="تاریخ را وارد نمائید"  DisplayFormat="Short" />-->
+
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                    <telerik:GridViewDataColumn.CellEditTemplate>
+                        <DataTemplate>
+                                <my:DatePicker HorizontalAlignment="Left"  SelectedDateFormat="Long"
+                       SelectedDate="{Binding TrackingDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}"/>
+                                <!--<telerik:RadDatePicker SelectedValue="{Binding  TrackingDate, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" 
+                    DateTimeWatermarkContent="تاریخ را وارد نمائید"  DisplayFormat="Short" />-->
+
+                        </DataTemplate>
+                    </telerik:GridViewDataColumn.CellEditTemplate>
+                </telerik:GridViewDataColumn>
+
+
+
+                <telerik:GridViewColumn Width="60">
+                    <telerik:GridViewColumn.CellTemplate>
+                        <DataTemplate>
+                            <telerik:RadButton Content="حذف"
+											   Command="telerik:RadGridViewCommands.Delete"
+											   CommandParameter="{Binding}" telerik:TouchManager.IsTouchHitTestVisible="False"/>
+                        </DataTemplate>
+                    </telerik:GridViewColumn.CellTemplate>
+                </telerik:GridViewColumn>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <telerik:RadDataPager PageSize="15"
+								  Grid.Row="2" FontSize="12" Margin="5 0 5 0" 
+								  Source="{Binding Items, ElementName=RadGridView1}"
+								  IsTotalItemCountFixed="True"
+								  DisplayMode="FirstLastPreviousNextNumeric, Text" />
+        <GroupBox Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <!--<StackPanel Orientation="Horizontal">
+                    <Label Content="جمع بدهکار" />
+                    <TextBlock Text="{Binding AccDocumentHeader.SumDebit}"  VerticalAlignment="Center" Grid.Row="4" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="جمع بستانکار" />
+
+                    <TextBlock Text="{Binding AccDocumentHeader.SumCredit}"  VerticalAlignment="Center" Grid.Row="4" Foreground="#FFCD0808" >
+                             
+                    </TextBlock>
+                </StackPanel>-->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="830 0 0 0">
+                       <Label Content="اختلاف" />
+                    <TextBlock Text="{Binding AccDocumentHeader.Difference}" VerticalAlignment="Center" Grid.Row="4" />
+                </StackPanel>
+             
+
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Grid>
+
+</UserControl>

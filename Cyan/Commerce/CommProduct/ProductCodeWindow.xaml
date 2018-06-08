@@ -1,0 +1,87 @@
+﻿<telerik:RadWindow x:Class="Saina.WPF.Commerce.CommProduct.ProductCodeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF.Commerce.CommProduct"
+        mc:Ignorable="d"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+             xmlns:converter="clr-namespace:Saina.WPF.Converters"
+        Height="768" Width="1024"
+            WindowStartupLocation="CenterScreen" Header="کد کالا">
+    <telerik:RadWindow.Style>
+        <Style BasedOn="{StaticResource RadWindowStyle}" TargetType="local:ProductCodeWindow" />
+    </telerik:RadWindow.Style>
+  
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+   
+        <Label Content="برند کالا" Grid.Row="0" Grid.Column="0" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"    />
+        <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="ProductBrandTitle"
+                                            ItemsSource="{Binding  ProductBrands}"
+                                            SelectedItem="{Binding ProductBrand , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            FlowDirection="RightToLeft"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0" >
+
+          
+        </telerik:RadComboBox>
+        <Label Content="نوع کالا" Grid.Row="1" Grid.Column="0" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"    />
+        <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="ProductTypeTitle"
+                                            ItemsSource="{Binding ProductTypes}"
+                                            SelectedValue="{Binding ProductType , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            FlowDirection="RightToLeft"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="1"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Margin="7 7 0 0" >
+          
+        </telerik:RadComboBox>
+        <Label Content="مدل کالا" Grid.Row="2" Grid.Column="0" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"    />
+        <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="ProductModelTitle"
+                                            ItemsSource="{Binding ProductModels}"
+                                            SelectedValue="{Binding ProductModel , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            FlowDirection="RightToLeft"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="2"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="7 7 0 0" >
+           
+        </telerik:RadComboBox>
+        <Label Content="سایر کالا" Grid.Row="3" Grid.Column="0" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"    />
+        <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="OtherProductTitle"
+                                            ItemsSource="{Binding OtherProducts}"
+                                            SelectedValue="{Binding OtherProduct , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           FlowDirection="RightToLeft"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                            Grid.Column="1"
+                                            Grid.Row="3"
+                                            Margin="7 7 0 0" >
+           
+        </telerik:RadComboBox>
+
+        <telerik:RadPathButton Content="اعمال کد" Grid.Column="0"    Grid.Row="4"  TabIndex="4"  Width="110"  Margin="5" Click="ApplyButton_Click"/>
+        <telerik:RadPathButton Content="انصراف" Grid.Column="1"    Grid.Row="4"  TabIndex="4"  Width="110"  Margin="5" Click="CancelButton_Click"/>
+    </Grid>
+</telerik:RadWindow>

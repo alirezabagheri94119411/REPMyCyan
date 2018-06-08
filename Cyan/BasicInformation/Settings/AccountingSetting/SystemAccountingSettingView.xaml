@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Settings.AccountingSetting.SystemAccountingSettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Settings.AccountingSetting"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"   
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             xmlns:behaviours="clr-namespace:Saina.WPF.Behaviors"
+             mc:Ignorable="d" 
+             Tag="تنظیمات سیستم حسابداری"
+             FlowDirection="RightToLeft" FocusManager.FocusedElement="{Binding ElementName=gLLength}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadSystemAccountingSettingModel"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <ScrollViewer Margin="0,0,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="5" x:Name="panelContent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="تنظیمات سیستم حسابداری" Margin="5" FontFamily="/Resources/irsans.ttf#Iranian Sans"
+                           FontSize="23" FontWeight="Bold"/>
+                    <TextBlock Margin="5"
+                           Text="لطفا تنظیمات سیستم حسابداری  را وارد نمائید."
+                           TextWrapping="Wrap" />
+                </StackPanel>
+                <GroupBox Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="5,20,5,0">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="پنل تنظیمات سیستم حسابداری" FontWeight="Bold" />
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid Margin="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <telerik:RadPathButton Content="ذخیره اطلاعات"
+                                                   
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="5"
+                                           Width="110" 
+                                           Margin="15 0 0 0"/>
+
+
+                        </StackPanel>
+                        <Grid x:Name="grid1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="طول حساب گروه"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox Name="gLLength"
+                               Text="{Binding SystemAccountingSettingModel.GLLength,Mode=TwoWay ,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                              IsEnabled="{Binding SystemAccountingSettingModel.GLActive}"
+                                             TabIndex="0"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" GotFocus="gLLength_GotFocus"
+                                     >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="1" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول حساب کل"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox x:Name="TLCode1111" 
+                                 Text="{Binding SystemAccountingSettingModel.TLLength,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                              IsEnabled="{Binding SystemAccountingSettingModel.TLActive}"  TabIndex="1"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0" GotFocus="gLLength_GotFocus">
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="1" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول حساب معین"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <TextBox x:Name="EconomicStoreId"
+                                Text="{Binding SystemAccountingSettingModel.SLLength,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                                IsEnabled="{Binding SystemAccountingSettingModel.SLActive}" FlowDirection="RightToLeft"
+                                             TabIndex="2"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0"  GotFocus="gLLength_GotFocus">
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="1" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول حساب تفصیل"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <TextBox x:Name="City"
+                              Text="{Binding SystemAccountingSettingModel.DLLength,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                               
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             IsEnabled="{Binding SystemAccountingSettingModel.DLActive}" FlowDirection="RightToLeft"
+                                             TabIndex="3"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="3"
+                                             Margin="7 7 0 0" GotFocus="gLLength_GotFocus">
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="1" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

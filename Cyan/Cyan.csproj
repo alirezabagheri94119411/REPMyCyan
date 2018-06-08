@@ -1,0 +1,1315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{473D553D-0F1E-46F9-89B1-FDBC33BD976D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Saina.WPF</RootNamespace>
+    <AssemblyName>Cyan</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cyan_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions">
+      <HintPath>..\lib\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Base">
+      <HintPath>..\lib\stimulsoft Reports .NET 2017.1.11 Cracked\Stimulsoft.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report">
+      <HintPath>..\lib\stimulsoft Reports .NET 2017.1.11 Cracked\Stimulsoft.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Design">
+      <HintPath>..\lib\stimulsoft Reports .NET 2017.1.11 Cracked\Stimulsoft.Report.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Stimulsoft.Report.Wpf">
+      <HintPath>..\lib\stimulsoft Reports .NET 2017.1.11 Cracked\Stimulsoft.Report.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StructureMap.4.5.3\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.VisualStudio.TextTemplating" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\lib\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Data, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.FileDialogs, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.FileDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.PersistenceFramework, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RCWPF\2017.3.1018.45\Telerik.Windows.PersistenceFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\..\..\task\WPFToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.7.14.0, Culture=neutral, PublicKeyToken=59b66d028979105b" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Accounting\DocumentAccounting\AccTypeDocument\AddEditTypeDocumentView.xaml.cs">
+      <DependentUpon>AddEditTypeDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\AccTypeDocument\AddEditTypeDocumentViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\AccTypeDocument\EditableTypeDocument.cs" />
+    <Compile Include="Accounting\DocumentAccounting\AccTypeDocument\TypeDocumentListView.xaml.cs">
+      <DependentUpon>TypeDocumentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\AccTypeDocument\TypeDocumentListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\CloseProfitLossAcc\CloseProfitLossAccountListView.xaml.cs">
+      <DependentUpon>CloseProfitLossAccountListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\CloseProfitLossAcc\CloseProfitLossAccountListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ConvertDoc\ConvertDocumentListView.xaml.cs">
+      <DependentUpon>ConvertDocumentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\ConvertDoc\ConvertDocumentListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\CurrencyDocument\AddEditCurrencyView.xaml.cs">
+      <DependentUpon>AddEditCurrencyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\CurrencyDocument\AddEditCurrencyViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\CurrencyDocument\CurrencyListView.xaml.cs">
+      <DependentUpon>CurrencyListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\CurrencyDocument\CurrencyListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\CurrencyDocument\EditableCurrency.cs" />
+    <Compile Include="Accounting\DocumentAccounting\CurrencyExchangeinfo\AddEditCurrencyExchangeViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\CurrencyExchangeinfo\CurrencyExchangeListView.xaml.cs">
+      <DependentUpon>CurrencyExchangeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\CurrencyExchangeinfo\CurrencyExchangeListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\AccDocumentHeaderListView.xaml.cs">
+      <DependentUpon>AccDocumentHeaderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\AccDocumentHeaderListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\AttachmentListWindow.xaml.cs">
+      <DependentUpon>AttachmentListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\AttachmentListWindowViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\CustomKeyboardCommandProvider.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\CustomValidator.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\DiffrenceFunction.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\DocumentHistoryListWindow.xaml.cs">
+      <DependentUpon>DocumentHistoryListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\EditableAccDocumentHeader.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\EditableAccItem.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\InputValidationRule.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentHeader\SLFilteringBehavior.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentInfo\AddEditAccountDocumentView.xaml.cs">
+      <DependentUpon>AddEditAccountDocumentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentInfo\AddEditAccountDocumentViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentInfo\AccountDocumentListView.xaml.cs">
+      <DependentUpon>AccountDocumentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentInfo\AccountDocumentListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentInfo\EditableAccountDocument.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentNumberinginfo\AddEditDocumentNumberingView.xaml.cs">
+      <DependentUpon>AddEditDocumentNumberingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentNumberinginfo\AddEditDocumentNumberingViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentNumberinginfo\DocumentNumberingListView.xaml.cs">
+      <DependentUpon>DocumentNumberingListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentNumberinginfo\DocumentNumberingListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentNumberinginfo\EditableDocumentNumbering.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\CloseProfitDocumentItemListView.xaml.cs">
+      <DependentUpon>CloseProfitDocumentItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\CloseProfitDocumentItemListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\CloseProfitLossDocListView.xaml.cs">
+      <DependentUpon>CloseProfitLossDocListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\CloseProfitLossDocListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\EditCloseProfitLossDocView.xaml.cs">
+      <DependentUpon>EditCloseProfitLossDocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\EditCloseProfitLossDocViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\CurrencyDocumentItemListView.xaml.cs">
+      <DependentUpon>CurrencyDocumentItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\CurrencyDocumentItemListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\CurrencyExchangeRateDocHeaderListView.xaml.cs">
+      <DependentUpon>CurrencyExchangeRateDocHeaderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\CurrencyExchangeRateDocHeaderListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\EditCurrencyExchangeRateDocHeaderView.xaml.cs">
+      <DependentUpon>EditCurrencyExchangeRateDocHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\EditCurrencyExchangeRateDocHeaderViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\EditOpeningClosingDocHeaderView.xaml.cs">
+      <DependentUpon>EditOpeningClosingDocHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\EditOpeningClosingDocHeaderViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\OpeningClosingDocHeaderListView.xaml.cs">
+      <DependentUpon>OpeningClosingDocHeaderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\OpeningClosingDocHeaderListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\OpeningClosingDocItemListView.xaml.cs">
+      <DependentUpon>OpeningClosingDocItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\OpeningClosingDocItemListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ExchangeRateDocument\AddEditExchangeRateView.xaml.cs">
+      <DependentUpon>AddEditExchangeRateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\ExchangeRateDocument\AddEditExchangeRateViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ExchangeRateDocument\ExchangeRateListView.xaml.cs">
+      <DependentUpon>ExchangeRateListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\ExchangeRateDocument\ExchangeRateListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ExchangeRateDocument\EditableExchangeRate.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ItemDocument\EditableAccDocumentItem.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ItemDocument\AccDocumentItemListView.xaml.cs">
+      <DependentUpon>AccDocumentItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\ItemDocument\AccDocumentItemListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\OpenClose\OpeningClosingListView.xaml.cs">
+      <DependentUpon>OpeningClosingListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\OpenClose\OpeningClosingListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\AccDocumentItem1.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\AccessUtility.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\DocumentsFlowDTO.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\DocumntsFlowView.xaml.cs">
+      <DependentUpon>DocumntsFlowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\DocumntsFlowViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\DocumntsFlowWindow.xaml.cs">
+      <DependentUpon>DocumntsFlowWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\ReviewAccountListView.xaml.cs">
+      <DependentUpon>ReviewAccountListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\ReviewAccountListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\ReviewAcc\StandardDeviationFunction.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TLDocumentInfo\EditableTLDocumentItem.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TLDocumentInfo\TLDocumentItemListView.xaml.cs">
+      <DependentUpon>TLDocumentItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\TLDocumentInfo\TLDocumentItemListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TLDocumentInfo\EditableTLDocumentHeader.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TLDocumentInfo\TLDocumentHeaderListView.xaml.cs">
+      <DependentUpon>TLDocumentHeaderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\TLDocumentInfo\TLDocumentHeaderListViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\AddSLTreeItemWindow.xaml.cs">
+      <DependentUpon>AddSLTreeItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\AddSLTreeItemWindowViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\AddTLTreeItemWindow.xaml.cs">
+      <DependentUpon>AddTLTreeItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\AddTLTreeItemWindowViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\AddGLTreeItemWindow.xaml.cs">
+      <DependentUpon>AddGLTreeItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\AddGLTreeItemWindowViewModel.cs" />
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\TreeAccountListView.xaml.cs">
+      <DependentUpon>TreeAccountListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accounting\DocumentAccounting\TreeACC\TreeAccountListViewModel.cs" />
+    <Compile Include="BasicInformation\Accounts\DLAccount\AddEditPersonWindow.xaml.cs">
+      <DependentUpon>AddEditPersonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\EditBankAccountWindow.xaml.cs">
+      <DependentUpon>EditBankAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\EditCompanyWindow.xaml.cs">
+      <DependentUpon>EditCompanyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\EditPersonWindow.xaml.cs">
+      <DependentUpon>EditPersonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\RelatedPersonListWindow.xaml.cs">
+      <DependentUpon>RelatedPersonListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\AddEditDLView.xaml.cs">
+      <DependentUpon>AddEditDLView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\AddEditDLViewModel.cs" />
+    <Compile Include="BasicInformation\Accounts\DLAccount\DLListView.xaml.cs">
+      <DependentUpon>DLListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\DLAccount\DLListViewModel.cs" />
+    <Compile Include="BasicInformation\Accounts\DLAccount\EditableDL.cs" />
+    <Compile Include="BasicInformation\Accounts\GLAccount\GLListView.xaml.cs">
+      <DependentUpon>GLListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\GLAccount\GLListViewModel.cs" />
+    <Compile Include="BasicInformation\Accounts\SLAccount\SLListView.xaml.cs">
+      <DependentUpon>SLListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\SLAccount\SLListViewModel.cs" />
+    <Compile Include="BasicInformation\Accounts\TLAccount\GridViewCommandRow.cs" />
+    <Compile Include="BasicInformation\Accounts\TLAccount\TLListView.xaml.cs">
+      <DependentUpon>TLListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Accounts\TLAccount\TLListViewModel.cs" />
+    <Compile Include="BasicInformation\Admin\GroupAccess\AddEditGroupView.xaml.cs">
+      <DependentUpon>AddEditGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Admin\GroupAccess\AddEditGroupViewModel.cs" />
+    <Compile Include="BasicInformation\Admin\GroupAccess\EditableGroup.cs" />
+    <Compile Include="BasicInformation\Admin\UserAccess\AddEditUserView.xaml.cs">
+      <DependentUpon>AddEditUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Admin\UserAccess\EditableUser.cs" />
+    <Compile Include="BasicInformation\Admin\UnauthorizedView.xaml.cs">
+      <DependentUpon>UnauthorizedView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Admin\UnauthorizedViewModel.cs" />
+    <Compile Include="BasicInformation\Admin\UserAccess\permission.xaml.cs">
+      <DependentUpon>permission.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Financial\EditableFinancialYear.cs" />
+    <Compile Include="BasicInformation\Information\BankAccounts\AddEditBankAccountWindow.xaml.cs">
+      <DependentUpon>AddEditBankAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\BankAccounts\EditableBankAccount.cs" />
+    <Compile Include="BasicInformation\Financial\AddEditFinancialYearView.xaml.cs">
+      <DependentUpon>AddEditFinancialYearView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Financial\FinancialYearListView.xaml.cs">
+      <DependentUpon>FinancialYearListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Financial\FinancialYearListViewModel.cs" />
+    <Compile Include="BasicInformation\Admin\GroupAccess\GroupListView.xaml.cs">
+      <DependentUpon>GroupListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Admin\GroupAccess\GroupListViewModel.cs" />
+    <Compile Include="BasicInformation\Admin\UserAccess\UserListView.xaml.cs">
+      <DependentUpon>UserListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Admin\UserAccess\UserListViewModel.cs" />
+    <Compile Include="BasicInformation\Information\BankAccounts\BankAccountListView.xaml.cs">
+      <DependentUpon>BankAccountListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\BankAccounts\BankAccountListViewModel.cs" />
+    <Compile Include="BasicInformation\Information\BankAccounts\RelatedPersonListWindowViewModel.cs" />
+    <Compile Include="BasicInformation\Information\BankInfo\AddEditBankView.xaml.cs">
+      <DependentUpon>AddEditBankView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\BankInfo\AddEditBankViewModel.cs" />
+    <Compile Include="BasicInformation\Information\BankInfo\BankListView.xaml.cs">
+      <DependentUpon>BankListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\BankInfo\BankListViewModel.cs" />
+    <Compile Include="BasicInformation\Information\BankInfo\EditableBank.cs" />
+    <Compile Include="BasicInformation\Information\CompanyInfo\AddEditCompanyViewModel.cs" />
+    <Compile Include="BasicInformation\Information\CompanyInfo\AddEditCompanyWindow.xaml.cs">
+      <DependentUpon>AddEditCompanyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\CompanyInfo\CompanyListView.xaml.cs">
+      <DependentUpon>CompanyListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\CompanyInfo\CompanyListViewModel.cs" />
+    <Compile Include="BasicInformation\Information\CompanyInfo\EditableCompany.cs" />
+    <Compile Include="BasicInformation\Information\PersonInfo\AddEditPersonWindow.xaml.cs">
+      <DependentUpon>AddEditPersonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\PersonInfo\EditablePerson.cs" />
+    <Compile Include="BasicInformation\Information\PersonInfo\PersonListView.xaml.cs">
+      <DependentUpon>PersonListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\PersonInfo\PersonListViewModel.cs" />
+    <Compile Include="BasicInformation\Information\Related\AddEditRelatedPersonViewModel.cs" />
+    <Compile Include="BasicInformation\Information\Related\AddEditRelatedPersonWindow.xaml.cs">
+      <DependentUpon>AddEditRelatedPersonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\Related\EditableRelatedPerson.cs" />
+    <Compile Include="BasicInformation\Information\Related\RelatedPersonListView.xaml.cs">
+      <DependentUpon>RelatedPersonListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\Related\RelatedPersonListViewModel.cs" />
+    <Compile Include="BasicInformation\Information\Related\RelatedPersonListWindow.xaml.cs">
+      <DependentUpon>RelatedPersonListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Information\Related\RelatedPersonListWindowViewModel.cs" />
+    <Compile Include="BasicInformation\SelectFinancial\SelectFinancialYearListView.xaml.cs">
+      <DependentUpon>SelectFinancialYearListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\SelectFinancial\SelectFinancialYearListViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\AccountingSetting\SystemAccountingSettingModel.cs" />
+    <Compile Include="BasicInformation\Settings\AccountingSetting\SystemAccountingSettingView.xaml.cs">
+      <DependentUpon>SystemAccountingSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\AccountingSetting\SystemAccountingSettingViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\BankAccountSetting.cs" />
+    <Compile Include="BasicInformation\Settings\SelectAgentSetting.cs" />
+    <Compile Include="BasicInformation\Settings\CompanyInformation\CompanyInformationView.xaml.cs">
+      <DependentUpon>CompanyInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\GeneralSetting\GeneralSystemSettingView.xaml.cs">
+      <DependentUpon>GeneralSystemSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\GeneralSetting\GeneralSystemSettingViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\ReceiveSetting\SystemReceivePaymentSettingView.xaml.cs">
+      <DependentUpon>SystemReceivePaymentSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\ReceiveSetting\SystemReceivePaymentSettingViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\RetailSetting\Invoice.cs" />
+    <Compile Include="BasicInformation\Settings\RetailSetting\DefaultMouseLocation.cs" />
+    <Compile Include="BasicInformation\Settings\RetailSetting\SystemSettingRetailView.xaml.cs">
+      <DependentUpon>SystemSettingRetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\RetailSetting\SystemSettingRetailViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\SalarySetting\SalarySystemSettingView.xaml.cs">
+      <DependentUpon>SalarySystemSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\SalarySetting\SalarySystemSettingViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\SaleSetting\SystemSettingSaleView.xaml.cs">
+      <DependentUpon>SystemSettingSaleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\SaleSetting\SystemSettingSaleViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\ShoppingSetting\AutomaticAccountingDocument.cs" />
+    <Compile Include="BasicInformation\Settings\ShoppingSetting\EditableShoppingSystemSettingViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\ShoppingSetting\ShoppingSystemSettingView.xaml.cs">
+      <DependentUpon>ShoppingSystemSettingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\ShoppingSetting\ShoppingSystemSettingViewModel.cs" />
+    <Compile Include="BasicInformation\Settings\SLSetting.cs" />
+    <Compile Include="BasicInformation\Settings\StockSetting.cs" />
+    <Compile Include="Behaviors\AccessUtility.cs" />
+    <Compile Include="Behaviors\MyMultiSelectBehavior.cs" />
+    <Compile Include="Behaviors\RadComboBoxSelectedItemsBehavior.cs" />
+    <Compile Include="Behaviors\SelectedItemTemplateBehavior.cs" />
+    <Compile Include="Behaviors\TextBoxInputRegExBehavior.cs" />
+    <Compile Include="Behaviors\TreeViewItemBehavior.cs" />
+    <Compile Include="BindableBase.cs" />
+    <Compile Include="Commerce\CommProduct\ProductCodeWindow.xaml.cs">
+      <DependentUpon>ProductCodeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\CommStock\AddEditProductWindow.xaml.cs">
+      <DependentUpon>AddEditProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\CommStock\AddEditProductWindowViewModel.cs" />
+    <Compile Include="Commerce\ProductBrands\ProductBrandListView.xaml.cs">
+      <DependentUpon>ProductBrandListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\ProductBrands\ProductBrandListViewModel.cs" />
+    <Compile Include="Commerce\CommProduct\AddEditProductView.xaml.cs">
+      <DependentUpon>AddEditProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\CommProduct\AddEditProductViewModel.cs" />
+    <Compile Include="Commerce\CommProduct\EditableProduct.cs" />
+    <Compile Include="Commerce\CommProduct\ProductListView.xaml.cs">
+      <DependentUpon>ProductListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\CommProduct\ProductListViewModel.cs" />
+    <Compile Include="Commerce\CommStock\AddEditStockView.xaml.cs">
+      <DependentUpon>AddEditStockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\CommStock\AddEditStockViewModel.cs" />
+    <Compile Include="Commerce\CommStock\EditableStock.cs" />
+    <Compile Include="Commerce\CommStock\StockListView.xaml.cs">
+      <DependentUpon>StockListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\CommStock\StockListViewModel.cs" />
+    <Compile Include="Commerce\MeasurementUnits\MeasurementUnitListView.xaml.cs">
+      <DependentUpon>MeasurementUnitListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\MeasurementUnits\MeasurementUnitListViewModel.cs" />
+    <Compile Include="Commerce\OtherProducts\OtherProductListView.xaml.cs">
+      <DependentUpon>OtherProductListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\OtherProducts\OtherProductListViewModel.cs" />
+    <Compile Include="Commerce\ProductModels\ProductModelListView.xaml.cs">
+      <DependentUpon>ProductModelListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\ProductModels\ProductModelListViewModel.cs" />
+    <Compile Include="Commerce\ProductRacks\ChildListWindow.xaml.cs">
+      <DependentUpon>ChildListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\ProductRacks\ChildListWindowViewModel.cs" />
+    <Compile Include="Commerce\ProductRacks\ProductRackListView.xaml.cs">
+      <DependentUpon>ProductRackListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\ProductRacks\ProductRackListViewModel.cs" />
+    <Compile Include="Commerce\ProductTypes\ProductTypeListView.xaml.cs">
+      <DependentUpon>ProductTypeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\ProductTypes\ProductTypeListViewModel.cs" />
+    <Compile Include="Commerce\test\TestView.xaml.cs">
+      <DependentUpon>TestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\test\TestViewModel.cs" />
+    <Compile Include="Commerce\WarehouseDocuments\IncomingDocuments\IncomingDocumentListView.xaml.cs">
+      <DependentUpon>IncomingDocumentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\WarehouseDocuments\IncomingDocuments\IncomingDocumentListViewModel.cs" />
+    <Compile Include="Commerce\WarehouseDocuments\OutputDocuments\OutputDocumentListView.xaml.cs">
+      <DependentUpon>OutputDocumentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\WarehouseDocuments\OutputDocuments\OutputDocumentListViewModel.cs" />
+    <Compile Include="Commerce\WarehouseDocuments\ReturnInput\ReturnInputListView.xaml.cs">
+      <DependentUpon>ReturnInputListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\WarehouseDocuments\ReturnInput\ReturnInputListViewModel.cs" />
+    <Compile Include="Commerce\WarehouseDocuments\ReturnOutput\ReturnOutputListView.xaml.cs">
+      <DependentUpon>ReturnOutputListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\WarehouseDocuments\ReturnOutput\ReturnOutputListViewModel.cs" />
+    <Compile Include="Commerce\WarehouseDocuments\TransferWarehouse\TransferWarehouseListView.xaml.cs">
+      <DependentUpon>TransferWarehouseListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commerce\WarehouseDocuments\TransferWarehouse\TransferWarehouseListViewModel.cs" />
+    <Compile Include="ContainerHelper.cs" />
+    <Compile Include="Converters\ColorToBrushConverter.cs" />
+    <Compile Include="Converters\EnumToDescription.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\NegatableBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\EnumToBoolConverter.cs" />
+    <Compile Include="Converters\StringToBoolConverter.cs" />
+    <Compile Include="CustomCommandProvider.cs" />
+    <Compile Include="CustomControls\RadGridViewSimpleComboBoxColumn.cs" />
+    <Compile Include="CustomWatermarkedDatePicker.cs" />
+    <Compile Include="DataProviderSerializer.cs" />
+    <Compile Include="Export\ExportCommand.cs" />
+    <Compile Include="GridViewCustomKeyboardCommandProvider.cs" />
+    <Compile Include="GridViewCustomPropertyProvider.cs" />
+    <Compile Include="Login\LoginPageModel.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="OrderPrep\OrderPrepView.xaml.cs">
+      <DependentUpon>OrderPrepView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderPrep\OrderPrepViewModel.cs" />
+    <Compile Include="Orders\OrderView.xaml.cs">
+      <DependentUpon>OrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrderViewModel.cs" />
+    <Compile Include="PersianDate.cs" />
+    <Compile Include="Properties\GridViewResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GridViewResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Proxies.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="RowNumberColumn.cs" />
+    <Compile Include="SmObjectFactory.cs" />
+    <Compile Include="ValidatableBindableBase.cs" />
+    <Compile Include="BasicInformation\Common\AboutViewModel.cs" />
+    <Compile Include="BasicInformation\Admin\UserAccess\AddEditUserViewModel.cs" />
+    <Compile Include="BasicInformation\BasicInformationPageViewModel.cs" />
+    <Compile Include="BasicInformation\Common\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicInformation\Settings\CompanyInformation\CompanyInformationViewModel.cs" />
+    <Compile Include="BasicInformation\Financial\AddEditFinancialYearViewModel.cs" />
+    <Compile Include="BasicInformation\UserInfo\ChangeProfileViewModel.cs" />
+    <Compile Include="Login\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login\LoginPageViewModel.cs" />
+    <Compile Include="Login\WelcomePageViewModel.cs" />
+    <Compile Include="Window2Image.xaml.cs">
+      <DependentUpon>Window2Image.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Accounting\DocumentAccounting\AccTypeDocument\AddEditTypeDocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\AccTypeDocument\TypeDocumentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\CloseProfitLossAcc\CloseProfitLossAccountListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\ConvertDoc\ConvertDocumentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\CurrencyDocument\AddEditCurrencyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\CurrencyDocument\CurrencyListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\CurrencyExchangeinfo\CurrencyExchangeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentHeader\AccDocumentHeaderListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentHeader\AttachmentListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentHeader\DocumentHistoryListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentInfo\AddEditAccountDocumentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentInfo\AccountDocumentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentNumberinginfo\AddEditDocumentNumberingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentNumberinginfo\DocumentNumberingListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\CloseProfitDocumentItemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\CloseProfitLossDocListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\CloseProfitLossDoc\EditCloseProfitLossDocView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\CurrencyDocumentItemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\CurrencyExchangeRateDocHeaderListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\CurrencyExchangeRateDoc\EditCurrencyExchangeRateDocHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\EditOpeningClosingDocHeaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\OpeningClosingDocHeaderListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\DocumentSystem\OpenCloseDoc\OpeningClosingDocItemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\ExchangeRateDocument\AddEditExchangeRateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\ExchangeRateDocument\ExchangeRateListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\ItemDocument\AccDocumentItemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\OpenClose\OpeningClosingListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\ReviewAcc\DocumntsFlowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\ReviewAcc\DocumntsFlowWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\ReviewAcc\ReviewAccountListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\TLDocumentInfo\TLDocumentItemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\TLDocumentInfo\TLDocumentHeaderListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\TreeACC\AddSLTreeItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\TreeACC\AddTLTreeItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\TreeACC\AddGLTreeItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Accounting\DocumentAccounting\TreeACC\TreeAccountListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\AddEditPersonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\EditBankAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\EditCompanyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\EditPersonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\RelatedPersonListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\AddEditDLView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\DLAccount\DLListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\GLAccount\GLListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\SLAccount\SLListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Accounts\TLAccount\TLListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Admin\GroupAccess\AddEditGroupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Admin\UserAccess\AddEditUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Admin\UnauthorizedView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Admin\UserAccess\permission.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Financial\AddEditFinancialYearView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Financial\FinancialYearListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Admin\GroupAccess\GroupListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Admin\UserAccess\UserListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\BankAccounts\AddEditBankAccountWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BasicInformation\Information\BankAccounts\BankAccountListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\BankInfo\AddEditBankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\BankInfo\BankListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\CompanyInfo\AddEditCompanyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\CompanyInfo\CompanyListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\PersonInfo\AddEditPersonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BasicInformation\Information\PersonInfo\PersonListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BasicInformation\Information\Related\AddEditRelatedPersonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\Related\RelatedPersonListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Information\Related\RelatedPersonListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\SelectFinancial\SelectFinancialYearListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\AccountingSetting\SystemAccountingSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\CompanyInformation\CompanyInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\GeneralSetting\GeneralSystemSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\ReceiveSetting\SystemReceivePaymentSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\RetailSetting\SystemSettingRetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\SalarySetting\SalarySystemSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\SaleSetting\SystemSettingSaleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Settings\ShoppingSetting\ShoppingSystemSettingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\CommProduct\ProductCodeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\CommStock\AddEditProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\ProductBrands\ProductBrandListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\CommProduct\AddEditProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\CommProduct\ProductListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\CommStock\AddEditStockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\CommStock\StockListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\MeasurementUnits\MeasurementUnitListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\OtherProducts\OtherProductListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\ProductModels\ProductModelListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\ProductRacks\ChildListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\ProductRacks\ProductRackListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\ProductTypes\ProductTypeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\test\TestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\WarehouseDocuments\IncomingDocuments\IncomingDocumentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\WarehouseDocuments\OutputDocuments\OutputDocumentListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\WarehouseDocuments\ReturnInput\ReturnInputListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\WarehouseDocuments\ReturnOutput\ReturnOutputListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Commerce\WarehouseDocuments\TransferWarehouse\TransferWarehouseListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="OrderPrep\OrderPrepView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Orders\OrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BasicInformation\Common\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Login\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\11.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\if_icon-81-document-add_314924.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window2Image.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\GridViewResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GridViewResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.DocumentAccounting.AccDocumentHeaderDTO.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.DocumentAccounting.AccDocumentItemDTO.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.DocumentAccounting.AccDocumentItemDTO1.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.DocumentAccounting.AccDocumentItemGroupedDTO.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.DocumentAccounting.AccDocumentItemOpenCloseDTO.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.DocumentAccounting.CurrencyExchangesDTO.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.DocumentAccounting.TLDocumentGroupedDTO.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.Accounting.ReviewAcc.AccDocumentHeaderFilter.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.CompanyInformationModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.GeneralSystemSettingModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.SalarySystemSettingModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.ShoppingSystemSettingModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.SystemAccountingSettingModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.SystemReceivePaymentSettingModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.SystemSettingRetailModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.DTOs.SystemSettingSaleModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.AccDocumentHeader.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.AccDocumentItem.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.AccountDocument.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.Attachment.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.CountingWay.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.Currency.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.DocumentNumbering.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.ExchangeRate.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.Style.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.TLDocumentHeader.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.TLDocumentItem.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.TreeAccount.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Accounting.DocumentAccounting.TypeDocument.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BaseEntity.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.AccountsNature.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.DataItem.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.DL.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.DLAccountsNature.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.DLType.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.GL.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.Property.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.SelectAgent.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.SL.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.SLStandardDescription.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Accounts.TL.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.CompanyInformation.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.DynamicPage.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.FinancialYear.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.AccountType.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.Bank.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.BankAccount.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.BankType.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.City.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.Company.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.Person.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.Province.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.RelatedPerson.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Information.Town.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.KeyValue.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Settings.GeneralSystemSetting.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Settings.SalarySystemSetting.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Settings.ShoppingSystemSetting.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Settings.SystemAccountingSetting.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Settings.SystemReceivePaymentSetting.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Settings.SystemSettingRetail.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.Settings.SystemSettingSale.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.UGDP.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.UserAndGroup.Access.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.UserAndGroup.Group.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.UserAndGroup.Operation.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.UserAndGroup.Owner.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.UserAndGroup.User.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BasicInformation.UserAndGroup.View.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.BindableBase.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.ImageProduct.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.InventoryControl.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.MeasurementUnit.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.OtherProduct.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.Product.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.ProductBrand.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.ProductModel.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.ProductRack.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.ProductStock.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.ProductType.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.SimilarProduct.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Commerce.Stock.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Customer.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Order.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.OrderItem.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.OrderItemOption.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.OrderStatus.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.Product22.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.ProductOption.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.Entities.ProductSize.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.AccountDocumentAccounting.IAccountDocumentsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IAccDocumentHeadersService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IAccDocumentItemsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.ICloseProfitLossAccountsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IConvertDocumentsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.ICountingWaysService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.ICurrenciesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.ICurrencyExchangesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IDocumentNumberingsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IExchangeRatesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IOpeningClosingsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IReviewAccountsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.IStylesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.ITLDocumentsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.ITreeAccountsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Accounting.DocumentAccounting.ITypeDocumentsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.IAccountsNaturesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.IDLAccountsNaturesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.IDLsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.IDLTypesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.IGLsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.IPropertiesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.ISelectAgentsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.ISLsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.ISLStandardDescriptionsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Accounts.ITLsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.IAppContextService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.ICompanyInformationsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.IDynamicPagesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.IFinancialYearsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.IGroupsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Information.IAccountTypesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Information.IBankAccountsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Information.IBanksService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Information.IBankTypesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Information.ICompaniesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Information.IPeopleService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Information.IRelatedPeopleService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.ISelectFinancialYearsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.IUsersService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Setting.IGeneralSystemSettingsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Setting.ISalarySystemSettingsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Setting.IShoppingSystemSettingsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Setting.ISystemAccountingSettingsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Setting.ISystemReceivePaymentSettingsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Setting.ISystemSettingRetailsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.BasicInformation.Setting.ISystemSettingSalesService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Commerce.IProductsService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.Commerce.IStocksService.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.ICustomersRepository.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.IServices.IOrdersRepository.datasource" />
+    <None Include="Properties\DataSources\Saina.ApplicationCore.PropertyObservable.datasource" />
+    <None Include="Properties\DataSources\Zza.Data.Customer.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\BNAZANIN.TTF" />
+    <Resource Include="Resources\B Nazanin Bold.TTF" />
+    <Resource Include="Resources\irsans.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cian.png" />
+    <Resource Include="Resources\Edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Saina.ApplicationCore\Saina.ApplicationCore.csproj">
+      <Project>{873a076e-3f13-4349-84ff-cae4da8297ba}</Project>
+      <Name>Saina.ApplicationCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Saina.Common\Saina.Common.csproj">
+      <Project>{8f12b36d-34de-473b-a79a-2877c93d2db4}</Project>
+      <Name>Saina.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Saina.Data\Saina.Data.csproj">
+      <Project>{bb1e80de-e6d1-4e29-bc2d-db66b81163c5}</Project>
+      <Name>Saina.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cyan_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Telerik\Windows\Controls\GridView\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\lock.png" />
+    <Resource Include="Resources\unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\hesabdari.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\asnad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\anvaahesab.png" />
+    <Resource Include="Resources\Icon\bank.png" />
+    <Resource Include="Resources\Icon\bastanhesab.png" />
+    <Resource Include="Resources\Icon\dastresiha.png" />
+    <Resource Include="Resources\Icon\derakhtvareh.png" />
+    <Resource Include="Resources\Icon\ekhtetamiye.png" />
+    <Resource Include="Resources\Icon\fehrest_arz.png" />
+    <Resource Include="Resources\Icon\fehrest_asnad.png" />
+    <Resource Include="Resources\Icon\fehrest_bank.png" />
+    <Resource Include="Resources\Icon\fehrest_goroohha.png" />
+    <Resource Include="Resources\Icon\fehrest_hesabha_gorooh.png" />
+    <Resource Include="Resources\Icon\fehrest_hesabha_kol.png" />
+    <Resource Include="Resources\Icon\fehrest_hesabha_moayan.png" />
+    <Resource Include="Resources\Icon\fehrest_hesabha_tafsil.png" />
+    <Resource Include="Resources\Icon\fehrest_karbaran.png" />
+    <Resource Include="Resources\Icon\fehrest_nerkharz.png" />
+    <Resource Include="Resources\Icon\fehrest_sal_mali.png" />
+    <Resource Include="Resources\Icon\fehrest_shomarehgozari_asnad.png" />
+    <Resource Include="Resources\Icon\hesabha.png" />
+    <Resource Include="Resources\Icon\moroor.png" />
+    <Resource Include="Resources\Icon\sanad.png" />
+    <Resource Include="Resources\Icon\sodoorsanad.png" />
+    <Resource Include="Resources\Icon\tabdilasnad.png" />
+    <Resource Include="Resources\Icon\tanzimat.png" />
+    <Resource Include="Resources\Icon\tanzimat_hesabdari.png" />
+    <Resource Include="Resources\Icon\taseer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\etelaatpayeh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icon\sanadKol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\4investment-stratedgy.jpg" />
+    <Content Include="Resources\if_icon-81-document-add_314924.svg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

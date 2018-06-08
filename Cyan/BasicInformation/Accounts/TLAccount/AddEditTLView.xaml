@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Accounts.TLAccount.AddEditTLView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Accounts.TLAccount"
+                 xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+              xmlns:Behaviors="clr-namespace:Saina.WPF.Behaviors" 
+         xmlns:behaviours="clr-namespace:Saina.WPF.Behaviors" FlowDirection="RightToLeft"
+            
+             mc:Ignorable="d"  FocusManager.FocusedElement="{Binding ElementName=gLcomboBox}"
+             >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadGLs"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <GroupBox Header="افزودن /ویرایش حساب کل" FlowDirection="RightToLeft" Margin="10" FocusManager.FocusedElement="{Binding ElementName=gLcomboBox}">
+        <Grid FlowDirection="RightToLeft" Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Unloaded">
+                    <ei:CallMethodAction TargetObject="{Binding Mode=OneWay}" MethodName="onCancel"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center" Grid.Row="0" Margin="5 5 0 0"  HorizontalAlignment="Left" Grid.Column="0" Content="حساب گروه"/>
+                <telerik:RadComboBox Name="gLcomboBox" TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding GLs}"
+                                            SelectedValue="{Binding TL.GLId , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true,UpdateSourceTrigger=PropertyChanged}" 
+                                           SelectedValuePath="GLId"
+                                     SelectedItem="{Binding SelectedGL, Mode=OneWayToSource}"
+                                     FlowDirection="RightToLeft"
+                                             MinWidth="250" 
+                                             MaxWidth="320" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0"   SelectionChanged="RadComboBox_SelectionChanged" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="DropDownOpened">
+                            <i:InvokeCommandAction Command="{Binding GLsDropDownOpenedCommand}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </telerik:RadComboBox>
+                <Label Content="کد حساب"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                <TextBox  x:Name="tLCodeTextbox" 
+                                             Text="{Binding TL.TLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true,UpdateSourceTrigger=PropertyChanged}" 
+                                          
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="LeftToRight"
+                                             TabIndex="1"
+                                             MinWidth="110" 
+                                             MaxWidth="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0" IsEnabled="False" GotFocus="tLCodeTextbox_GotFocus"  >
+                    <i:Interaction.Behaviors>
+                        <Behaviors:TextBoxInputRegExBehavior  x:Name="textBoxInputRegExBehavior"  RegularExpression="{Binding TL.Regex}"  MinLength="0" MaxLength="0" EmptyValue="{Binding TL.TLCodeEmptyValue}" />
+                    </i:Interaction.Behaviors>
+                </TextBox>
+                <Label  Content="عنوان اول"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                             Text="{Binding TL.Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true,UpdateSourceTrigger=PropertyChanged}" 
+                                             
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="2"
+                                             Width="320" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="tLCodeTextbox_GotFocus"/>
+                <Label Content="عنوان دوم"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox
+                                             Text="{Binding TL.Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="3"
+                                             Width="320" 
+                                             Grid.Column="1"
+                                             Grid.Row="3"
+                                             Margin="7 7 0 0" GotFocus="tLCodeTextbox_GotFocus"/>
+                <Label Content="وضعیت فعال/غیرفعال"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <CheckBox x:Name="isActiveCheckBox"
+                                             IsChecked="{Binding TL.Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="4"
+                                             Grid.Column="1"
+                                             Grid.Row="4"
+                                             Margin="7 7 0 0"/>
+                           <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="5">
+                    <telerik:RadPathButton Content="ذخیره"
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="5"
+                                           Width="110" 
+                                           Margin="8"/>
+                    <telerik:RadPathButton Content="انصراف"
+                                           Command="{Binding CancelCommand}" 
+                                           TabIndex="6"
+                                           Width="110" 
+                                           Margin="8"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </GroupBox>
+</UserControl>
+

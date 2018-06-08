@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ClearFilter" xml:space="preserve">
+    <value>حذف فیلتر</value>
+  </data>
+  <data name="DataForm_AddNew" xml:space="preserve">
+    <value>افزودن</value>
+  </data>
+  <data name="DataForm_BeginEdit" xml:space="preserve">
+    <value>ویرایش</value>
+  </data>
+  <data name="DataForm_Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="DataForm_MoveCurrentToFirst" xml:space="preserve">
+    <value>ابتدا</value>
+  </data>
+  <data name="DataForm_MoveCurrentToLast" xml:space="preserve">
+    <value>انتها</value>
+  </data>
+  <data name="DataForm_MoveCurrentToNext" xml:space="preserve">
+    <value>بعدی</value>
+  </data>
+  <data name="DataForm_MoveCurrentToPrevious" xml:space="preserve">
+    <value>قبلی</value>
+  </data>
+  <data name="EnterDate" xml:space="preserve">
+    <value>تاریخ را وارد نمایید</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>فیلتر</value>
+  </data>
+  <data name="FilterAnd" xml:space="preserve">
+    <value>و</value>
+  </data>
+  <data name="FilterContains" xml:space="preserve">
+    <value>شامل</value>
+  </data>
+  <data name="FilterEndsWith" xml:space="preserve">
+    <value>پایان با</value>
+  </data>
+  <data name="FilterIsContainedIn" xml:space="preserve">
+    <value>شامل در</value>
+  </data>
+  <data name="FilterIsEqualTo" xml:space="preserve">
+    <value>مساوی باشد</value>
+  </data>
+  <data name="FilterIsEqualTo1" xml:space="preserve">
+    <value>مساوی است با</value>
+  </data>
+  <data name="FilterIsGreaterThan" xml:space="preserve">
+    <value>بزرگتر از</value>
+  </data>
+  <data name="FilterIsGreaterThanOrEqualTo" xml:space="preserve">
+    <value>بزرگتر یا مساوی</value>
+  </data>
+  <data name="FilterIsLessThan" xml:space="preserve">
+    <value>کوچکتر از</value>
+  </data>
+  <data name="FilterIsLessThanOrEqualTo" xml:space="preserve">
+    <value>کوچکتر یا مساوی</value>
+  </data>
+  <data name="FilterIsNotEqualTo" xml:space="preserve">
+    <value>نا برابر</value>
+  </data>
+  <data name="FilterIsNotNull" xml:space="preserve">
+    <value>مقدار داشتن</value>
+  </data>
+  <data name="FilterIsNull" xml:space="preserve">
+    <value>خالی بودن</value>
+  </data>
+  <data name="FilterMatchCase" xml:space="preserve">
+    <value>حساس به بزرگی حروف</value>
+  </data>
+  <data name="FilterOr" xml:space="preserve">
+    <value>یا</value>
+  </data>
+  <data name="FilterSelectAll" xml:space="preserve">
+    <value>انتخاب همه</value>
+  </data>
+  <data name="FilterShowRowsWithValueThat" xml:space="preserve">
+    <value>انتخاب ردیف هایی با مقدار</value>
+  </data>
+  <data name="FilterStartsWith" xml:space="preserve">
+    <value>شروع شود با</value>
+  </data>
+  <data name="GridViewAlwaysVisibleNewRow" xml:space="preserve">
+    <value>برای اضافه کردن اینجا کلیک کنید</value>
+  </data>
+  <data name="GridViewClearFilter" xml:space="preserve">
+    <value>پاک کردن فیلتر</value>
+  </data>
+  <data name="GridViewFilter" xml:space="preserve">
+    <value>فیلتر</value>
+  </data>
+  <data name="GridViewFilterAnd" xml:space="preserve">
+    <value>و</value>
+  </data>
+  <data name="GridViewFilterContains" xml:space="preserve">
+    <value>شامل</value>
+  </data>
+  <data name="GridViewFilterDoesNotContain" xml:space="preserve">
+    <value>شامل نباشد</value>
+  </data>
+  <data name="GridViewFilterEndsWith" xml:space="preserve">
+    <value>تمام شود با</value>
+  </data>
+  <data name="GridViewFilterIsContainedIn" xml:space="preserve">
+    <value>شامل در</value>
+  </data>
+  <data name="GridViewFilterIsEmpty" xml:space="preserve">
+    <value>تهی باشد</value>
+  </data>
+  <data name="GridViewFilterIsEqualTo" xml:space="preserve">
+    <value>مساوی باشد</value>
+  </data>
+  <data name="GridViewFilterIsGreaterThan" xml:space="preserve">
+    <value>بزرگتر از</value>
+  </data>
+  <data name="GridViewFilterIsGreaterThanOrEqualTo" xml:space="preserve">
+    <value>بزرگتر یا مساوی</value>
+  </data>
+  <data name="GridViewFilterIsLessThan" xml:space="preserve">
+    <value>کوچکتر از</value>
+  </data>
+  <data name="GridViewFilterIsLessThanOrEqualTo" xml:space="preserve">
+    <value>کوچکتر یا مساوی</value>
+  </data>
+  <data name="GridViewFilterIsNotEmpty" xml:space="preserve">
+    <value>تهی نباشد</value>
+  </data>
+  <data name="GridViewFilterIsNotEqualTo" xml:space="preserve">
+    <value>مساوی نباشد</value>
+  </data>
+  <data name="GridViewFilterIsNotNull" xml:space="preserve">
+    <value>خالی نباشد</value>
+  </data>
+  <data name="GridViewFilterIsNull" xml:space="preserve">
+    <value>خالی باشد</value>
+  </data>
+  <data name="GridViewFilterMatchCase" xml:space="preserve">
+    <value>حساس به بزرگی حروف</value>
+  </data>
+  <data name="GridViewFilterOr" xml:space="preserve">
+    <value>یا</value>
+  </data>
+  <data name="GridViewFilterSelectAll" xml:space="preserve">
+    <value>انتخاب همه</value>
+  </data>
+  <data name="GridViewFilterShowRowsWithValueThat" xml:space="preserve">
+    <value>انتخاب ردیف هایی با مقدار</value>
+  </data>
+  <data name="GridViewFilterStartsWith" xml:space="preserve">
+    <value>شروع شود با</value>
+  </data>
+  <data name="GridViewGroupPanelText" xml:space="preserve">
+    <value>یک سرصفحه ستون را بکشید و آن را اینجا بگذارید تا بر اساس آن ستون گروه بندی شود</value>
+  </data>
+  <data name="GridViewGroupPanelTopText" xml:space="preserve">
+    <value>عنوان گروه</value>
+  </data>
+  <data name="GridViewGroupPanelTopTextGrouped1" xml:space="preserve">
+    <value>گروه بندی با :</value>
+  </data>
+  <data name="GroupPanelText" xml:space="preserve">
+    <value>یک سرصفحه ستون را بکشید و آن را اینجا بگذارید تا بر اساس آن ستون گروه بندی شود</value>
+  </data>
+  <data name="GroupPanelTopText" xml:space="preserve">
+    <value>عنوان گروه</value>
+  </data>
+  <data name="GroupPanelTopTextGrouped" xml:space="preserve">
+    <value>گروه بندی با :</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>در حال بارگذاری</value>
+  </data>
+  <data name="RadDataPagerOf" xml:space="preserve">
+    <value>از</value>
+  </data>
+  <data name="RadDataPagerPage" xml:space="preserve">
+    <value>صفحه</value>
+  </data>
+</root>

@@ -1,0 +1,727 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Accounts.DLAccount.DLListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Accounts.DLAccount"
+            xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:Converters="clr-namespace:Saina.WPF.Converters" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+            xmlns:Behaviors="clr-namespace:Saina.WPF.Behaviors" 
+          xmlns:Converter="clr-namespace:Saina.WPF.Converters"
+             xmlns:dlAccount="clr-namespace:Saina.ApplicationCore.Entities.BasicInformation.Accounts;assembly=SainaApplicationCore"
+             xmlns:inforamtion="clr-namespace:Saina.ApplicationCore.Entities.BasicInformation.Information;assembly=SainaApplicationCore"
+             xmlns:dL="clr-namespace:Saina.ApplicationCore.Entities.BasicInformation.Accounts;assembly=SainaApplicationCore"
+          xmlns:converter="clr-namespace:Saina.WPF.Converters"
+             mc:Ignorable="d" 
+             Tag="فهرست حساب های تفصیل"
+             FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <Converters:EnumToDescription x:Key="EnumToDescription"/>
+        <Converters:ColorToBrushConverter x:Key="colorToBrushConverter" />
+        <Style TargetType="telerik:PropertyGridField" BasedOn="{StaticResource PropertyGridFieldStyle}">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <!--<DataTemplate DataType="{x:Type  inforamtion:Person}" x:Key="personDataTamplate">
+            <Grid Margin="0 3">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="کد ملی: " Grid.Column="0" Grid.Row="0"/>
+                <TextBlock Foreground="#003366" Text="{Binding NationalCode}" Grid.Column="1" Grid.Row="0"/>
+                <TextBlock Text="نام پدر: " Grid.Column="0" Grid.Row="1" Margin="0 0 4 0"/>
+                <TextBlock Foreground="#003366"  Text="{Binding FatherName}" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>-->
+        <!--<DataTemplate DataType="{x:Type  dL:DL}" x:Key="companyDataTamplate">
+            <Grid Margin="0 3">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="شماره ثبت شرکت: " Grid.Column="0" Grid.Row="0"/>
+                <TextBlock Foreground="#003366" Text="{Binding RegistrationNumber}" Grid.Column="1" Grid.Row="0"/>
+                <TextBlock Text="کد اقتصادی: " Grid.Column="0" Grid.Row="1" Margin="0 0 4 0"/>
+                <TextBlock Foreground="#003366"  Text="{Binding EconomicalNumber}" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type  inforamtion:BankAccount}" x:Key="bankAccountDataTamplate">
+            <Grid Margin="0 3">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="نام بانک: " Grid.Column="0" Grid.Row="0"/>
+                <TextBlock Foreground="#003366" Text="{Binding Bank.BankName}" Grid.Column="1" Grid.Row="0"/>
+                <TextBlock Text="شماره حساب: " Grid.Column="0" Grid.Row="1" Margin="0 0 4 0"/>
+                <TextBlock Foreground="#003366"  Text="{Binding AccountNumber}" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type  dL:DL}" x:Key="PersonDataTamplate">
+            <Grid Margin="0 3">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="نام : " Grid.Column="0" Grid.Row="0"/>
+                <TextBox Foreground="#003366" Text="{Binding Name}" Grid.Column="1" Grid.Row="0"/>
+                <TextBlock Text="نام خانوادگی: " Grid.Column="0" Grid.Row="1" Margin="0 0 4 0"/>
+                <TextBox Foreground="#003366"  Text="{Binding Family}" Grid.Column="1" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>-->
+
+
+
+    </UserControl.Resources>
+    <telerik:RadTabControl SelectionChanged="RadTabControl_SelectionChanged" IsEnabled="{Binding EnableTab}">
+        <telerik:RadTabItem Name="listRadTabItem" Header="فهرست">
+            <telerik:RadGridView  x:Name="radGridView"
+                                ItemsSource="{Binding DLss}"
+                                MouseDoubleClick="dLDataGrid_MouseDoubleClick"
+                                GroupRenderMode="Flat"
+                                CanUserFreezeColumns="False"
+                                ShowGroupPanel="True"
+                                RowIndicatorVisibility="Collapsed"
+                                IsReadOnly="True"
+                                IsSynchronizedWithCurrentItem="True"
+                                AutoGenerateColumns="False" 
+                                Grid.Column="1"
+                                SelectionMode="Extended"
+                                ShowColumnFooters="True" 
+                                ValidatesOnDataErrors="None"
+                                ValidationType="None"
+                                    >
+                <telerik:RadGridView.SortDescriptors>
+                    <telerik:SortDescriptor Member="DLId"
+                            SortDirection="Descending" />
+                </telerik:RadGridView.SortDescriptors>
+                <telerik:RadGridView.ControlPanelItems>
+                    <telerik:ControlPanelItem >
+                        <telerik:ControlPanelItem.ButtonContent>
+                            <Button  Name="showButton"   Content="طراحی"   FontSize="14" ToolTip="طراحی"  Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom"
+                                             BorderBrush="{x:Null}"
+                                             Background="{x:Null}"
+                                     Foreground="White"
+                                             Click="designButton_Click"
+                                            />
+
+                        </telerik:ControlPanelItem.ButtonContent>
+                    </telerik:ControlPanelItem>
+                    <telerik:ControlPanelItem >
+                        <telerik:ControlPanelItem.ButtonContent>
+                            <telerik:RadDropDownButton AutoOpenDelay="0:0:0.0" Name="ReportMenu" 
+                                     Foreground="White"
+                                      Content="گزارش"   FontSize="14" ToolTip="گزارش"   BorderBrush="{x:Null}" 
+                                             Background="{x:Null}">
+                                <telerik:RadDropDownButton.DropDownContent>
+
+                                    <ListBox>
+                                        <ListBoxItem Content="گزارش همه" Selected="ListBoxItemReportALL_Selected" />
+                                        <ListBoxItem Content="گزارش انتخابی" Selected="ListBoxItemReport_Selected" />
+                                    </ListBox>
+                                </telerik:RadDropDownButton.DropDownContent>
+                            </telerik:RadDropDownButton>
+
+                        </telerik:ControlPanelItem.ButtonContent>
+                    </telerik:ControlPanelItem>
+                    <telerik:ControlPanelItem >
+                        <telerik:ControlPanelItem.ButtonContent>
+                            <telerik:RadDropDownButton AutoOpenDelay="0:0:0.0" Name="PrintMenu" 
+                                      Content="چاپ"   FontSize="14" ToolTip="چاپ"   BorderBrush="{x:Null}" Foreground="White"
+                                             Background="{x:Null}">
+                                <telerik:RadDropDownButton.DropDownContent>
+
+                                    <ListBox>
+                                        <ListBoxItem Content="چاپ همه" Selected="ListBoxItemPrintALL_Selected" />
+                                        <ListBoxItem Content="چاپ انتخابی" Selected="ListBoxItemPrint_Selected" />
+                                    </ListBox>
+                                </telerik:RadDropDownButton.DropDownContent>
+                            </telerik:RadDropDownButton>
+
+                        </telerik:ControlPanelItem.ButtonContent>
+
+                    </telerik:ControlPanelItem>
+                    <telerik:ControlPanelItem >
+                        <telerik:ControlPanelItem.ButtonContent>
+                            <Button   Content="اکسل"   FontSize="14"
+                                             ToolTip="ارسال به اکسل"   Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" 
+                                              BorderBrush="{x:Null}"
+                                             Background="{x:Null}"
+                                     Foreground="White"
+                                             Click="btnExport_Click"  />
+
+                        </telerik:ControlPanelItem.ButtonContent>
+                    </telerik:ControlPanelItem>
+                    <telerik:ControlPanelItem ButtonTooltip="مدیریت ستون ها">
+                        <telerik:ControlPanelItem.ButtonContent>
+                            <Grid HorizontalAlignment="Center" Height="16" Width="16" Margin="-3,0,0,0">
+                                <Path Data="M2.6822092E-06,12.000001 L6.0000029,12.000001 L6.0000029,15.000001 L2.6822092E-06,15.000001 z M2.6822092E-06,8.000001 L6.0000029,8.000001 L6.0000029,11.000001 L2.6822092E-06,11.000001 z M0,0 L6,0 L6,3 L0,3 z" Fill="{telerik:Windows8Resource ResourceKey=StrongBrush}" Margin="4,0,9,0" Stretch="Fill"/>
+                                <Path Data="M0,0 L6,0 L6,3 L0,3 z" Fill="{telerik:Windows8Resource ResourceKey=StrongBrush}" Height="3" Margin="4,4,9,0" Stretch="Fill" VerticalAlignment="Top"/>
+                                <Path Data="M3,0 L3,3 L0,3 z" Fill="{telerik:Windows8Resource ResourceKey=StrongBrush}" HorizontalAlignment="Left" Height="3" Margin="0,4,0,0" Stretch="Fill" Stroke="{telerik:Windows8Resource ResourceKey=StrongBrush}" StrokeThickness="0" VerticalAlignment="Top" Width="3" RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <RotateTransform Angle="-45"/>
+                                            <ScaleTransform ScaleX="-2.3299793205922015E-08" ScaleY="4.4408920985006262E-16">
+                                            </ScaleTransform>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                                <Path Data="M0.50000036,12.499999 L2.5000005,12.499999 L2.5000005,14.499999 L0.50000036,14.499999 z M0.5,8.5 L2.5000002,8.5 L2.5000002,10.5 L0.5,10.5 z M0.5,4.5 L7.5,4.5 L7.5,6.5 L0.5,6.5 z M0.5,0.5 L7.5,0.5 L7.5,2.5 L0.5,2.5 z" HorizontalAlignment="Right" Stretch="Fill" Stroke="#FF767676" Width="8"/>
+                            </Grid>
+                        </telerik:ControlPanelItem.ButtonContent>
+                        <telerik:ControlPanelItem.Content>
+                            <ListBox ItemsSource="{Binding Columns}" BorderThickness="0">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <CheckBox Content="{Binding Header, Mode=OneWay}" IsChecked="{Binding IsVisible, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </telerik:ControlPanelItem.Content>
+                    </telerik:ControlPanelItem>
+                    <telerik:ControlPanelItem ButtonTooltip="تنظیمات">
+                        <telerik:ControlPanelItem.ButtonContent>
+                            <Path Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Data="F1M511.6665,467.2715C509.6575,468.2995,507.1905,467.5095,506.1635,465.5005C505.1325,463.4915,505.9265,461.0325,507.9355,460.0005C509.9445,458.9745,512.4095,459.7695,513.4375,461.7745C514.4695,463.7825,513.6775,466.2405,511.6665,467.2715 M518.5605,462.8565L517.8825,460.0155L515.3935,460.2825C515.1415,459.8585,514.8505,459.4725,514.5225,459.1275L515.4435,456.8975L512.9515,455.3645L511.3965,457.2925C510.8575,457.1515,510.3025,457.0815,509.7415,457.0775L508.7675,454.9135L505.9375,455.6715L506.2705,458.0665C505.8795,458.3075,505.5215,458.5835,505.2025,458.8835L503.0535,458.0005L501.5175,460.4875L503.3665,461.9795C503.2315,462.4865,503.1515,463.0135,503.1415,463.5435L501.0335,464.4175L501.7125,467.2605L504.0635,467.0085C504.3355,467.4795,504.6545,467.9065,505.0235,468.2815L504.1575,470.3765L506.6475,471.9095L508.1425,470.0605C508.6495,470.1855,509.1655,470.2555,509.6925,470.2615L510.5785,472.3905L513.4255,471.7135L513.1675,469.2965C513.6075,469.0285,514.0145,468.7215,514.3635,468.3765L516.5455,469.2745L518.0815,466.7855L516.1495,465.2305C516.2665,464.7565,516.3315,464.2705,516.3385,463.7805z" Stretch="Fill"  Fill="{telerik:Windows8Resource ResourceKey=StrongBrush}"/>
+                        </telerik:ControlPanelItem.ButtonContent>
+                        <telerik:ControlPanelItem.Content>
+                            <telerik:RadPropertyGrid SortAndGroupButtonsVisibility="Collapsed" DescriptionPanelVisibility="Collapsed" LabelColumnWidth="154" Width="318" FieldIndicatorVisibility="Collapsed" AutoGeneratePropertyDefinitions="False"  Item="{Binding}">
+                                <telerik:RadPropertyGrid.PropertyDefinitions>
+                                    <telerik:PropertyDefinition Binding="{Binding AlternationCount,Mode=TwoWay}" DisplayName="تعداد رنگ جایگزین"/>
+                                    <telerik:PropertyDefinition Binding="{Binding Background}" DisplayName="پس زمینه">
+                                        <telerik:PropertyDefinition.EditorTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadColorPicker HorizontalAlignment="Left" SelectedColor="{Binding Background,Converter={StaticResource colorToBrushConverter},Mode=TwoWay}"/>
+                                            </DataTemplate>
+                                        </telerik:PropertyDefinition.EditorTemplate>
+                                    </telerik:PropertyDefinition>
+                                    <telerik:PropertyDefinition Binding="{Binding BorderBrush}" DisplayName="ضخامت قلم">
+                                        <telerik:PropertyDefinition.EditorTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadColorPicker HorizontalAlignment="Left" SelectedColor="{Binding BorderBrush,Converter={StaticResource colorToBrushConverter},Mode=TwoWay}"/>
+                                            </DataTemplate>
+                                        </telerik:PropertyDefinition.EditorTemplate>
+                                    </telerik:PropertyDefinition>
+                                    <telerik:PropertyDefinition Binding="{Binding Foreground}" DisplayName="پس زمینه">
+                                        <telerik:PropertyDefinition.EditorTemplate>
+                                            <DataTemplate>
+                                                <telerik:RadColorPicker HorizontalAlignment="Left" SelectedColor="{Binding Foreground,Converter={StaticResource colorToBrushConverter},Mode=TwoWay}"/>
+                                            </DataTemplate>
+                                        </telerik:PropertyDefinition.EditorTemplate>
+                                    </telerik:PropertyDefinition>
+                                    <telerik:PropertyDefinition Binding="{Binding ShowGroupPanel,Mode=TwoWay}" DisplayName="نمایش گروه پنل"/>
+                                    <telerik:PropertyDefinition Binding="{Binding ShowColumnHeaders,Mode=TwoWay}" DisplayName="نمایش عنوان ستون ها"/>
+                                    <telerik:PropertyDefinition Binding="{Binding GridLinesVisibility,Mode=TwoWay}" DisplayName="نمایش خطوط گرید"/>
+                                    <telerik:PropertyDefinition Binding="{Binding FilteringMode,Mode=TwoWay}" DisplayName="حالت فیلتر"/>
+                                    <telerik:PropertyDefinition Binding="{Binding FontSize,Mode=TwoWay}" DisplayName="اندازه قلم"/>
+                                    <telerik:PropertyDefinition Binding="{Binding RowHeight,Mode=TwoWay}" DisplayName="ارتفاع سطر"/>
+                                    <telerik:PropertyDefinition Binding="{Binding SelectionMode, Mode=TwoWay}" DisplayName="حالت انتخاب"/>
+                                </telerik:RadPropertyGrid.PropertyDefinitions>
+                            </telerik:RadPropertyGrid>
+                        </telerik:ControlPanelItem.Content>
+                    </telerik:ControlPanelItem>
+                </telerik:RadGridView.ControlPanelItems>
+                <telerik:RadContextMenu.ContextMenu>
+                    <telerik:RadContextMenu x:Name="GridContextMenu" ItemClick="GridContextMenu_ItemClick">
+                        <telerik:RadContextMenu.Items>
+                            <telerik:RadMenuItem Header="گزارش" Tag="show"/>
+                            <telerik:RadMenuItem Header="طراحی" Tag="design" />
+                            <telerik:RadMenuItem Header="چاپ" Tag="print"/>
+                        </telerik:RadContextMenu.Items>
+                    </telerik:RadContextMenu>
+                </telerik:RadContextMenu.ContextMenu>
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Header="کد حساب" DataMemberBinding="{Binding DLCode}"/>
+                    <telerik:GridViewDataColumn Header="وضعیت" DataMemberBinding="{Binding Status}"/>
+                    <telerik:GridViewDataColumn Header="عنوان اول" DataMemberBinding="{Binding Title}" />
+                    <telerik:GridViewDataColumn Header="عنوان دوم" DataMemberBinding="{Binding Title2}" />
+                    <telerik:GridViewDataColumn Header="نوع تفضیل"	DataMemberBinding="{Binding DLType, Converter={StaticResource EnumToDescription}}" Width="*" />
+                    <telerik:GridViewDataColumn  Header="اطلاعات بیشتر">
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <telerik:RadButton Content="اطلاعات بیشتر"  FontSize="16"    ToolTip="اطلاعات بیشتر"
+								             Click="addButton_Click_1"
+								              TabIndex="2"
+                                              />
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn  Header="افراد مرتبط">
+                        <telerik:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <telerik:RadButton Content="افراد مرتبط"  FontSize="16"    ToolTip="افراد مرتبط"
+								             Click="relatedButton_Click_1"
+								              TabIndex="2"
+                                              />
+                            </DataTemplate>
+                        </telerik:GridViewColumn.CellTemplate>
+                    </telerik:GridViewDataColumn>
+                </telerik:RadGridView.Columns>
+
+
+            </telerik:RadGridView>
+        </telerik:RadTabItem>
+        <telerik:RadTabItem Name="detailRadTabItem" Header="جزئیات">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0">
+                    <GroupBox Header="درج تفضیل" Grid.Column="1" Grid.Row="4" >
+                        <StackPanel Orientation="Horizontal">
+                            <Button Name="addButton"    Content="&#xe907;"  FontSize="16"    ToolTip="افزودن" Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="addButton_Click" />
+                            <Button Name="cancelButton" Content="&#xe115;"  FontSize="16"    ToolTip="انصراف" Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="cancelButton_Click" />
+                            <Button  Name="deleteButton"    Content="&#xe10c;"  FontSize="16"    ToolTip="حذف"   Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="deleteButton_Click" />
+
+                        </StackPanel>
+                    </GroupBox>
+                </StackPanel>
+                <telerik:RadDataForm Name="headerDataForm" ItemsSource="{Binding DLss}"
+                                     EditEnded="RadDataForm_EditEnded" CancelButtonContent="انصراف" 
+                                     CommitButtonContent="تأیید" DeletedItem="RadDataForm_DeletedItem" AutoGenerateFields="False"
+                                     AddedNewItem="HeaderDataForm_AddedNewItem" AddingNewItem="headerDataForm_AddingNewItem"
+                                     BeginningEdit="headerDataForm_BeginningEdit"
+                                     DeletingItem="headerDataForm_DeletingItem" CommandButtonsVisibility="All" LabelPosition="Beside"
+                                     Grid.Row="1" ValidatingItem="headerDataForm_ValidatingItem" ValidationSummaryVisibility="Visible" AutoCommit="True"
+>
+                    <telerik:RadDataForm.ReadOnlyTemplate>
+                        <DataTemplate>
+                            <Grid Margin="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="کد حساب:" Grid.Column="0" Grid.Row="0" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <TextBox x:Name="dLCodeTextbox" 
+                                            Text="{Binding DLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                          IsEnabled="False"
+                                             FlowDirection="LeftToRight"
+                                             TabIndex="0"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus"   >
+                                    <i:Interaction.Behaviors>
+                                        <Behaviors:TextBoxInputRegExBehavior  x:Name="textBoxInputRegExBehavior" RegularExpression="{Binding DL.Regex}" MinLength="0"  MaxLength="0"   EmptyValue="{Binding DL.DLCodeEmpyValue}"/>
+                                    </i:Interaction.Behaviors>
+
+                                </TextBox>
+                                <Label Content="عنوان اول:" Grid.Column="0" Grid.Row="1" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="1">
+                                    <TextBox 
+                                             Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+								            IsEnabled="False" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="230" 
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus"/>
+                                    <!--<telerik:RadComboBox  Name="titleRadComboBox" IsEditable="True" telerik:TextSearch.TextPath="NationalCode" IsFilteringEnabled="True"
+                                                                   Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true,UpdateSourceTrigger=PropertyChanged}"   TextSearchMode="Contains" StaysOpenOnEdit="True" Width="200"
+                                                                  DropDownOpened="titleRadComboBox_DropDownOpened">-->
+                                    <!--</telerik:RadComboBox>-->
+                                   
+                                </StackPanel>
+                                <Label Content="عنوان دوم:" Grid.Column="0" Grid.Row="2" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <TextBox
+                                             Text="{Binding Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           IsEnabled="False"  VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="274" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus"/>
+                                <Label Content="نوع تفصیل:" Grid.Column="0" Grid.Row="3" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <GroupBox Grid.Row="3" Grid.Column="1" Margin="7,7,43,0" Width="300" IsEnabled="False" >
+                                    <WrapPanel  Grid.Row="3" Grid.Column="1">
+                                        <WrapPanel.Resources>
+                                            <Converter:SingleEnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                                        </WrapPanel.Resources>
+                                        <RadioButton Name="otherCheckBox" Content="سایر"   TabIndex="3"  Margin="7 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Others}}" VerticalAlignment="Center" Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="personCheckBox" Content="اشخاص"   TabIndex="4" Margin="38 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.People}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="companyCheckBox" Content="شرکت"   TabIndex="5" Margin="7 7 0 0"  IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Company}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="costCheckBox" Content="مرکز هزینه"   TabIndex="5" Margin="7 7 0 0"  IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Cost}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Content="پروژه"   TabIndex="7"  Margin="7 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Project}}" VerticalAlignment="Center" Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="bankAccontCheckBox" Content="حساب بانکی"   TabIndex="8" Margin="23 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.BankAccount}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                    </WrapPanel>
+                                </GroupBox>
+                                <Label Content="ماهیت حساب:" Grid.Column="0" Grid.Row="4" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <GroupBox Grid.Row="4" Grid.Column="1" Margin="7,7,43,0" IsEnabled="False" >
+                                    <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="5 5 0 0" IsEnabled="False" >
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="0 7 7 7 ">
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel.Resources>
+                                                        <converter:EnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                                                    </StackPanel.Resources>
+                                                    <CheckBox  Name="buyerCheckBox"  Content="خریدار" IsEnabled="False"  TabIndex="9"  Margin="0 0 29 0"  VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Buyer}}">
+                                                    </CheckBox>
+                                                    <CheckBox Name="personelCheckBox" Content="پرسنل" IsEnabled="False" TabIndex="9"   Margin="0 0 23 0"   VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Personel}}">
+                                                    </CheckBox>
+                                                    <CheckBox Name="sellerCheckBox" Content="فروشنده" IsEnabled="False"  TabIndex="9"    VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Seller}}">
+                                                    </CheckBox>
+                                                </StackPanel>
+
+                                            </StackPanel>
+
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </GroupBox >
+                                <telerik:DataFormDataField DataMemberBinding="{Binding Status,Mode=TwoWay}" Label="وضعیت فعال/غیرفعال:"  Grid.Column="1" Grid.Row="5">
+                                    <telerik:DataFormDataField.Content>
+                                        <CheckBox x:Name="isActive"
+                                             IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="12"
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="7 7 0 0"/>
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:RadDataForm.ReadOnlyTemplate>
+                    <telerik:RadDataForm.EditTemplate>
+                        <DataTemplate>
+                            <Grid Margin="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="کد حساب:" Grid.Column="0" Grid.Row="0" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <TextBox x:Name="dLCodeTextbox" 
+                                            Text="{Binding DLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                          IsReadOnly="True"
+                                               FlowDirection="LeftToRight"
+                                             TabIndex="0"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus"   >
+                                    <i:Interaction.Behaviors>
+                                        <Behaviors:TextBoxInputRegExBehavior  x:Name="textBoxInputRegExBehavior" RegularExpression="{Binding DL.Regex}" MinLength="0"  MaxLength="0"   EmptyValue="{Binding DL.DLCodeEmpyValue}"/>
+                                    </i:Interaction.Behaviors>
+
+                                </TextBox>
+                                <Label Content="عنوان اول:" Grid.Column="0" Grid.Row="1" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="1">
+                                    <TextBox 
+                                             Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+								           IsEnabled="{Binding DataContext.TitleEnable, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="230" 
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus" />
+                                    <!--<telerik:RadComboBox  Name="titleRadComboBox" IsEditable="True" telerik:TextSearch.TextPath="NationalCode" IsFilteringEnabled="True"
+                                                                   Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true,UpdateSourceTrigger=PropertyChanged}"   TextSearchMode="Contains" StaysOpenOnEdit="True" Width="200"
+                                                                  DropDownOpened="titleRadComboBox_DropDownOpened">-->
+                                    <!--</telerik:RadComboBox>-->
+                                    
+                                </StackPanel>
+                                <Label Content="عنوان دوم:" Grid.Column="0" Grid.Row="2" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <TextBox
+                                             Text="{Binding Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="274" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus"/>
+                                <Label Content="نوع تفصیل:" Grid.Column="0" Grid.Row="3" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <GroupBox Grid.Row="3" Grid.Column="1" Margin="7,7,43,0" Width="300"  IsEnabled="False"  >
+                                    <WrapPanel  Grid.Row="3" Grid.Column="1">
+                                        <WrapPanel.Resources>
+                                            <Converter:SingleEnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                                        </WrapPanel.Resources>
+                                        <RadioButton Name="otherCheckBox" Content="سایر"   TabIndex="3"  Margin="7 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Others}}" VerticalAlignment="Center" Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="personCheckBox" Content="اشخاص"   TabIndex="4" Margin="38 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.People}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="companyCheckBox" Content="شرکت"   TabIndex="5" Margin="7 7 0 0"  IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Company}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="costCheckBox" Content="مرکز هزینه"   TabIndex="5" Margin="7 7 0 0"  IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Cost}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Content="پروژه"   TabIndex="7"  Margin="7 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Project}}" VerticalAlignment="Center" Unchecked="RadioButton_Unchecked"/>
+                                        <RadioButton Name="bankAccontCheckBox" Content="حساب بانکی"   TabIndex="8" Margin="23 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.BankAccount}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                    </WrapPanel>
+                                </GroupBox>
+                                <Label Content="ماهیت حساب:" Grid.Column="0" Grid.Row="4" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <GroupBox Grid.Row="4" Grid.Column="1" Margin="7,7,43,0">
+                                    <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="5 5 0 0"  >
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="0 7 7 7 ">
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel.Resources>
+                                                        <converter:EnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                                                    </StackPanel.Resources>
+                                                    <CheckBox  Name="buyerCheckBox" IsEnabled="False"   Content="خریدار"   TabIndex="9"  Margin="0 0 29 0"  VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Buyer}}">
+                                                    </CheckBox>
+                                                    <CheckBox Name="personelCheckBox"  IsEnabled="False" Content="پرسنل"   TabIndex="9"   Margin="0 0 23 0"   VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Personel}}">
+                                                    </CheckBox>
+                                                    <CheckBox Name="sellerCheckBox"  IsEnabled="False"    Content="فروشنده"  TabIndex="9"    VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Seller}}">
+                                                    </CheckBox>
+                                                </StackPanel>
+
+                                            </StackPanel>
+
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </GroupBox >
+                                <telerik:DataFormDataField DataMemberBinding="{Binding Status,Mode=TwoWay}" Label="وضعیت فعال/غیرفعال:"  Grid.Column="1" Grid.Row="5">
+                                    <telerik:DataFormDataField.Content>
+                                        <CheckBox x:Name="isActive"
+                                             IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="12"
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="7 7 0 0"/>
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                               
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:RadDataForm.EditTemplate>
+                    <telerik:RadDataForm.NewItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="15">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="کد حساب:" Grid.Column="0" Grid.Row="0" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                    <TextBox x:Name="dLCodeTextbox" 
+                                            Text="{Binding DLCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                          IsReadOnly="True"
+                                             FlowDirection="LeftToRight"
+                                             TabIndex="0"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus"   >
+                                            <i:Interaction.Behaviors>
+                                                <Behaviors:TextBoxInputRegExBehavior  x:Name="textBoxInputRegExBehavior" RegularExpression="{Binding DL.Regex}" MinLength="0"  MaxLength="0"   EmptyValue="{Binding DL.DLCodeEmpyValue}"/>
+                                            </i:Interaction.Behaviors>
+
+                                        </TextBox>
+                                <Label Content="عنوان اول:" Grid.Column="0" Grid.Row="1" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="1">
+                                            <TextBox Name="titleText"
+                                             Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+								           IsEnabled="{Binding DataContext.TitleEnable, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="230" 
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus" TextChanged="titleText_TextChanged"/>
+                                            <!--<telerik:RadComboBox  Name="titleRadComboBox" IsEditable="True" telerik:TextSearch.TextPath="NationalCode" IsFilteringEnabled="True"
+                                                                   Text="{Binding Title, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true,UpdateSourceTrigger=PropertyChanged}"   TextSearchMode="Contains" StaysOpenOnEdit="True" Width="200"
+                                                                  DropDownOpened="titleRadComboBox_DropDownOpened">-->
+                                            <!--</telerik:RadComboBox>-->
+                                         
+                                </StackPanel>
+                                <Label Content="عنوان دوم:" Grid.Column="0" Grid.Row="2" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <TextBox
+                                             Text="{Binding Title2, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="274" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="TextBox_GotFocus"/>
+                                <Label Content="نوع تفصیل:" Grid.Column="0" Grid.Row="3" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <GroupBox Name="dlTypeGroupBox" Grid.Row="3" Grid.Column="1" Margin="7,7,43,0" Width="300"    IsEnabled="{Binding DataContext.Active, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"    >
+                                    <WrapPanel  Grid.Row="3" Grid.Column="1">
+                                                <WrapPanel.Resources>
+                                                    <Converter:SingleEnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                                                </WrapPanel.Resources>
+                                                <RadioButton Name="otherCheckBox" Content="سایر"   TabIndex="3"  Margin="7 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Others}}" VerticalAlignment="Center" Unchecked="RadioButton_Unchecked"/>
+                                                <RadioButton Name="personCheckBox" Content="اشخاص"   TabIndex="4" Margin="38 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.People}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                                <RadioButton Name="companyCheckBox" Content="شرکت"   TabIndex="5" Margin="7 7 0 0"  IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Company}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                                <RadioButton Name="costCheckBox" Content="مرکز هزینه"   TabIndex="5" Margin="7 7 0 0"  IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Cost}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                                <RadioButton Content="پروژه"   TabIndex="7"  Margin="7 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.Project}}" VerticalAlignment="Center" Unchecked="RadioButton_Unchecked"/>
+                                                <RadioButton Name="bankAccontCheckBox" Content="حساب بانکی"   TabIndex="8" Margin="23 7 0 0" IsChecked="{Binding Path=DLType,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLTypeEnum.BankAccount}}"  VerticalAlignment="Center"  Unchecked="RadioButton_Unchecked"/>
+                                            </WrapPanel>
+                                        </GroupBox>
+                                <Label Content="ماهیت حساب:" Grid.Column="0" Grid.Row="4" Margin="5 5 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                                <GroupBox Grid.Row="4" Grid.Column="1" Margin="7,7,43,0">
+                                    <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="5 5 0 0"  >
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="0 7 7 7 ">
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel.Resources>
+                                                        <converter:EnumToBoolConverter x:Key="EnumToBooleanConverter" />
+                                                    </StackPanel.Resources>
+                                                    <CheckBox  Name="buyerCheckBox"  Content="خریدار"  TabIndex="9"  Margin="0 0 29 0"  VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Buyer}}">
+
+                                                        <CheckBox.Style>
+                                                            <Style TargetType="CheckBox">
+                                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=companyCheckBox, Path=IsChecked}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="True" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding ElementName=personCheckBox, Path=IsChecked}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="True" />
+                                                                    </DataTrigger>
+
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </CheckBox.Style>
+                                                    </CheckBox>
+                                                    <CheckBox Name="personelCheckBox" Content="پرسنل"  TabIndex="9"   Margin="0 0 23 0"   VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Personel}}">
+
+                                                        <CheckBox.Style>
+                                                            <Style TargetType="CheckBox">
+                                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=companyCheckBox, Path=IsChecked}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="True" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding ElementName=personCheckBox, Path=IsChecked}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="True" />
+                                                                    </DataTrigger>
+
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </CheckBox.Style>
+                                                    </CheckBox>
+                                                    <CheckBox Name="sellerCheckBox" Content="فروشنده"  TabIndex="9"    VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding Path=DLAccountsNature,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter={x:Static dlAccount:DLAccountsNatureEnum.Seller}}">
+
+                                                        <CheckBox.Style>
+                                                            <Style TargetType="CheckBox">
+                                                                <Setter Property="IsEnabled" Value="False"></Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=companyCheckBox, Path=IsChecked}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="True" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding ElementName=personCheckBox, Path=IsChecked}" Value="True">
+                                                                        <Setter Property="IsEnabled" Value="True" />
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </CheckBox.Style>
+                                                    </CheckBox>
+                                                </StackPanel>
+
+                                            </StackPanel>
+
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </GroupBox >
+                                <telerik:DataFormDataField DataMemberBinding="{Binding Status,Mode=TwoWay}" Label="وضعیت فعال/غیرفعال:"  Grid.Column="1" Grid.Row="5">
+                                    <telerik:DataFormDataField.Content>
+                                        <CheckBox x:Name="isActive"
+                                             IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="12"
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="7 7 0 0"/>
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                              
+                            </Grid>
+                        </DataTemplate>
+                    </telerik:RadDataForm.NewItemTemplate>
+                </telerik:RadDataForm>
+            </Grid>
+        </telerik:RadTabItem>
+    </telerik:RadTabControl>
+</UserControl>

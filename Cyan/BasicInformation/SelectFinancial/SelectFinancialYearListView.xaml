@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.SelectFinancial.SelectFinancialYearListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.SelectFinancial"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+
+             mc:Ignorable="d"  FlowDirection="RightToLeft" Loaded="UserControl_Loaded"
+            >
+    <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadSelectFinancialYears"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
+    <Grid>
+        <StackPanel Orientation="Horizontal" >
+            <Label Content="انتخاب سال مالی" Margin="29 7 0 0"></Label>
+            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="YearName"
+                                            ItemsSource="{Binding FinancialYears}"
+                                            SelectedValue="{Binding FinancialYear.FinancialYearId , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                             SelectedValuePath="FinancialYearId"   
+                                  SelectedItem="{Binding Selected}"
+                                     FlowDirection="RightToLeft"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="DropDownOpened">
+                    <i:InvokeCommandAction Command="{Binding FinancialYearsDropDownOpenedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </telerik:RadComboBox>
+    
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+            <!--<Label Content="نام کاربر: " Margin="20 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <TextBlock Text="{Binding UserName}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 7 20 0"></TextBlock>-->
+            <Label Content="نام سیستم : " Margin="20 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <TextBlock Text="{Binding ComputerName}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 7 20 0"></TextBlock>
+            <Label Content="تاریخ سیستم : " VerticalAlignment="Center" HorizontalAlignment="Center" Margin="20 7 0 0"></Label>
+            <TextBlock Text="{Binding DateNowString ,StringFormat='{}{0:yyyy/MM/dd}'}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 7 20 0" ></TextBlock>
+        </StackPanel>
+    </Grid>
+    <!--<Grid>
+        <TextBlock Text="OOOOOOOOOOOOOOOOOOOOOOOOh" FontSize="40"/>
+    </Grid>-->
+</UserControl>

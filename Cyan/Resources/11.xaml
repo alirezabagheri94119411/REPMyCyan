@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Name="svg3713" Width="68.26667" Height="68.26667">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0" Y="0"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <!--Unknown tag: metadata-->
+    <!--Unknown tag: sodipodi:namedview-->
+    <Image xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="image3721" Canvas.Left="0" Canvas.Top="0" Source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAABGdBTUEAALGPC/xhBQAAACBjSFJN AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZ cwAADdcAAA3XAUIom3gAAAAHdElNRQfhCxUHGgMtsEnfAAACyUlEQVRo3u2YTWgTQRTHf22SalNq EPELEdSTiId6qI0fIISCBW39oirqwYt6ErxZ9GoRPATRi8cWFSx+QDEoEaJVqY14iKhVUVF6UaF+ tNGLTbQeHDe72WzczEx2PWRyybw38/6/fbP7dnYgynTVf49xbPX43GoAvgMELb3TjGmMvYfWSgEG SGsEaHED4PsS1ABqAEEH+1kOSEY8X9lMJ4AQMyQBQpUN/2+X4BV3JSO+1AMQJ+5NBnxfghqA7wBO N+EcmiUjfueTDoBeDkkC9LO/kuHeLcEq7pDlDccJuMmA7tbFZRqAZk6wmm6m/gVwT1pqpIRtqZAv wJgQzF9GUa1X3Wf7Qho3/g3+BfLyMbzNMi6astDgbQZShIEAF0xZCHkHMEZYWM0Ip7zMwEnDXkDI 01Q9gHV8E1Gf8NCGkBG+lU4A56TPAvoAWEtW9J8ylwhpC0KP8OUIVwdgjUUesCD0GGN7ne8BFYAo k0XyZoQhY+RVgtXYE0ZIMguAUWKMG/ZJNpKkjQ2iP8hu8s4ZkG1tTIhYz5hn8+4zlBKF0qwToLx8 Fz+E96b5q0MfQEF+tIT8FqaE9xYzzQ5dAG7lUzRaXXoA3MoPGSVZK4BZfr7Nu9WQv0+TfbI6QEH+ eVn5B6U3uqoA5eW3GfJpUR00AyxxKf+IiFMINYBrYuYLFpSRf89s5xAqAAv55Si/3ZAve1quti3f RB0Ah/lokx9wF1ttU9oJQNb24trhVl4NoJF2AJLkiuQvuc+sCkBMVLXr8vJqAH8W4Cc3TLadhnym CKwKAJsBGOEzECRGnNfG2mdo54ubIPJPQT2LABhmL510WAqNa3kVgADT1AFHbZ4rHOSr++uQbTn6 bba3nGE93e7l1QrRMVpoASDPMAkSlR5SqgJ8oJUOlvOOFBOyQawAuyReR3kWO5wKragc4IhCPiSb 7+eENQDfAX4DgboW0KblF74AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTctMTEtMjFUMDc6MjY6MDMr MDE6MDB2JGnhAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE3LTExLTIxVDA3OjI2OjAzKzAxOjAwB3nR XQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII= " Width="68.26667" Height="68.26667" Stretch="Fill"/>
+  </Canvas>
+</Viewbox>

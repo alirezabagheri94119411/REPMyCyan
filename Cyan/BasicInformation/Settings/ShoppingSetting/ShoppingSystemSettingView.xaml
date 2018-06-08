@@ -1,0 +1,360 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Settings.ShoppingSetting"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"   
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+              xmlns:behaviours="clr-namespace:Saina.WPF.Behaviors"
+             xmlns:Converter="clr-namespace:Saina.WPF.Converters" x:Class="Saina.WPF.BasicInformation.Settings.ShoppingSetting.ShoppingSystemSettingView"
+             mc:Ignorable="d" 
+             Tag="تنظیمات سیستم بازرگانی خرید"
+              FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <Converter:StringToBoolConverter x:Key="StringToBoolConverter"/>
+    </UserControl.Resources>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadSLs"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <ScrollViewer Margin="0,0,0,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="5" x:Name="panelContent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="تنظیمات سیستم بازرگانی خرید" Margin="5" FontFamily="/Resources/irsans.ttf#Iranian Sans"
+                           FontSize="23" FontWeight="Bold"/>
+                    <TextBlock Margin="5"
+                           Text="لطفا تنظیمات سیستم بازرگانی خرید  را وارد نمائید."
+                           TextWrapping="Wrap" />
+                </StackPanel>
+                <GroupBox Height="Auto" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      Margin="5,20,5,0">
+                    <GroupBox.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="پنل تنظیمات سیستم بازرگانی خرید" FontWeight="Bold" />
+                        </DataTemplate>
+                    </GroupBox.HeaderTemplate>
+                    <Grid Margin="15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal"   Grid.Row="0">
+                            <telerik:RadPathButton Content="ذخیره اطلاعات"
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="16"
+                                     
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <telerik:RadPathButton Content="بروز رسانی"
+                                           Command="{Binding  SLsDropDownOpenedCommand}"
+                                           TabIndex="17"
+                                       Grid.Row="0"
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <Grid x:Name="grid1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="طول کد کالا"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.ProductCodeLenght,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                            TabIndex="0"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول برند کالا"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.ProductBrandLenght,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                            TabIndex="1"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول نوع کالا"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.ProductTypeLenght,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                            TabIndex="2"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول مدل کالا"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.ProductModelLenght,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                            TabIndex="3"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="3"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول سایر کالا"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.OtherProductLenght,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                            TabIndex="4"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="4"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول ایران کد "  Grid.Column="0" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.IranCodeProduct,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                              TabIndex="5"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="5"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="طول بار کد "  Grid.Column="0" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.Barcode,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                              TabIndex="6"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="تعداد سطوح طبقه کالا "  Grid.Column="0" Grid.Row="7"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <TextBox 
+                                 Text="{Binding ShoppingSystemSettingModel.NumberLevel,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="7"
+                                             Width="110" 
+                                             Grid.Column="1"
+                                             Grid.Row="7"
+                                             Margin="7 7 0 0" >
+                                <i:Interaction.Behaviors>
+                                    <behaviours:TextBoxInputRegExBehavior RegularExpression="^\d+$" MaxLength="2" EmptyValue="0" />
+                                </i:Interaction.Behaviors>
+                            </TextBox>
+                            <Label Content="معین حسابهای پرداختنی"  Grid.Column="0" Grid.Row="8"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding ShoppingSystemSettingModel.SLPayableAccount, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="8"
+                                            Grid.Column="1"
+                                            Grid.Row="8"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین تخفیفات نقدی خرید"  Grid.Column="0" Grid.Row="9"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding ShoppingSystemSettingModel.SLCashbackShopping, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                          SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft"   Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="9"
+                                            Grid.Column="1"
+                                            Grid.Row="9"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین هرینه حمل"  Grid.Column="0" Grid.Row="10"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding ShoppingSystemSettingModel.SLTransportationCost, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="10"
+                                            Grid.Column="1"
+                                            Grid.Row="10"
+                                            Margin="7 7 0 0" />
+                            <Label Content="معین برگشت رسید حمل"  Grid.Column="0" Grid.Row="11"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding ShoppingSystemSettingModel.SLReturnShippingArrival, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="11"
+                                            Grid.Column="1"
+                                            Grid.Row="11"
+                                            Margin="7 7 0 0" />
+                            <Label Content="سایرحسابهای دریافتنی"  Grid.Column="0" Grid.Row="12"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding ShoppingSystemSettingModel.OtherAccountsReceivable, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="12"
+                                            Grid.Column="1"
+                                            Grid.Row="12"
+                                            Margin="7 7 0 0" />
+                            <Label Content="بهای تمام شده"  Grid.Column="0" Grid.Row="13"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding ShoppingSystemSettingModel.Costing, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                                FlowDirection="RightToLeft" Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="13"
+                                            Grid.Column="1"
+                                            Grid.Row="13"
+                                            Margin="7 7 0 0" />
+
+                            <Label Content="اسناد حسابداری اتوماتیک"  Grid.Column="0" Grid.Row="14"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="AutomaticAccountingDocumentTitle"
+                                           ItemsSource="{Binding AutomaticAccountingDocument}"
+                                            SelectedValue="{Binding ShoppingSystemSettingModel.AutomaticAccountingDocument, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            SelectedValuePath="AutomaticAccountingDocument"
+                                           FlowDirection="RightToLeft"  Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="14"
+                                            Grid.Column="1"
+                                            Grid.Row="14"
+                                            Margin="7 7 0 0" />
+
+                            <Label Content="موجودی منفی کنترل شود "  Grid.Column="0" Grid.Row="15"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <StackPanel Orientation="Horizontal" Margin="7 7 0 0" Grid.Column="1" Grid.Row="15">
+                                <RadioButton Content="بله"
+                                             IsChecked="{Binding ShoppingSystemSettingModel.NegativeInventoryControl, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="15"
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="8"/>
+                                <RadioButton Content="خیر"
+                                             IsChecked="{Binding ShoppingSystemSettingModel.NegativeInventoryControl, Converter={StaticResource StringToBoolConverter}, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="61"
+                                             Margin="8"/>
+                            </StackPanel>
+                            <Label Content="ارتباط اسناد با جدول کالا "  Grid.Column="0" Grid.Row="16"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <StackPanel Orientation="Horizontal" Margin="7 7 0 0" Grid.Column="1" Grid.Row="16">
+                                <RadioButton Content="بله"
+                                             IsChecked="{Binding ShoppingSystemSettingModel.DocumentCommunication, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="17"
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="8"/>
+                                <RadioButton Content="خیر"
+                                             IsChecked="{Binding ShoppingSystemSettingModel.DocumentCommunication, Converter={StaticResource StringToBoolConverter}, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="18"
+                                             Margin="8"/>
+                            </StackPanel>
+                            <Label Content="ارتباط کالا با جدول کالا "  Grid.Column="0" Grid.Row="17"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                            <StackPanel Orientation="Horizontal" Margin="7 7 0 0" Grid.Column="1" Grid.Row="17">
+                                <RadioButton Content="بله"
+                                             IsChecked="{Binding ShoppingSystemSettingModel.ProductCommunication, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="19"
+                                             Grid.Column="1"
+                                             Grid.Row="6"
+                                             Margin="8"/>
+                                <RadioButton Content="خیر"
+                                             IsChecked="{Binding ShoppingSystemSettingModel.ProductCommunication, Converter={StaticResource StringToBoolConverter}, Mode=TwoWay, NotifyOnValidationError=True, ValidatesOnExceptions=True}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="20"
+                                             Margin="8"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

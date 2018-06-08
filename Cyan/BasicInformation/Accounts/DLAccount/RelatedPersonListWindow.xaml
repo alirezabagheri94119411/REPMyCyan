@@ -1,0 +1,424 @@
+﻿<telerik:RadWindow  x:Class="Saina.WPF.BasicInformation.Accounts.DLAccount.RelatedPersonListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:converter="clr-namespace:Saina.WPF.Converters"
+        xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Accounts.DLAccount"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             mc:Ignorable="d" 
+                    
+             >
+    <telerik:RadWindow.Style>
+        <Style BasedOn="{StaticResource RadWindowStyle}" TargetType="local:RelatedPersonListWindow" />
+    </telerik:RadWindow.Style>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" >
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="0 4 0 0">
+                <StackPanel.Resources>
+                    <converter:EnumToBoolConverter x:Key="EnumToBoolConverter"  />
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal"  Margin="0 0 30 0" >
+
+                    <Button Name="addButton"     Content="&#xe907;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="افزودن" Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="addButton_Click" />
+                    <Button Name="saveButton" Content="&#xe109;"  FontFamily="{StaticResource TelerikWebUI}" FontSize="16" ToolTip="ذخیره" Margin="4 0 4 0" TabIndex="9" VerticalAlignment="Bottom" Click="saveButton_Click"/>
+                    <Button Name="cancelButton"  Content="&#xe115;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="انصراف"   Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="cancelButton_Click" />
+                    <Button  Name="deleteButton" Content="&#xe10c;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="حذف"  Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="deleteButton_Click" />
+                </StackPanel>
+
+            </StackPanel>
+                <telerik:RadDataForm Name="relatedPersonDataForm"  ItemsSource="{Binding ElementName=relatedPersonDataGrid,Path=ItemsSource}" FlowDirection="RightToLeft"
+                                     EditEnded="RadDataForm_EditEnded" CancelButtonContent="انصراف111111" AddedNewItem="relatedPersonDataForm_AddedNewItem" 
+                                     CommitButtonContent="تأیید" DeletedItem="relatedPersonDataForm_DeletingItem" AutoGenerateFields="False" 
+                                     DeletingItem="relatedPersonDataForm_DeletingItem" CommandButtonsVisibility="all" LabelPosition="Beside"
+                                     >
+
+                    <telerik:RadDataForm.ReadOnlyTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <telerik:DataFormDataField DataMemberBinding="{Binding RelatedPersonTitle,Mode=TwoWay}"  Label="نام:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding RelatedPersonTitle,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding RelatedPersonText,Mode=TwoWay}"  Label="نام خانوادگی:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding RelatedPersonText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding RelatedPersonText,Mode=TwoWay}"  Label="تلفن:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding RelatedPersonText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:RadDataForm.ReadOnlyTemplate>
+                    <telerik:RadDataForm.EditTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <telerik:DataFormDataField DataMemberBinding="{Binding RelatedPersonTitle,Mode=TwoWay}"  Label="نام:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding Family,Mode=TwoWay}"  Label="نام خانوادگی:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding RelatedPersonText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding Phone,Mode=TwoWay}"  Label="تلفن:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding RelatedPersonText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:RadDataForm.EditTemplate>
+                    <telerik:RadDataForm.NewItemTemplate>
+                        <DataTemplate>
+                            <StackPanel >
+                                <telerik:DataFormDataField DataMemberBinding="{Binding RelatedPersonTitle,Mode=TwoWay}"  Label="نام:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding Family,Mode=TwoWay}"  Label="نام خانوادگی:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding RelatedPersonText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                                <telerik:DataFormDataField DataMemberBinding="{Binding Phone,Mode=TwoWay}"  Label="تلفن:" >
+
+                                    <telerik:DataFormDataField.Content>
+                                        <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding RelatedPersonText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                    </telerik:DataFormDataField.Content>
+                                </telerik:DataFormDataField>
+                            </StackPanel>
+                        </DataTemplate>
+                    </telerik:RadDataForm.NewItemTemplate>
+                </telerik:RadDataForm>
+
+        </StackPanel>
+
+        <telerik:RadGridView  x:Name="relatedPersonDataGrid"
+                                    ItemsSource="{Binding RelatedPersons}"
+                                 DataContext="{Binding DLs}"  
+                                FilteringMode="FilterRow"
+                                  FlowDirection="RightToLeft"
+                                    GroupRenderMode="Flat"
+                                    CanUserFreezeColumns="False"
+                                    ShowGroupPanel="True"
+                                    RowIndicatorVisibility="Collapsed"
+                                    IsReadOnly="True"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    AutoGenerateColumns="False" 
+                                    Grid.Row="1"
+                                  
+                                    AddingNewDataItem="relatedPersonDataGrid_AddingNewDataItem"
+                                  SelectionMode="Extended"
+                                  >
+
+            <telerik:RadGridView.Columns >
+                <telerik:GridViewDataColumn Header="نام " DataMemberBinding="{Binding Name}"  TextAlignment="Center"/>
+                <telerik:GridViewDataColumn Header="نام خانوادگی" DataMemberBinding="{Binding Family}" Width="*"   />
+                <telerik:GridViewDataColumn Header="تلفن" DataMemberBinding="{Binding Phone}" Width="2*"   />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>
+    <!--<Grid FlowDirection="RightToLeft">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" >
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="0 4 0 0">
+                <StackPanel.Resources>
+                    <converter:EnumToBoolConverter x:Key="EnumToBoolConverter"  />
+                </StackPanel.Resources>
+                --><!--<StackPanel Orientation="Horizontal"  Margin="0 0 30 0" >
+
+                    <Button Name="addButton"     Content="&#xe907;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="افزودن" Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="addButton_Click" />
+                    <Button Name="saveButton" Content="&#xe109;"  FontFamily="{StaticResource TelerikWebUI}" FontSize="16" ToolTip="ذخیره" Margin="4 0 4 0" TabIndex="9" VerticalAlignment="Bottom" Click="saveButton_Click"/>
+                    <Button Name="cancelButton"  Content="&#xe115;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="انصراف"   Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="cancelButton_Click" />
+                    <Button  Name="deleteButton" Content="&#xe10c;" FontFamily="{StaticResource TelerikWebUI}" FontSize="16"    ToolTip="حذف"  Margin="4 0 4 0" TabIndex="13" VerticalAlignment="Bottom" Click="deleteButton_Click" />
+                </StackPanel>--><!--
+
+            </StackPanel>
+            <telerik:RadDataForm Name="relatedPersonDataForm"  ItemsSource="{Binding ElementName=relatedPersonDataGrid,Path=ItemsSource}" FlowDirection="RightToLeft"
+                                      CancelButtonContent="انصراف"  
+                                     CommitButtonContent="تأیید"  AutoGenerateFields="False" 
+                                      CommandButtonsVisibility="All" LabelPosition="Beside"
+                                     >
+            
+
+                <telerik:RadDataForm.ReadOnlyTemplate>
+                    <DataTemplate>
+                       <StackPanel >
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Name,Mode=TwoWay}"  Label="نام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Family,Mode=TwoWay}"  Label="نام خانوادگی:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Family,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Phone,Mode=TwoWay}"  Label="تلفن:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadDataForm.ReadOnlyTemplate>
+                <telerik:RadDataForm.EditTemplate>
+                    <DataTemplate>
+                        <StackPanel >
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Name,Mode=TwoWay}"  Label="نام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Family,Mode=TwoWay}"  Label="نام خانوادگی:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Family,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Phone,Mode=TwoWay}"  Label="تلفن:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadDataForm.EditTemplate>
+                <telerik:RadDataForm.NewItemTemplate>
+                    <DataTemplate>
+                        <StackPanel >
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Name,Mode=TwoWay}"  Label="نام:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                Width="200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Family,Mode=TwoWay}"  Label="نام خانوادگی:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Family,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                            <telerik:DataFormDataField DataMemberBinding="{Binding Phone,Mode=TwoWay}"  Label="تلفن:" >
+
+                                <telerik:DataFormDataField.Content>
+                                    <telerik:RadAutoCompleteBox 
+                                                SearchText="{Binding Phone,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                 AutoCompleteMode="Suggest"
+                                                VerticalAlignment="Center" 
+                                                VerticalContentAlignment="Bottom"
+                                                HorizontalAlignment="Left"
+                                                 FlowDirection="RightToLeft"
+                                                TabIndex="1"
+                                                MinWidth="400" 
+                                    MaxWidth="1200" />
+                                </telerik:DataFormDataField.Content>
+                            </telerik:DataFormDataField>
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadDataForm.NewItemTemplate>
+            </telerik:RadDataForm>
+        </StackPanel>
+
+
+        <telerik:RadGridView  x:Name="relatedPersonDataGrid"
+                                    ItemsSource="{Binding RelatedPeople}"  FilteringMode="FilterRow"
+                                 DataContext="{Binding SelectedPerson}" 
+                                  FlowDirection="RightToLeft"
+                                    GroupRenderMode="Flat"
+                                    CanUserFreezeColumns="False"
+                                    ShowGroupPanel="True"
+                                    RowIndicatorVisibility="Collapsed"
+                                    IsReadOnly="True"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    AutoGenerateColumns="False" 
+                              Grid.Row="1"
+                                  
+                                  SelectionMode="Extended"
+                                  >
+
+            <telerik:RadGridView.Columns >
+                <telerik:GridViewDataColumn Header="نام " DataMemberBinding="{Binding Name}"  TextAlignment="Center"/>
+                <telerik:GridViewDataColumn Header="نام خانوادگی" DataMemberBinding="{Binding Family}" Width="*"   />
+                <telerik:GridViewDataColumn Header="تلفن" DataMemberBinding="{Binding Phone}" Width="2*"   />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+    </Grid>-->
+</telerik:RadWindow>

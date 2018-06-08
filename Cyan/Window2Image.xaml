@@ -1,0 +1,17 @@
+﻿<Window x:Class="Saina.WPF.Window2Image"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF"
+        mc:Ignorable="d"
+        Title="Window2Image" Height="300" Width="300">
+    <StackPanel>
+        <Label Name="FileNameLabel"/>
+        <Button Content="Browse" Click="BrowseButton_Click"/>
+        <Image Name="ImageViewer1" Height="90"/>
+        <Button Content="Load" Click="LoadButton_Click"/>
+        <Image Name="ImageViewer2" Height="90"/>
+        <Button Content="Brows" Click="SaveButton_Click"/>
+    </StackPanel>
+</Window>

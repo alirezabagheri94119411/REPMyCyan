@@ -1,0 +1,93 @@
+﻿<telerik:RadWindow  x:Class="Saina.WPF.BasicInformation.Information.Related.AddEditRelatedPersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Information.Related"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        mc:Ignorable="d"  
+        Header="افزودن / ویرایش افراد مرتبط" Height="320" Width="480"   WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="UserControl_Loaded" >
+    <telerik:RadWindow.Style>
+        <Style BasedOn="{StaticResource RadWindowStyle}" TargetType="local:AddEditRelatedPersonWindow" />
+    </telerik:RadWindow.Style>
+    <GroupBox Header="افزودن /ویرایش افراد مرتبط" FlowDirection="RightToLeft" Margin="10">
+        <Grid FlowDirection="RightToLeft" Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+          
+            <Grid Margin="15" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                 
+                </Grid.ColumnDefinitions>
+           
+                <Label Content="نام "  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                <TextBox  x:Name="NameTextBox" 
+                                           Text="{Binding RelatedPerson.Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="0"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0" GotFocus="NameTextBox_GotFocus" />
+                <Label  Content="نام خانوادگی"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox x:Name="userNameTextBox"
+                                             Text="{Binding RelatedPerson.Family, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                            
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="1"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0" GotFocus="NameTextBox_GotFocus" />
+                <Label Content="تلفن"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox x:Name="userNameTextBox1"
+                                             Text="{Binding RelatedPerson.Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                              FlowDirection="RightToLeft"
+                                             TabIndex="2"
+                                             Width="160" 
+                                             Grid.Column="1"
+                                             Grid.Row="3"
+                                             Margin="7 7 0 0" GotFocus="NameTextBox_GotFocus" />
+              
+                <StackPanel Orientation="Horizontal"  Grid.Column="1" Grid.Row="10">
+                    <telerik:RadPathButton Content="ذخیره"
+                                         Click="okRadButton_Click"
+                                           TabIndex="20"
+                                           Width="110" 
+                                           Margin="3"/>
+                    <telerik:RadPathButton Content="انصراف"
+                                          Click="cancelRadButton_Click"
+                                           TabIndex="21"
+                                           Width="110" 
+                                           Margin="4"/>
+                </StackPanel>
+
+            </Grid>
+            <ContentControl Content="{Binding SLStandardDescriptionListViewModel}"  Grid.Row="1" Grid.ColumnSpan="5"/>
+        </Grid>
+    </GroupBox>
+   
+</telerik:RadWindow>

@@ -1,0 +1,349 @@
+﻿<UserControl x:Class="Saina.WPF.BasicInformation.Settings.ReceiveSetting.SystemReceivePaymentSettingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Saina.WPF.BasicInformation.Settings.ReceiveSetting"
+               xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"   
+         Tag="تنظیمات سیستم دریافت و پرداخت"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+         FlowDirection="RightToLeft"
+             mc:Ignorable="d" 
+             >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <ei:CallMethodAction TargetObject="{Binding}" MethodName="LoadSLs"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <GroupBox Header="تنظیمات سیستم دریافت و پرداخت" FlowDirection="RightToLeft" Margin="10">
+        <Grid FlowDirection="RightToLeft" Margin="10" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Unloaded">
+                    <ei:CallMethodAction TargetObject="{Binding Mode=OneWay}" MethodName="onCancel"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid Margin="15" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"   Grid.Row="0">
+                      <telerik:RadPathButton Content="ذخیره اطلاعات"
+                                           Command="{Binding SaveCommand}"
+                                           TabIndex="5"
+                                     
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <telerik:RadPathButton Content="بروز رسانی"
+                                           Command="{Binding  SLsDropDownOpenedCommand}"
+                                           TabIndex="6"
+                                       Grid.Row="0"
+                                           Width="110" 
+                                           Margin="15 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+              
+                <Grid Grid.Row="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Row="0" Grid.Column="0" Header="معین دریافت" Margin="5">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="موجودی بانک ها"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveStockBank , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0" />
+                            <Label Content="صندوق"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveCashDesk , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="1"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Margin="7 7 0 0" />
+                            <Label Content="کارت خوان"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveCardReader , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="2"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="7 7 0 0" />
+                            <Label Content="اسناد نزد صندوق"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveDocumentFund , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                            Grid.Column="1"
+                                            Grid.Row="3"
+                                            Margin="7 7 0 0" />
+                            <Label Content="چک های در جریان"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveCheckStream , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="4"
+                                            Grid.Column="1"
+                                            Grid.Row="4"
+                                            Margin="7 7 0 0" />
+                            <Label Content="چک های مدت دار"  Grid.Column="0" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveTimedCheck , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="5"
+                                            Grid.Column="1"
+                                            Grid.Row="5"
+                                            Margin="7 7 0 0" />
+                            <Label Content="اسناد واخواست "  Grid.Column="0" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveWillingDocument , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="6"
+                                            Grid.Column="1"
+                                            Grid.Row="6"
+                                            Margin="7 7 0 0" />
+                            <Label Content="طرف حساب انتظامی"  Grid.Column="0" Grid.Row="7"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLReceiveLawOfficer , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            FlowDirection="RightToLeft"
+                                                Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="7"
+                                            Grid.Column="1"
+                                            Grid.Row="7"
+                                            Margin="7 7 0 0" />
+
+                        </Grid>
+
+                    </GroupBox>
+                    <GroupBox Grid.Row="0" Grid.Column="1" Header="معین پرداخت" Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Content="موجودی بانک ها"  Grid.Column="0" Grid.Row="0"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentStockBank , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="0"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="7 7 0 0" />
+                            <Label Content="صندوق"  Grid.Column="0" Grid.Row="1"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentCashDesk , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="1"
+                                            Grid.Column="1"
+                                            Grid.Row="1"
+                                            Margin="7 7 0 0" />
+                            <Label Content="کارت خوان"  Grid.Column="0" Grid.Row="2"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentCardReader , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="2"
+                                            Grid.Column="1"
+                                            Grid.Row="2"
+                                            Margin="7 7 0 0" />
+                            <Label Content="اسناد نزد صندوق"  Grid.Column="0" Grid.Row="3"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentDocumentFund , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="3"
+                                            Grid.Column="1"
+                                            Grid.Row="3"
+                                            Margin="7 7 0 0" />
+                            <Label Content="چک های در جریان"  Grid.Column="0" Grid.Row="4"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentCheckStream , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="4"
+                                            Grid.Column="1"
+                                            Grid.Row="4"
+                                            Margin="7 7 0 0" />
+                            <Label Content="چک های مدت دار"  Grid.Column="0" Grid.Row="5"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentTimedCheck , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="5"
+                                            Grid.Column="1"
+                                            Grid.Row="5"
+                                            Margin="7 7 0 0" />
+                            <Label Content="اسناد واخواست "  Grid.Column="0" Grid.Row="6"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentWillingDocument , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="6"
+                                            Grid.Column="1"
+                                            Grid.Row="6"
+                                            Margin="7 7 0 0" />
+                            <Label Content="طرف حساب انتظامی"  Grid.Column="0" Grid.Row="7"  Margin="7 7 0 0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+                           <telerik:RadComboBox TextSearchMode="Contains" IsFilteringEnabled="True" DisplayMemberPath="Title"
+                                            ItemsSource="{Binding SLs}"
+                                            SelectedValue="{Binding SystemReceivePaymentSettingModel.SLPaymentLawOfficer , Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" 
+                                           SelectedValuePath="SLId"
+                                            Width="110" 
+                                            HorizontalAlignment="Left"
+                                            TabIndex="7"
+                                            Grid.Column="1"
+                                            Grid.Row="7"
+                                            Margin="7 7 0 0" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+                <GroupBox Grid.Row="2" Margin="5" Header="تنظیم اسناد خودکار">
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <CheckBox Content="رسید دریافت"
+                                             IsChecked="{Binding SystemReceivePaymentSettingModel.Receipt, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="3"
+                                           
+                                             Grid.Row="0"
+                                             Margin="7 7 0 0"/>
+                        <CheckBox Content="اعلامیه پرداخت"
+                                             IsChecked="{Binding SystemReceivePaymentSettingModel.PaymentNotice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="3"
+                                           
+                                             Grid.Row="1"
+                                             Margin="7 7 0 0"/>
+                        <CheckBox Content="چک دریافتی"
+                                             IsChecked="{Binding SystemReceivePaymentSettingModel.CheckReceived, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="3"
+                                           
+                                             Grid.Row="2"
+                                             Margin="7 7 0 0"/>
+                        <CheckBox Content="وصول چک"
+                                             IsChecked="{Binding SystemReceivePaymentSettingModel.GettingCheck, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="3"
+                                           
+                                             Grid.Row="3"
+                                             Margin="7 7 0 0"/>
+                        <CheckBox Content="استرداد چک"
+                                             IsChecked="{Binding SystemReceivePaymentSettingModel.CheckExtra, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                             VerticalAlignment="Center" 
+                                             VerticalContentAlignment="Bottom"
+                                             HorizontalAlignment="Left"
+                                             TabIndex="3"
+                                           
+                                             Grid.Row="4"
+                                             Margin="7 7 0 0"/>
+                    </Grid>
+                </GroupBox>
+
+
+
+            </Grid>
+        </Grid>
+    </GroupBox>
+</UserControl>
+    
+       
+ 
+
